@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-// RESSURSSIDELE TULEB NIMED VÄLJA MÕELDA, SIIS SAAB VASTAVAD SÜNDMUSED LUUA.
+// RESSURSSIDELE TULEB NIMED VÃ„LJA MÃ•ELDA, SIIS SAAB VASTAVAD SÃœNDMUSED LUUA.
 
 public class ScenarioController : MonoBehaviour
 {
