@@ -3,13 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/FoundationData")]
-public class FoundationData : ScriptableObject
+public class FoundationData : TowerComponentData
 {
-    public string DisplayName;
-    public List<int> Cost;
-    public Sprite IconSprite;
-    //public Tower TowerPrefab;
-    public KeyCode Hotkey;
-
     public bool Limited; // Piirab tugiplokkide arvu ja võib-olla veel midagi.
 }

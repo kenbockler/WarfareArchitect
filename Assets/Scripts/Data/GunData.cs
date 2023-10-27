@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/GunData")]
-public class GunData : ScriptableObject
+public class GunData : TowerComponentData
 {
-    public string DisplayName;
-    //public int Cost;
-    public Sprite IconSprite;
-    //public Tower TowerPrefab;
-    public KeyCode Hotkey;
-
     public int Damage;
     public float Firerate;
     public float RangeModifier;

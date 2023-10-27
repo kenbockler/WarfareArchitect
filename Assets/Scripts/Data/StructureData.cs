@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/StructureData")]
-public class StructureData : ScriptableObject
+public class StructureData : TowerComponentData
 {
-    public string DisplayName;
-    public List<int> Cost;
-    public Sprite IconSprite;
-    //public Tower TowerPrefab;
-    public KeyCode Hotkey;
-
     public float Range; // Struktuur on laskekauguse peamine m‰‰raja.
     // Samuti vıib struktuur m‰‰rata selle, kui palju tugiplokke mahub ja mis kujuga jne.
 }
