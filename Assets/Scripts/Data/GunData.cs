@@ -10,4 +10,8 @@ public class GunData : ScriptableObject
     public Sprite IconSprite;
     //public Tower TowerPrefab;
     public KeyCode Hotkey;
+
+    public int Damage;
+    public float Firerate;
+    public float RangeModifier;
 }

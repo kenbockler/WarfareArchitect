@@ -6,7 +6,7 @@ using UnityEngine;
 public class StructureData : ScriptableObject
 {
     public string DisplayName;
-    //public int Cost;
+    public List<int> Cost;
     public Sprite IconSprite;
     //public Tower TowerPrefab;
     public KeyCode Hotkey;

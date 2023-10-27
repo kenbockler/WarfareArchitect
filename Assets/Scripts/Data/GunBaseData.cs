@@ -6,8 +6,11 @@ using UnityEngine;
 public class GunBaseData : ScriptableObject
 {
     public string DisplayName;
-    //public int Cost;
+    public List<int> Cost;
     public Sprite IconSprite;
     //public Tower TowerPrefab;
     public KeyCode Hotkey;
+
+    public float DamageModifier;
+    public float FirerateModifier;
 }

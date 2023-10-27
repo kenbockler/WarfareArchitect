@@ -9,5 +9,6 @@ public class EnemyData : ScriptableObject
     //public int Cost;
     public Sprite IconSprite;
     //public Tower TowerPrefab;
-    public KeyCode Hotkey;
+    public int Health;
+    public float Speed;
 }
