@@ -47,10 +47,10 @@ public class Gun : MonoBehaviour
         }
         return null;
     }
-    /*
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HealthComponent health = collision.GetComponent<HealthComponent>();
+        Health health = collision.GetComponent<Health>();
         if(health != null)
         {
             targets.Add(health);
@@ -59,10 +59,10 @@ public class Gun : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        HealthComponent health = collision.GetComponent<HealthComponent>();
+        Health health = collision.GetComponent<Health>();
         if(health != null)
         {
             targets.Remove(health);
         }
-    }*/
+    }
 }

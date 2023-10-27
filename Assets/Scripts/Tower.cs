@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public FoundationData Foundation;
-    public StructureData Structure;
-    public GunBaseData[] GunBase; // Mõnel tornil võib ka mitu tulistavat osa olla.
-    public GunData[] Gun;
-    public SupportBlockData[] SupportBlocks;
-
-    public Gun[] GunScript;
+    public Foundation Foundation;
+    public Structure Structure;
+    public GunBase[] GunBase; // Mõnel tornil võib ka mitu tulistavat osa olla.
+    public Gun[] Gun;
+    public SupportBlock[] SupportBlocks;
 
     public int Damage;
     public float FireRate;
@@ -19,7 +17,10 @@ public class Tower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        /*foreach(Gun gun in Gun){
+            gun.Range = Structure.Range * gun.RangeModifier;
+        }
+        Range = Structure.Range * Gun.RangeModifier;*/
     }
 
     // Update is called once per frame

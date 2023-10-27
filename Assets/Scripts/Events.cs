@@ -9,6 +9,9 @@ public static class Events
     public static event Action<DrillData> OnDrillSelected;
     public static void DrillSelected(DrillData data) => OnDrillSelected?.Invoke(data);
 
+    public static event Action<TowerComponentData> OnTowerComponentSelected;
+    public static void TowerComponentSelected(TowerComponentData data) => OnTowerComponentSelected?.Invoke(data);
+
     public static event Action<FoundationData> OnFoundationSelected;
     public static void FoundationSelected(FoundationData data) => OnFoundationSelected?.Invoke(data);
 

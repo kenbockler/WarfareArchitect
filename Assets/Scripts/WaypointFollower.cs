@@ -6,7 +6,7 @@ public class WaypointFollower : MonoBehaviour
 {
     public Waypoint Next;
 
-    public float Speed = 3f;
+    public float Speed = 50f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class WaypointFollower : MonoBehaviour
                 Next = Next.GetNextWaypoint();
                 if(Next == null) Destroy(gameObject);
             }
-            transform.position = Vector3.MoveTowards(transform.position, Next.transform.position, Time.deltaTime * Speed);
+            if(Next != null) transform.position = Vector3.MoveTowards(transform.position, Next.transform.position, Time.deltaTime * Speed);
         }
     }
 }
