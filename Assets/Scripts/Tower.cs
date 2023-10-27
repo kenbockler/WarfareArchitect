@@ -6,7 +6,7 @@ public class Tower : MonoBehaviour
 {
     public FoundationData Foundation;
     public StructureData Structure;
-    public GunBaseData[] GunBase; // Mınel tornil vıib ka mitu tulistavat osa olla.
+    public GunBaseData[] GunBase; // M√µnel tornil v√µib ka mitu tulistavat osa olla.
     public GunData[] Gun;
     public SupportBlockData[] SupportBlocks;
 

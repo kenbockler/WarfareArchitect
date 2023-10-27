@@ -8,7 +8,7 @@ public class DrillData : ScriptableObject
     public string DisplayName;
     public List<int> Cost;
     public Sprite IconSprite;
-    //public Tower TowerPrefab;
+    public Drill DrillPrefab;
     public KeyCode Hotkey;
     public List<int> MiningSpeed;
 }

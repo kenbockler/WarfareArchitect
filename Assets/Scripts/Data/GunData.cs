@@ -8,4 +8,6 @@ public class GunData : TowerComponentData
     public int Damage;
     public float Firerate;
     public float RangeModifier;
+
+    public Gun GunPrefab;
 }

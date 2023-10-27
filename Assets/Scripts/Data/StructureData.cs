@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/StructureData")]
 public class StructureData : TowerComponentData
 {
-    public float Range; // Struktuur on laskekauguse peamine määraja.
-    // Samuti võib struktuur määrata selle, kui palju tugiplokke mahub ja mis kujuga jne.
+    public float Range; // Struktuur on laskekauguse peamine mÃ¤Ã¤raja.
+    // Samuti vÃµib struktuur mÃ¤Ã¤rata selle, kui palju tugiplokke mahub ja mis kujuga jne.
+
+    public Structure StructurePrefab;
 }

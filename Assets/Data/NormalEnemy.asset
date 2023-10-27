@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6550e4e9a0d4c9e4280f69016a7f5e01, type: 3}
-  m_Name: BasicFoundation
+  m_Script: {fileID: 11500000, guid: b0902941e5457a345bfa5778d6caff45, type: 3}
+  m_Name: NormalEnemy
   m_EditorClassIdentifier: 
-  DisplayName: Basic Foundation
-  Cost: 050000000000000000000000
+  DisplayName: Basic Enemy
   IconSprite: {fileID: 0}
-  Hotkey: 49
-  Limited: 1
-  FoundationPrefab: {fileID: -1952014020244934206, guid: 30365444e4008234abd7071848440528, type: 3}
+  Health: 0
+  Speed: 0
