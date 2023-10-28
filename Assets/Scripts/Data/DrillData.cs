@@ -10,5 +10,4 @@ public class DrillData : ScriptableObject
     public Sprite IconSprite;
     public Drill DrillPrefab;
     public KeyCode Hotkey;
-    public List<int> MiningSpeed;
 }

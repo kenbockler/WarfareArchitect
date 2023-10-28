@@ -27,29 +27,29 @@ public static class Events
     public static event Action<SupportBlockData> OnSupportBlockSelected;
     public static void SupportBlockSelected(SupportBlockData data) => OnSupportBlockSelected?.Invoke(data);
 
-    public static event Action<int> OnSetStone;
+    public static event Action<float> OnSetStone;
 
-    public static void SetStone(int value) => OnSetStone?.Invoke(value);
+    public static void SetStone(float value) => OnSetStone?.Invoke(value);
 
-    public static event Func<int> OnGetStone;
+    public static event Func<float> OnGetStone;
 
-    public static int GetStone() => OnGetStone?.Invoke() ?? 0;
+    public static float GetStone() => OnGetStone?.Invoke() ?? 0;
 
-    public static event Action<int> OnSetIron;
+    public static event Action<float> OnSetIron;
 
-    public static void SetIron(int value) => OnSetIron?.Invoke(value);
+    public static void SetIron(float value) => OnSetIron?.Invoke(value);
 
-    public static event Func<int> OnGetIron;
+    public static event Func<float> OnGetIron;
 
-    public static int GetIron() => OnGetIron?.Invoke() ?? 0;
+    public static float GetIron() => OnGetIron?.Invoke() ?? 0;
 
-    public static event Action<int> OnSetUranium;
+    public static event Action<float> OnSetUranium;
 
-    public static void SetUranium(int value) => OnSetUranium?.Invoke(value);
+    public static void SetUranium(float value) => OnSetUranium?.Invoke(value);
 
-    public static event Func<int> OnGetUranium;
+    public static event Func<float> OnGetUranium;
 
-    public static int GetUranium() => OnGetUranium?.Invoke() ?? 0;
+    public static float GetUranium() => OnGetUranium?.Invoke() ?? 0;
 
     public static event Action<int> OnSetLives;
 

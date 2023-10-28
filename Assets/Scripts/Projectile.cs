@@ -19,14 +19,14 @@ public class Projectile : MonoBehaviour
     {
         if(Target != null)
         {
-            if(Vector3.Distance(transform.position, Target.transform.position) < 0.1)
+            if(Vector3.Distance(transform.position, Target.transform.position) < 10)
             {
                 GameObject.Destroy(gameObject);
                 Target.Damage(Damage);
             }
             else
             {
-                 transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, Time.deltaTime * Speed);
+                transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, Time.deltaTime * Speed);
             }
         }
         else

@@ -9,11 +9,14 @@ public class Gun : MonoBehaviour
     public float Range;
 
     public Projectile ProjectilePrefab;
+    public DumbProjectile DumbProjectilePrefab;
     public float SpawnDelay = 0.5f;
 
     private float NextSpawnTime;
 
     private List<Health> targets = new List<Health>{};
+
+    public bool Seeking;
 
     // Siia juurde v�ib panna teisi laskmisega seotud atribuute, t�ev��rtusi.
 
@@ -31,10 +34,20 @@ public class Gun : MonoBehaviour
             Health target = GetTarget();
             if(target != null)
             {
-                Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
-                projectile.transform.position = transform.position;
-                projectile.Target = target;
-                NextSpawnTime += SpawnDelay;
+                if(Seeking)
+                {
+                    Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
+                    projectile.transform.position = transform.position;
+                    projectile.Target = target;
+                    NextSpawnTime += SpawnDelay;
+                }
+                else
+                {
+                    DumbProjectile projectile = Instantiate<DumbProjectile>(DumbProjectilePrefab);
+                    projectile.transform.position = transform.position;
+                    projectile.Target = target.transform.position;
+                    NextSpawnTime += SpawnDelay;
+                }
             }
         }
     }
@@ -43,12 +56,12 @@ public class Gun : MonoBehaviour
     {
         foreach(Health target in targets)
         {
-            return target;
+            if(target != null) return target;
         }
         return null;
     }
     
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         Health health = collision.GetComponent<Health>();
         if(health != null)
@@ -57,7 +70,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         Health health = collision.GetComponent<Health>();
         if(health != null)

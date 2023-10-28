@@ -11,9 +11,9 @@ public class ScenarioController : MonoBehaviour
     public TextMeshProUGUI ResourceText;
     public TextMeshProUGUI LivesText;
 
-    private int stone = 50;
-    private int iron = 0;
-    private int uranium = 0;
+    private float stone = 50;
+    private float iron = 0;
+    private float uranium = 0;
     private int lives = 4;
 
     private void Awake()
@@ -60,27 +60,27 @@ public class ScenarioController : MonoBehaviour
 
     int GetLives() => lives;
 
-    void SetStone(int stone)
+    void SetStone(float stone)
     {
         this.stone = stone;
-        ResourceText.text = "Stone: " + stone + ", Iron: " + iron + ", Uranium: " + uranium;
+        ResourceText.text = "Stone: " + Mathf.Floor(stone) + ", Iron: " + Mathf.Floor(iron) + ", Uranium: " + Mathf.Floor(uranium);
     }
 
-    int GetStone() => stone;
+    float GetStone() => stone;
 
-    void SetIron(int iron)
+    void SetIron(float iron)
     {
         this.iron = iron;
-        ResourceText.text = "Stone: " + stone + ", Iron: " + iron + ", Uranium: " + uranium;
+        ResourceText.text = "Stone: " + Mathf.Floor(stone) + ", Iron: " + Mathf.Floor(iron) + ", Uranium: " + Mathf.Floor(uranium);
     }
 
-    int GetIron() => iron;
+    float GetIron() => iron;
 
-    void SetUranium(int uranium)
+    void SetUranium(float uranium)
     {
         this.uranium = uranium;
-        ResourceText.text = "Stone: " + stone + ", Iron: " + iron + ", Uranium: " + uranium;
+        ResourceText.text = "Stone: " + Mathf.Floor(stone) + ", Iron: " + Mathf.Floor(iron) + ", Uranium: " + Mathf.Floor(uranium);
     }
 
-    int GetUranium() => uranium;
+    float GetUranium() => uranium;
 }
