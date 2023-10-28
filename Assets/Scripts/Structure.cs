@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class Structure : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float Range;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Foundation Foundation;
 }

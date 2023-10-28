@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float Speed = 9;
+    public float Speed;
     public Health Target;
+    public Vector3 TargetPos;
     public int Damage = 1;
+    public bool Seeking;
     
     // Start is called before the first frame update
     void Start()
@@ -17,21 +19,46 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Target != null)
+        if(Seeking)
         {
-            if(Vector3.Distance(transform.position, Target.transform.position) < 10)
+            if(Target != null)
             {
-                GameObject.Destroy(gameObject);
-                Target.Damage(Damage);
+                TargetPos = Target.transform.position;
+                if(Vector3.Distance(transform.position, TargetPos) < 10)
+                {
+                    GameObject.Destroy(gameObject);
+                    Target.Damage(Damage);
+                }
+                else
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, TargetPos, Time.deltaTime * Speed);
+                }
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, Time.deltaTime * Speed);
+                Seeking = false;
             }
         }
         else
         {
+            if(Vector3.Distance(transform.position, TargetPos) < 0.1)
+            {
+                GameObject.Destroy(gameObject);
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, TargetPos, Time.deltaTime * Speed);
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        Health enemy = collision.GetComponent<Health>();
+        if(enemy != null)
+        {
             GameObject.Destroy(gameObject);
+            enemy.Damage(Damage);
         }
     }
 }

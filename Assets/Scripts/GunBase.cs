@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class GunBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float DamageModifier;
+    public float FirerateModifier;
+    public float BulletSpeedModifier;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Structure Structure;
 }

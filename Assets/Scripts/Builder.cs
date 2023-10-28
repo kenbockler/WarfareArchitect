@@ -13,6 +13,10 @@ public class Builder : MonoBehaviour
     //public EventSystem EventSystem;
     public TowerComponentData data;
 
+    public Foundation Foundation;
+    public Structure Structure;
+    public GunBase GunBase;
+
    void Awake()
     {
         Events.OnTowerComponentSelected += SetTowerComponentData;
@@ -33,6 +37,8 @@ public class Builder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetGameObjectAtPosition();
+
         Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
         pos.x = Mathf.Round(pos.x + 10f) - 10f;
         pos.y = Mathf.Round(pos.y + 10f) - 10f;
@@ -100,5 +106,21 @@ public class Builder : MonoBehaviour
     {
         gameObject.SetActive(true);
         data = _data;
+    }
+
+    void GetGameObjectAtPosition()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            GameObject thing = hit.collider.gameObject;
+            print("found " + thing.name + " at distance: " + hit.distance);
+            if(thing.GetComponent<Foundation>() != null)
+            {
+                print("Saving foundation");
+                //Foundation = (Foundation) thing;
+            }
+        }
     }
 }

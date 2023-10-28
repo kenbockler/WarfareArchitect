@@ -8,10 +8,13 @@ public class Gun : MonoBehaviour
     public float FireRate;
     public float Range;
 
-    public Projectile ProjectilePrefab;
-    public DumbProjectile DumbProjectilePrefab;
-    public float SpawnDelay = 0.5f;
+    public float RangeModifier;
 
+    public Projectile ProjectilePrefab;
+
+    public GunBase GunBase;
+
+    private float SpawnDelay;
     private float NextSpawnTime;
 
     private List<Health> targets = new List<Health>{};
@@ -23,6 +26,10 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Damage = (int) Mathf.Ceil(Damage * GunBase.DamageModifier);
+        FireRate *= GunBase.FirerateModifier;
+        Range = GunBase.Structure.Range * RangeModifier;
+        SpawnDelay = 1 / FireRate;
         NextSpawnTime = Time.time;
     }
 
@@ -34,20 +41,17 @@ public class Gun : MonoBehaviour
             Health target = GetTarget();
             if(target != null)
             {
-                if(Seeking)
-                {
-                    Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
-                    projectile.transform.position = transform.position;
-                    projectile.Target = target;
-                    NextSpawnTime += SpawnDelay;
-                }
-                else
-                {
-                    DumbProjectile projectile = Instantiate<DumbProjectile>(DumbProjectilePrefab);
-                    projectile.transform.position = transform.position;
-                    projectile.Target = target.transform.position;
-                    NextSpawnTime += SpawnDelay;
-                }
+                Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
+                projectile.Speed = 500f * GunBase.BulletSpeedModifier;
+                projectile.Seeking = Seeking;
+                projectile.transform.position = transform.position;
+                projectile.Target = target;
+                projectile.TargetPos = target.transform.position;
+                NextSpawnTime += SpawnDelay;
+            }
+            else
+            {
+                NextSpawnTime = Time.time;
             }
         }
     }

@@ -5,9 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/GunData")]
 public class GunData : TowerComponentData
 {
-    public int Damage;
-    public float Firerate;
-    public float RangeModifier;
-
     public Gun GunPrefab;
 }
