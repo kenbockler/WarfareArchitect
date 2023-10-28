@@ -42,7 +42,7 @@ public class Gun : MonoBehaviour
             if(target != null)
             {
                 Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
-                projectile.Speed = 500f * GunBase.BulletSpeedModifier;
+                projectile.Speed *= GunBase.BulletSpeedModifier;
                 projectile.Seeking = Seeking;
                 projectile.transform.position = transform.position;
                 projectile.Target = target;

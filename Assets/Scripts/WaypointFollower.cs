@@ -22,7 +22,11 @@ public class WaypointFollower : MonoBehaviour
             if(Vector3.Distance(transform.position, Next.transform.position) < 0.1)
             {
                 Next = Next.GetNextWaypoint();
-                if(Next == null) Destroy(gameObject);
+                if(Next == null)
+                {
+                    Destroy(gameObject);
+                    Events.SetLives(Events.GetLives() - 1);
+                }
             }
             if(Next != null) transform.position = Vector3.MoveTowards(transform.position, Next.transform.position, Time.deltaTime * Speed);
         }

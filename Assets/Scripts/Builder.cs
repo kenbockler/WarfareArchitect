@@ -85,15 +85,18 @@ public class Builder : MonoBehaviour
         }
         if(data is StructureData)
         {
-            Instantiate<Structure>(((StructureData)data).StructurePrefab, transform.position, Quaternion.identity);
+            Structure structure = Instantiate<Structure>(((StructureData)data).StructurePrefab, transform.position, Quaternion.identity);
+            structure.Foundation = Foundation;
         }
         if(data is GunBaseData)
         {
-            Instantiate<GunBase>(((GunBaseData)data).GunBasePrefab, transform.position, Quaternion.identity);
+            GunBase gunbase = Instantiate<GunBase>(((GunBaseData)data).GunBasePrefab, transform.position, Quaternion.identity);
+            gunbase.Structure = Structure;
         }
         if(data is GunData)
         {
-            Instantiate<Gun>(((GunData)data).GunPrefab, transform.position, Quaternion.identity);
+            Gun gun = Instantiate<Gun>(((GunData)data).GunPrefab, transform.position, Quaternion.identity);
+            gun.GunBase = GunBase;
         }
         if(data is SupportBlockData)
         {
@@ -115,11 +118,18 @@ public class Builder : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             GameObject thing = hit.collider.gameObject;
-            print("found " + thing.name + " at distance: " + hit.distance);
+            //print("found " + thing.name + " at distance: " + hit.distance);
             if(thing.GetComponent<Foundation>() != null)
             {
-                print("Saving foundation");
-                //Foundation = (Foundation) thing;
+                Foundation = thing.GetComponent<Foundation>();
+            }
+            if(thing.GetComponent<Structure>() != null)
+            {
+                Structure = thing.GetComponent<Structure>();
+            }
+            if(thing.GetComponent<GunBase>() != null)
+            {
+                GunBase = thing.GetComponent<GunBase>();
             }
         }
     }

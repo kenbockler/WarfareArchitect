@@ -28,34 +28,32 @@ public static class Events
     public static void SupportBlockSelected(SupportBlockData data) => OnSupportBlockSelected?.Invoke(data);
 
     public static event Action<float> OnSetStone;
-
     public static void SetStone(float value) => OnSetStone?.Invoke(value);
 
     public static event Func<float> OnGetStone;
-
     public static float GetStone() => OnGetStone?.Invoke() ?? 0;
 
     public static event Action<float> OnSetIron;
-
     public static void SetIron(float value) => OnSetIron?.Invoke(value);
 
     public static event Func<float> OnGetIron;
-
     public static float GetIron() => OnGetIron?.Invoke() ?? 0;
 
     public static event Action<float> OnSetUranium;
-
     public static void SetUranium(float value) => OnSetUranium?.Invoke(value);
 
     public static event Func<float> OnGetUranium;
-
     public static float GetUranium() => OnGetUranium?.Invoke() ?? 0;
 
     public static event Action<int> OnSetLives;
-
     public static void SetLives(int value) => OnSetLives?.Invoke(value);
 
     public static event Func<int> OnGetLives;
-
     public static int GetLives() => OnGetLives?.Invoke() ?? 0;
+
+    public static event Action<WaveData> OnStartWave;
+    public static void StartWave(WaveData data) => OnStartWave?.Invoke(data);
+
+    public static event Action<WaveData> OnEndWave;
+    public static void EndWave(WaveData data) => OnEndWave?.Invoke(data);
 }

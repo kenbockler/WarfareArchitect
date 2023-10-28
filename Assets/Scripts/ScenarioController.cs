@@ -4,17 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-// RESSURSSIDELE TULEB NIMED VÄLJA MÕELDA, SIIS SAAB VASTAVAD SÜNDMUSED LUUA.
-
 public class ScenarioController : MonoBehaviour
 {
     public TextMeshProUGUI ResourceText;
     public TextMeshProUGUI LivesText;
 
+    public GameObject EndPanel;
+    public TextMeshProUGUI EndText;
+    public TextMeshProUGUI FinalScoreText;
+    public TextMeshProUGUI ButtonText;
+
     private float stone = 50;
     private float iron = 0;
     private float uranium = 0;
     private int lives = 4;
+
+    public List<WaveData> Waves;
+    private int currentWave = 0;
+
+    private bool Win;
 
     private void Awake()
     {
@@ -26,6 +34,8 @@ public class ScenarioController : MonoBehaviour
         Events.OnGetIron += GetIron;
         Events.OnSetUranium += SetUranium;
         Events.OnGetUranium += GetUranium;
+
+        Events.OnEndWave += NewWave;
     }
 
     private void OnDestroy()
@@ -38,12 +48,15 @@ public class ScenarioController : MonoBehaviour
         Events.OnGetIron -= GetIron;
         Events.OnSetUranium -= SetUranium;
         Events.OnGetUranium -= GetUranium;
+
+        Events.OnEndWave += NewWave;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        EndPanel.SetActive(false);
+        SetLives(GetLives());
     }
 
     // Update is called once per frame
@@ -54,8 +67,12 @@ public class ScenarioController : MonoBehaviour
 
     void SetLives(int lives)
     {
-        this.lives =lives;
+        this.lives = lives;
         LivesText.text = "Lives: " + lives;
+        if(lives < 1)
+        {
+            EndGame(false, 0);
+        }
     }
 
     int GetLives() => lives;
@@ -83,4 +100,33 @@ public class ScenarioController : MonoBehaviour
     }
 
     float GetUranium() => uranium;
+
+    public void EndGame(bool win, int score)
+    {
+        Win = win;
+        if (Win)
+        {
+            EndText.text = "You won!";
+            ButtonText.text = "Play again";
+        }
+        else
+        {
+            EndText.text = "They've ruined you.";
+            ButtonText.text = "Try again";
+        }
+        EndPanel.SetActive(true);
+    }
+
+    public void NewWave(WaveData data)
+    {
+        currentWave += 1;
+        if(currentWave >= Waves.Count)
+        {
+            EndGame(true, 0);
+        }
+        else
+        {
+            Events.StartWave(Waves[currentWave]);
+        }
+    }
 }

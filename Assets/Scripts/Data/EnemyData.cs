@@ -5,10 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/EnemyData")]
 public class EnemyData : ScriptableObject
 {
-    public string DisplayName;
-    //public int Cost;
-    public Sprite IconSprite;
-    //public Tower TowerPrefab;
-    public int Health;
-    public float Speed;
+    public int Health = 2;
+	//public int Damage = 1;
+	public float Speed = 50f;
+	public Sprite Sprite = null;
 }
