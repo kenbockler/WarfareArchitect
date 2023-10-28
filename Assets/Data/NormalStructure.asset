@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Basic Structure
   Cost: 050000000000000000000000
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: da8fd78291e27204ba5a802677a81bf2, type: 3}
   Hotkey: 50
   Range: 0
-  StructurePrefab: {fileID: 0}
+  StructurePrefab: {fileID: -9148738035865906716, guid: 8e43417eb40e9194988036193ca8b955, type: 3}

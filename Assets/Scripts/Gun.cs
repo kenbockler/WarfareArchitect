@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour
 
     private List<Health> targets = new List<Health>{};
 
-    // Siia juurde võib panna teisi laskmisega seotud atribuute, tõeväärtusi.
+    // Siia juurde vï¿½ib panna teisi laskmisega seotud atribuute, tï¿½evï¿½ï¿½rtusi.
 
     // Start is called before the first frame update
     void Start()

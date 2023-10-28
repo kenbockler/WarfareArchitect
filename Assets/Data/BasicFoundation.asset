@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Basic Foundation
   Cost: 050000000000000000000000
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: d196eac042ec89a4abf5630536ea0d54, type: 3}
   Hotkey: 49
   Limited: 1
   FoundationPrefab: {fileID: -1952014020244934206, guid: 30365444e4008234abd7071848440528, type: 3}
