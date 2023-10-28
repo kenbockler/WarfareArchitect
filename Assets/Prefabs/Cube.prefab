@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Next: {fileID: 0}
-  Speed: 50
+  Speed: 1000
 --- !u!114 &8844088868988854853
 MonoBehaviour:
   m_ObjectHideFlags: 0
