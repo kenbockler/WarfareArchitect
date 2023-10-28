@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Smart Machine Gun
   Cost: 
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: 6bb333838732baf4980acd5b428481cf, type: 3}
   Hotkey: 55
   Damage: 0
   Firerate: 0
   RangeModifier: 0
-  GunPrefab: {fileID: 0}
+  GunPrefab: {fileID: 995645061699283922, guid: 860bd356e8b14194fbaf2f311b591ef6, type: 3}
