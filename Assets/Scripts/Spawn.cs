@@ -42,13 +42,17 @@ public class Spawn : MonoBehaviour
         }
         if(count == 0)
         {
+            print("End wave");
             Events.EndWave(waveData);
         }
     }
 
     void StartWave(WaveData data)
     {
+        print("Start wave " + data.Count);
         waveData = data;
         count = data.Count;
+        FollowerPrefab = data.EnemyData.EnemyPrefab;
+        SpawnDelay = data.SpawnDelay;
     }
 }

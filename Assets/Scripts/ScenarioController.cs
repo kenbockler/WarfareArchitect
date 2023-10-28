@@ -57,6 +57,7 @@ public class ScenarioController : MonoBehaviour
     {
         EndPanel.SetActive(false);
         SetLives(GetLives());
+        Events.StartWave(Waves[0]);
     }
 
     // Update is called once per frame
@@ -126,6 +127,7 @@ public class ScenarioController : MonoBehaviour
         }
         else
         {
+            print("Calling new wave " + Waves[currentWave].Count);
             Events.StartWave(Waves[currentWave]);
         }
     }

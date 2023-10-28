@@ -1267,7 +1267,10 @@ MonoBehaviour:
   EndText: {fileID: 683265197}
   FinalScoreText: {fileID: 1670580787}
   ButtonText: {fileID: 276001699}
-  Waves: []
+  Waves:
+  - {fileID: 11400000, guid: 5408c925933aac540a0e6d63ce662463, type: 2}
+  - {fileID: 11400000, guid: e0b6b5c0b53dfa848bf1824c96b29c1c, type: 2}
+  - {fileID: 11400000, guid: 4985a7b8982d57a488771d3130d3e5cd, type: 2}
 --- !u!114 &1246805864
 MonoBehaviour:
   m_ObjectHideFlags: 0

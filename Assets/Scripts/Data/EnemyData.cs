@@ -9,4 +9,5 @@ public class EnemyData : ScriptableObject
 	//public int Damage = 1;
 	public float Speed = 50f;
 	public Sprite Sprite = null;
+	public WaypointFollower EnemyPrefab;
 }
