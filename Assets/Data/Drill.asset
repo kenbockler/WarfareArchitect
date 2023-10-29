@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Basic Drill
   Cost: 190000000000000000000000
-  IconSprite: {fileID: 0}
-  DrillPrefab: {fileID: 0}
+  IconSprite: {fileID: 21300000, guid: a04af4ee7f63e08429ae024522983b17, type: 3}
   Hotkey: 48
-  MiningSpeed: 010000000000000000000000
+  DrillPrefab: {fileID: 1260329175094823942, guid: 2905bc51ca00d86418df6a856d117ef1, type: 3}
