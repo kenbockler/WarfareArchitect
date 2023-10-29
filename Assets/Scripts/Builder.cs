@@ -109,24 +109,23 @@ public class Builder : MonoBehaviour
 
     void Build()
     {
-        print("Built something");
         if (data is FoundationData && Foundation == null)
         {
             Instantiate(((FoundationData)data).FoundationPrefab, position, Quaternion.identity);
         }
         else if (data is StructureData && Foundation != null)
         {
-            Structure newStructure = Instantiate(((StructureData)data).StructurePrefab, transform.position, Quaternion.identity);
+            Structure newStructure = Instantiate(((StructureData)data).StructurePrefab, position, Quaternion.identity);
             newStructure.Foundation = Foundation;
         }
         else if (data is GunBaseData && Structure != null)
         {
-            GunBase newGunBase = Instantiate(((GunBaseData)data).GunBasePrefab, transform.position, Quaternion.identity);
+            GunBase newGunBase = Instantiate(((GunBaseData)data).GunBasePrefab, position, Quaternion.identity);
             newGunBase.Structure = Structure;
         }
         else if (data is GunData && GunBase != null)
         {
-            Gun newGun = Instantiate(((GunData)data).GunPrefab, transform.position, Quaternion.identity);
+            Gun newGun = Instantiate(((GunData)data).GunPrefab, position, Quaternion.identity);
             newGun.GunBase = GunBase;
         }
         // Siia saab lisada teisi komponente...
@@ -149,7 +148,6 @@ public class Builder : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
 
             position = hit.point;
-            print(position);
 
             // Puhastame eelmised viited
             Foundation = null;

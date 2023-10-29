@@ -120,5 +120,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageModifier: 1
   FirerateModifier: 1
-  BulletSpeedModifier: 1
+  BulletSpeedModifier: 2
   Structure: {fileID: 8618769767025871181, guid: 7ce6178ced277dd408106d8e243a5e8a, type: 3}

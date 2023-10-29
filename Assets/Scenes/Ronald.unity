@@ -2037,6 +2037,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &233474125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233474127}
+  - component: {fileID: 233474126}
+  m_Layer: 0
+  m_Name: Builder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &233474126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233474125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96858f6e3f388f548a1276b50eeb1c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllowColor: {r: 0, g: 1, b: 0, a: 1}
+  DenyColor: {r: 1, g: 0, b: 0, a: 1}
+  data: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
+  Foundation: {fileID: 0}
+  Structure: {fileID: 0}
+  GunBase: {fileID: 0}
+--- !u!4 &233474127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233474125}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 363.73602, y: 93.215866, z: -61.639374}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235564570
 GameObject:
   m_ObjectHideFlags: 0
@@ -7908,7 +7959,6 @@ GameObject:
   - component: {fileID: 1246805865}
   - component: {fileID: 1246805864}
   - component: {fileID: 1246805863}
-  - component: {fileID: 1246805867}
   - component: {fileID: 1246805868}
   - component: {fileID: 1246805869}
   m_Layer: 0
@@ -7990,24 +8040,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1246805867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246805862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96858f6e3f388f548a1276b50eeb1c11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AllowColor: {r: 0, g: 1, b: 0, a: 1}
-  DenyColor: {r: 1, g: 0, b: 0, a: 1}
-  data: {fileID: 0}
-  Foundation: {fileID: 0}
-  Structure: {fileID: 0}
-  GunBase: {fileID: 0}
 --- !u!114 &1246805868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13225,3 +13257,4 @@ SceneRoots:
   - {fileID: 3147467002543885553}
   - {fileID: 1398220758}
   - {fileID: 20943595}
+  - {fileID: 233474127}

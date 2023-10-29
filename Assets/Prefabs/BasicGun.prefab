@@ -222,6 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1315158243596726036}
   - component: {fileID: 8177176375672772679}
+  - component: {fileID: 1005542599187660854}
   m_Layer: 0
   m_Name: BasicGun
   m_TagString: Untagged
@@ -262,10 +263,32 @@ MonoBehaviour:
   Damage: 0
   FireRate: 0
   Range: 0
+  RangeModifier: 0
+  rangeApplied: {fileID: 0}
   ProjectilePrefab: {fileID: 0}
-  DumbProjectilePrefab: {fileID: 4521989238599737264, guid: bcfdbdf6a0e7e25438fa3877a5977c81, type: 3}
-  SpawnDelay: 0.5
+  GunBase: {fileID: 0}
   Seeking: 0
+--- !u!135 &1005542599187660854
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961377802791762540}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2575707202609524477
 GameObject:
   m_ObjectHideFlags: 0
