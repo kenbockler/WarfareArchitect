@@ -57,13 +57,15 @@ public class ScenarioController : MonoBehaviour
     {
         EndPanel.SetActive(false);
         SetLives(GetLives());
-        Events.StartWave(Waves[0]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space) && GameObject.FindObjectsOfType<Health>().Length == 0)
+        {
+            NewWave(Waves[0]);
+        }
     }
 
     void SetLives(int lives)
@@ -120,15 +122,15 @@ public class ScenarioController : MonoBehaviour
 
     public void NewWave(WaveData data)
     {
-        currentWave += 1;
         if(currentWave >= Waves.Count)
         {
-            EndGame(true, 0);
+            if(GameObject.FindObjectsOfType<Health>().Length == 0)
+                EndGame(true, 0);
         }
         else
         {
-            print("Calling new wave " + Waves[currentWave].Count);
             Events.StartWave(Waves[currentWave]);
         }
+        currentWave += 1;
     }
 }
