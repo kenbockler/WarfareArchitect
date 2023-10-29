@@ -8,6 +8,8 @@ public class Terminal : MonoBehaviour
 {
     public static Terminal instance;
 
+    public Image IconSprite;
+
     public TextMeshProUGUI StoneResourceText;
     public TextMeshProUGUI IronResourceText;
     public TextMeshProUGUI UraniumResourceText;
@@ -54,6 +56,7 @@ public class Terminal : MonoBehaviour
         SelectedItem = item;
 
         ItemNameText.text = item.DisplayName;
+        IconSprite.sprite = item.IconSprite;
 
         if (item is FoundationData)
         {
@@ -81,6 +84,13 @@ public class Terminal : MonoBehaviour
             ItemTypeText.text = "Gun";
             GunData data = (GunData)item;
             StatisticsText.text = "Damage: " + data.GunPrefab.Damage + "\nFirerate: " + data.GunPrefab.FireRate + "\nRange modifier: " + data.GunPrefab.RangeModifier + (data.GunPrefab.Seeking ? "\nSeeking bullets" : "");
+        }
+
+        if (item is DrillData)
+        {
+            ItemTypeText.text = "Drill";
+            DrillData data = (DrillData)item;
+            StatisticsText.text = "Stone mining speed: " + data.DrillPrefab.StoneMiningSpeed + "/sec\nIron mining speed: " + data.DrillPrefab.IronMiningSpeed + "/sec\nUranium mining speed: " + data.DrillPrefab.UraniumMiningSpeed + "/sec";
         }
 
         StoneCostText.text = "Stone: " + item.Cost[0];
