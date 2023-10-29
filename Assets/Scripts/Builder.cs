@@ -6,18 +6,20 @@ using UnityEngine;
 
 public class Builder : MonoBehaviour
 {
+    private static readonly float ColliderCheckRadius = 0.4f; // Konstant kollisiooni kontrollimiseks
     private Camera cam;
+
     public Color AllowColor = Color.green;
     public Color DenyColor = Color.red;
     private SpriteRenderer[] SpriteRenderers;
-    //public EventSystem EventSystem;
+
     public TowerComponentData data;
 
     public Foundation Foundation;
     public Structure Structure;
     public GunBase GunBase;
 
-   void Awake()
+    void Awake()
     {
         Events.OnTowerComponentSelected += SetTowerComponentData;
     }
@@ -26,7 +28,7 @@ public class Builder : MonoBehaviour
     {
         Events.OnTowerComponentSelected -= SetTowerComponentData;
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,23 +41,28 @@ public class Builder : MonoBehaviour
     {
         GetGameObjectAtPosition();
 
+        // Liiguta ehitise eelvaadet hiirekursori asukohta
         Vector3 pos = cam.ScreenToWorldPoint(Input.mousePosition);
         pos.x = Mathf.Round(pos.x + 10f) - 10f;
         pos.y = Mathf.Round(pos.y + 10f) - 10f;
         pos.z = 0;
         transform.position = pos;
 
+        // Kontrolli, kas saab ehitada
         bool isFree = IsFree();
         Color color = isFree ? AllowColor : DenyColor;
-        foreach(SpriteRenderer renderer in SpriteRenderers)
+
+        foreach (SpriteRenderer renderer in SpriteRenderers)
         {
             renderer.color = color;
         }
-        if(Input.GetMouseButtonDown(0) && isFree)
+
+        // Ehitamine või desaktiveerimine
+        if (Input.GetMouseButtonDown(0) && isFree)
         {
             Build();
         }
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             gameObject.SetActive(false);
         }
@@ -63,45 +70,63 @@ public class Builder : MonoBehaviour
 
     bool IsFree()
     {
-        bool free = true;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.4f);
-        foreach(Collider2D collider in colliders)
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ColliderCheckRadius);
+
+        // Kontrollime kollisioone
+        foreach (Collider2D collider in colliders)
         {
-            if(!collider.isTrigger)
-                free = false;
+            if (!collider.isTrigger && !IsAllowedToBuildOn(collider))
+                return false;
         }
-        if(EventSystem.current.IsPointerOverGameObject())
-        {
-            free = false;
-        }
-        return free;
+
+        // Kontrollime, kas kursor on üle UI elemendi
+        if (EventSystem.current.IsPointerOverGameObject())
+            return false;
+
+        return true;
     }
+
+    // Kontrollime, kas saame antud kohta ehitada
+    private bool IsAllowedToBuildOn(Collider2D collider)
+    {
+        if (data is FoundationData && collider.CompareTag("Terrain"))
+            return true;
+
+        if (data is StructureData && collider.CompareTag("Foundation"))
+            return true;
+
+        if (data is GunBaseData && collider.CompareTag("Structure"))
+            return true;
+
+        if (data is GunData && collider.CompareTag("GunBase"))
+            return true;
+
+        return false;
+    }
+
 
     void Build()
     {
-        if(data is FoundationData)
+        if (data is FoundationData && Foundation == null)
         {
-            Instantiate<Foundation>(((FoundationData)data).FoundationPrefab, transform.position, Quaternion.identity);
+            Instantiate(((FoundationData)data).FoundationPrefab, transform.position, Quaternion.identity);
         }
-        if(data is StructureData)
+        else if (data is StructureData && Foundation != null)
         {
-            Structure structure = Instantiate<Structure>(((StructureData)data).StructurePrefab, transform.position, Quaternion.identity);
-            structure.Foundation = Foundation;
+            Structure newStructure = Instantiate(((StructureData)data).StructurePrefab, transform.position, Quaternion.identity);
+            newStructure.Foundation = Foundation;
         }
-        if(data is GunBaseData)
+        else if (data is GunBaseData && Structure != null)
         {
-            GunBase gunbase = Instantiate<GunBase>(((GunBaseData)data).GunBasePrefab, transform.position, Quaternion.identity);
-            gunbase.Structure = Structure;
+            GunBase newGunBase = Instantiate(((GunBaseData)data).GunBasePrefab, transform.position, Quaternion.identity);
+            newGunBase.Structure = Structure;
         }
-        if(data is GunData)
+        else if (data is GunData && GunBase != null)
         {
-            Gun gun = Instantiate<Gun>(((GunData)data).GunPrefab, transform.position, Quaternion.identity);
-            gun.GunBase = GunBase;
+            Gun newGun = Instantiate(((GunData)data).GunPrefab, transform.position, Quaternion.identity);
+            newGun.GunBase = GunBase;
         }
-        if(data is SupportBlockData)
-        {
-
-        }
+        // Siia saab lisada teisi komponente...
         gameObject.SetActive(false);
     }
 
@@ -115,22 +140,29 @@ public class Builder : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (Physics.Raycast(ray, out hit))
         {
-            GameObject thing = hit.collider.gameObject;
-            //print("found " + thing.name + " at distance: " + hit.distance);
-            if(thing.GetComponent<Foundation>() != null)
+            GameObject hitObject = hit.collider.gameObject;
+
+            // Puhastame eelmised viited
+            Foundation = null;
+            Structure = null;
+            GunBase = null;
+
+            if (hitObject.GetComponent<Foundation>() != null)
             {
-                Foundation = thing.GetComponent<Foundation>();
+                Foundation = hitObject.GetComponent<Foundation>();
             }
-            if(thing.GetComponent<Structure>() != null)
+            else if (hitObject.GetComponent<Structure>() != null)
             {
-                Structure = thing.GetComponent<Structure>();
+                Structure = hitObject.GetComponent<Structure>();
             }
-            if(thing.GetComponent<GunBase>() != null)
+            else if (hitObject.GetComponent<GunBase>() != null)
             {
-                GunBase = thing.GetComponent<GunBase>();
+                GunBase = hitObject.GetComponent<GunBase>();
             }
+            // Kui on veel teisi objekte, millele võib ehitada, siis lisa siia..
         }
     }
 }
