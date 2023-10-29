@@ -8,6 +8,8 @@ public class Drill : MonoBehaviour
     public int IronMiningSpeed;
     public int UraniumMiningSpeed;
 
+    private bool enable;
+
     public void Awake()
     {
         Events.OnStartWave += Enable;
@@ -23,25 +25,27 @@ public class Drill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false);
+        enable = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Events.SetStone(Events.GetStone() + Time.deltaTime * StoneMiningSpeed / 60);
-        Events.SetIron(Events.GetIron() + Time.deltaTime * IronMiningSpeed / 60);
-        Events.SetUranium(Events.GetUranium() + Time.deltaTime * UraniumMiningSpeed / 60);
+        if(enable)
+        {
+            Events.SetStone(Events.GetStone() + Time.deltaTime * StoneMiningSpeed / 60);
+            Events.SetIron(Events.GetIron() + Time.deltaTime * IronMiningSpeed / 60);
+            Events.SetUranium(Events.GetUranium() + Time.deltaTime * UraniumMiningSpeed / 60);
+        }
     }
 
     void Enable(WaveData data)
     {
-        gameObject.SetActive(true);
+        enable = true;
     }
 
     void Disable(WaveData data)
     {
-        print("end");
-        gameObject.SetActive(false);
+        enable = false;
     }
 }

@@ -8020,6 +8020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c227d8608ca9fc040a5a829b353ff59c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IconObject: {fileID: 1292376183}
+  IconSprite: {fileID: 1292376185}
   StoneResourceText: {fileID: 1682995236}
   IronResourceText: {fileID: 669272403}
   UraniumResourceText: {fileID: 1760875861}
@@ -8051,6 +8053,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  images:
+  - {fileID: 1351271182}
+  - {fileID: 391816649}
+  - {fileID: 1108676321}
+  - {fileID: 841208431}
+  - {fileID: 1337526002}
+  - {fileID: 1175948516}
+  - {fileID: 1231116140}
+  - {fileID: 1382303784}
   Selected: 0
 --- !u!1 &1287275358
 GameObject:
@@ -8798,6 +8809,10 @@ PrefabInstance:
     - target: {fileID: 3254477164842256586, guid: 30365444e4008234abd7071848440528, type: 3}
       propertyPath: m_Name
       value: Foundation
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919514969510649538, guid: 30365444e4008234abd7071848440528, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -102,7 +102,7 @@ public class Terminal : MonoBehaviour
         {
             ItemTypeText.text = "Drill";
             DrillData data = (DrillData)item;
-            StatisticsText.text = "Stone mining speed: " + data.DrillPrefab.StoneMiningSpeed + "/sec\nIron mining speed: " + data.DrillPrefab.IronMiningSpeed + "/sec\nUranium mining speed: " + data.DrillPrefab.UraniumMiningSpeed + "/sec";
+            StatisticsText.text = "Stone mining speed: " + data.DrillPrefab.StoneMiningSpeed + "/min\nIron mining speed: " + data.DrillPrefab.IronMiningSpeed + "/min\nUranium mining speed: " + data.DrillPrefab.UraniumMiningSpeed + "/min";
         }
 
         StoneCostText.text = "Stone: " + item.Cost[0];
@@ -112,8 +112,6 @@ public class Terminal : MonoBehaviour
 
     public void OnMakePressed()
     {
-        print(SelectedItem);
-        print(Inventory.instance);
         Inventory.instance.OnMake(SelectedItem);
     }
 

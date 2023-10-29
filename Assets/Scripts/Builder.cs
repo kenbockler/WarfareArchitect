@@ -11,9 +11,11 @@ public class Builder : MonoBehaviour
 
     public Color AllowColor = Color.green;
     public Color DenyColor = Color.red;
-    private SpriteRenderer[] SpriteRenderers;
+    private MeshRenderer[] MeshRenderers;
 
     public TowerComponentData data;
+
+    public Vector3 position;
 
     public Foundation Foundation;
     public Structure Structure;
@@ -33,7 +35,7 @@ public class Builder : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        SpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        MeshRenderers = GetComponentsInChildren<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -52,9 +54,9 @@ public class Builder : MonoBehaviour
         bool isFree = IsFree();
         Color color = isFree ? AllowColor : DenyColor;
 
-        foreach (SpriteRenderer renderer in SpriteRenderers)
+        foreach (MeshRenderer renderer in MeshRenderers)
         {
-            renderer.color = color;
+            renderer.materials[0].color = color;
         }
 
         // Ehitamine v�i desaktiveerimine
@@ -107,9 +109,10 @@ public class Builder : MonoBehaviour
 
     void Build()
     {
+        print("Built something");
         if (data is FoundationData && Foundation == null)
         {
-            Instantiate(((FoundationData)data).FoundationPrefab, transform.position, Quaternion.identity);
+            Instantiate(((FoundationData)data).FoundationPrefab, position, Quaternion.identity);
         }
         else if (data is StructureData && Foundation != null)
         {
@@ -144,6 +147,9 @@ public class Builder : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             GameObject hitObject = hit.collider.gameObject;
+
+            position = hit.point;
+            print(position);
 
             // Puhastame eelmised viited
             Foundation = null;

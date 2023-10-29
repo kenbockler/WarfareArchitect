@@ -25,7 +25,7 @@ public class CameraMovement : MonoBehaviour
         TerminalMenu.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false; // For debugging set to true
+        Cursor.visible = true; // For debugging set to true
     }
 
     
@@ -41,7 +41,7 @@ public class CameraMovement : MonoBehaviour
                 TerminalMenu.SetActive(false);
 
                 Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                Cursor.visible = true;
             }
 
 
@@ -55,7 +55,7 @@ public class CameraMovement : MonoBehaviour
                 TerminalMenu.SetActive(false);
 
                 Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                Cursor.visible = true;
             }
 
 
