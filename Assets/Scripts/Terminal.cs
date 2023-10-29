@@ -8,6 +8,7 @@ public class Terminal : MonoBehaviour
 {
     public static Terminal instance;
 
+    public GameObject IconObject;
     public Image IconSprite;
 
     public TextMeshProUGUI StoneResourceText;
@@ -43,6 +44,8 @@ public class Terminal : MonoBehaviour
     void Start()
     {
         instance = this;
+
+        IconObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,7 +59,16 @@ public class Terminal : MonoBehaviour
         SelectedItem = item;
 
         ItemNameText.text = item.DisplayName;
-        IconSprite.sprite = item.IconSprite;
+
+        if (item.IconSprite != null)
+        {
+            IconObject.SetActive(true);
+            IconSprite.sprite = item.IconSprite;
+        }
+        else
+        {
+            IconObject.SetActive(false);
+        }
 
         if (item is FoundationData)
         {
