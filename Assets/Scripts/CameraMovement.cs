@@ -39,6 +39,9 @@ public class CameraMovement : MonoBehaviour
                 _playerMovementEnabled = true;
                 OptionsMenu.SetActive(false);
                 TerminalMenu.SetActive(false);
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
 
 
@@ -50,6 +53,9 @@ public class CameraMovement : MonoBehaviour
                 _playerMovementEnabled = true;
                 OptionsMenu.SetActive(false);
                 TerminalMenu.SetActive(false);
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
 
 
@@ -61,7 +67,10 @@ public class CameraMovement : MonoBehaviour
             {
                 OptionsMenu.SetActive(true);
                 TerminalMenu.SetActive(false);
-                _playerMovementEnabled = false;                
+                _playerMovementEnabled = false;
+
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -69,6 +78,9 @@ public class CameraMovement : MonoBehaviour
                 OptionsMenu.SetActive(false);
                 TerminalMenu.SetActive(true);
                 _playerMovementEnabled = false;
+
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }           
             
             float mouseX = Input.GetAxis("Mouse X") * sensitivityX;
