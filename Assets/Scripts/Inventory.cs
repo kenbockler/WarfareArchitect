@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     public TowerComponentData[] inventory = new TowerComponentData[8];
     public int Selected;
+
     // Start is called before the first frame update
     void Start()
     {

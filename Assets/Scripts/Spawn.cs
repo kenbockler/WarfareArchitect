@@ -40,6 +40,10 @@ public class Spawn : MonoBehaviour
             NextSpawnTime += SpawnDelay;
             count -= 1;
         }
+        if(count <= 0)
+        {
+            Events.EndWave(waveData);
+        }
     }
 
     void StartWave(WaveData data)

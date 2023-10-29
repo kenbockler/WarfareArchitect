@@ -34,8 +34,6 @@ public class ScenarioController : MonoBehaviour
         Events.OnGetIron += GetIron;
         Events.OnSetUranium += SetUranium;
         Events.OnGetUranium += GetUranium;
-
-        Events.OnEndWave += NewWave;
     }
 
     private void OnDestroy()
@@ -48,8 +46,6 @@ public class ScenarioController : MonoBehaviour
         Events.OnGetIron -= GetIron;
         Events.OnSetUranium -= SetUranium;
         Events.OnGetUranium -= GetUranium;
-
-        Events.OnEndWave += NewWave;
     }
 
     // Start is called before the first frame update
@@ -57,14 +53,20 @@ public class ScenarioController : MonoBehaviour
     {
         EndPanel.SetActive(false);
         SetLives(GetLives());
+        SetStone(GetStone());
+        SetIron(GetIron());
+        SetUranium(GetUranium());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && GameObject.FindObjectsOfType<Health>().Length == 0)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            NewWave(Waves[0]);
+            if(GameObject.FindObjectsOfType<Health>().Length == 0)
+            {
+                NewWave(Waves[0]);
+            }
         }
     }
 

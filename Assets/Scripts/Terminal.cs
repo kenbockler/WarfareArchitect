@@ -6,6 +6,8 @@ using TMPro;
 
 public class Terminal : MonoBehaviour
 {
+    public static Terminal instance;
+
     public TextMeshProUGUI StoneResourceText;
     public TextMeshProUGUI IronResourceText;
     public TextMeshProUGUI UraniumResourceText;
@@ -38,7 +40,7 @@ public class Terminal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        instance = this;
     }
 
     // Update is called once per frame
@@ -47,7 +49,7 @@ public class Terminal : MonoBehaviour
         
     }
 
-    void OnItemSelected(TowerComponentData item)
+    public void OnItemSelected(TowerComponentData item)
     {
         SelectedItem = item;
 
@@ -86,8 +88,10 @@ public class Terminal : MonoBehaviour
         UraniumCostText.text = "Uranium: " + item.Cost[2];
     }
 
-    void OnMakePressed()
+    public void OnMakePressed()
     {
+        print(SelectedItem);
+        print(Inventory.instance);
         Inventory.instance.OnMake(SelectedItem);
     }
 
