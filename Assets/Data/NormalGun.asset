@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: NormalGun
   m_EditorClassIdentifier: 
   DisplayName: Machine Gun
-  Cost: 
+  Cost: 050000000000000000000000
   IconSprite: {fileID: 21300000, guid: e826d843c90f03a46bd04a426ef1da81, type: 3}
   Hotkey: 54
-  Damage: 0
-  Firerate: 0
-  RangeModifier: 0
   GunPrefab: {fileID: 8177176375672772679, guid: df968629a6f85e248b4e4e65245e1427, type: 3}

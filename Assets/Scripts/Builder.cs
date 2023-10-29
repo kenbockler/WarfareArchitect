@@ -57,7 +57,7 @@ public class Builder : MonoBehaviour
             renderer.color = color;
         }
 
-        // Ehitamine või desaktiveerimine
+        // Ehitamine vï¿½i desaktiveerimine
         if (Input.GetMouseButtonDown(0) && isFree)
         {
             Build();
@@ -79,7 +79,7 @@ public class Builder : MonoBehaviour
                 return false;
         }
 
-        // Kontrollime, kas kursor on üle UI elemendi
+        // Kontrollime, kas kursor on ï¿½le UI elemendi
         if (EventSystem.current.IsPointerOverGameObject())
             return false;
 
@@ -162,7 +162,7 @@ public class Builder : MonoBehaviour
             {
                 GunBase = hitObject.GetComponent<GunBase>();
             }
-            // Kui on veel teisi objekte, millele võib ehitada, siis lisa siia..
+            // Kui on veel teisi objekte, millele vï¿½ib ehitada, siis lisa siia..
         }
     }
 }
