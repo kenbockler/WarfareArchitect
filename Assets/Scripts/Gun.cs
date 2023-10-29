@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     public float Range;
 
     public float RangeModifier;
+    public SphereCollider rangeApplied;
 
     public Projectile ProjectilePrefab;
 
@@ -31,6 +32,9 @@ public class Gun : MonoBehaviour
         Range = GunBase.Structure.Range * RangeModifier;
         SpawnDelay = 1 / FireRate;
         NextSpawnTime = Time.time;
+
+        rangeApplied = gameObject.GetComponent<SphereCollider>();
+        rangeApplied.radius = Range;
     }
 
     // Update is called once per frame
