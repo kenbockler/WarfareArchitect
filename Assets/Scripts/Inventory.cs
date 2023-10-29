@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public Inventory instance;
+    public static Inventory instance;
     public TowerComponentData[] inventory = new TowerComponentData[8];
     public int Selected;
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         Selected = 0;
     }
 
