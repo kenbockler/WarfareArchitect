@@ -56,4 +56,7 @@ public static class Events
 
     public static event Action<WaveData> OnEndWave;
     public static void EndWave(WaveData data) => OnEndWave?.Invoke(data);
+
+    public static event Action<bool> OnEndGame;
+    public static void EndGame(bool win) => OnEndGame?.Invoke(win);
 }

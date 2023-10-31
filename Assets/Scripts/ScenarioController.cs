@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScenarioController : MonoBehaviour
 {
     public TextMeshProUGUI ResourceText;
     public TextMeshProUGUI LivesText;
+    public TextMeshProUGUI SelectedText;
 
     public GameObject EndPanel;
     public TextMeshProUGUI EndText;
@@ -34,6 +36,8 @@ public class ScenarioController : MonoBehaviour
         Events.OnGetIron += GetIron;
         Events.OnSetUranium += SetUranium;
         Events.OnGetUranium += GetUranium;
+
+        Events.OnTowerComponentSelected += TowerComponentSelected;
     }
 
     private void OnDestroy()
@@ -46,6 +50,8 @@ public class ScenarioController : MonoBehaviour
         Events.OnGetIron -= GetIron;
         Events.OnSetUranium -= SetUranium;
         Events.OnGetUranium -= GetUranium;
+
+        Events.OnTowerComponentSelected -= TowerComponentSelected;
     }
 
     // Start is called before the first frame update
@@ -108,6 +114,7 @@ public class ScenarioController : MonoBehaviour
 
     public void EndGame(bool win, int score)
     {
+        Events.EndGame(win);
         Win = win;
         if (Win)
         {
@@ -134,5 +141,23 @@ public class ScenarioController : MonoBehaviour
             Events.StartWave(Waves[currentWave]);
         }
         currentWave += 1;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Win = false;
+    }
+
+    void TowerComponentSelected(TowerComponentData data)
+    {
+        if(data == null)
+        {
+            SelectedText.text = "Empty";
+        }
+        else
+        {
+            SelectedText.text = "Selected: " + data.DisplayName;
+        }
     }
 }

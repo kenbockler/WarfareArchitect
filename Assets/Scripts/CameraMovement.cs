@@ -19,6 +19,15 @@ public class CameraMovement : MonoBehaviour
 
     private bool _playerMovementEnabled = true;
 
+    public void Awake()
+    {
+        Events.OnEndGame += Unlock;
+    }
+    public void OnDestroy()
+    {
+        Events.OnEndGame -= Unlock;
+    }
+
     void Start()
     {
         OptionsMenu.SetActive(false);
@@ -112,5 +121,11 @@ public class CameraMovement : MonoBehaviour
             Vector3 move = transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime;
             transform.position += move;
         }
+    }
+
+    void Unlock(bool win)
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

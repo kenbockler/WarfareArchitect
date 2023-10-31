@@ -260,12 +260,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4600d01297e7e4c9db631f5e2eb482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
-  FireRate: 0
+  Damage: 1
+  FireRate: 1
   Range: 0
-  RangeModifier: 0
+  RangeModifier: 1
   rangeApplied: {fileID: 0}
-  ProjectilePrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: 6946478370186997899, guid: 00dfc03b3950f9541a145b16f389d3fe, type: 3}
   GunBase: {fileID: 0}
   Seeking: 0
 --- !u!135 &1005542599187660854

@@ -118,5 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c825066f33bd24f88c3b89d836c1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 9999
+  Range: 200
   Foundation: {fileID: -1952014020244934206, guid: 30365444e4008234abd7071848440528, type: 3}
