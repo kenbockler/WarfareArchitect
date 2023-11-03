@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/SupportBlockData")]
 public class SupportBlockData : TowerComponentData
 {
-
+	public SupportBlock SupportBlockPrefab;
 }

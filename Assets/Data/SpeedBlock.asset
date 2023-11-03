@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9fe1b13c402a64ea1fc71ad4657783, type: 3}
+  m_Name: SpeedBlock
+  m_EditorClassIdentifier: 
+  DisplayName: Speed block
+  Cost: 140000000000000000000000
+  IconSprite: {fileID: 0}
+  Hotkey: 0
+  SupportBlockPrefab: {fileID: 5030155723220525435, guid: dec45de42dcb9ca4eabf3299eeba6c9c, type: 3}

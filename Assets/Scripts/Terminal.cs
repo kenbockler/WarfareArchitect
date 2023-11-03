@@ -98,6 +98,13 @@ public class Terminal : MonoBehaviour
             StatisticsText.text = "Damage: " + data.GunPrefab.Damage + "\nFirerate: " + data.GunPrefab.FireRate + "\nRange modifier: " + data.GunPrefab.RangeModifier + (data.GunPrefab.Seeking ? "\nSeeking bullets" : "");
         }
 
+        if (item is SupportBlockData)
+        {
+            ItemTypeText.text = "Support Block";
+            SupportBlockData data = (SupportBlockData)item;
+            StatisticsText.text = "Statistics coming soon";
+        }
+
         if (item is DrillData)
         {
             ItemTypeText.text = "Drill";
