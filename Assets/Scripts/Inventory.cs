@@ -5,8 +5,23 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+
+    // Custom data structure for a pair
+    public struct Pair<T1, T2>
+    {
+        public T1 Key;
+        public T2 Value;
+
+        public Pair(T1 first, T2 second)
+        {
+            Key = first;
+            Value = second;
+        }
+    }
+
+
     public static Inventory instance;
-    public KeyValuePair<TowerComponentData, int>[] inventory = new KeyValuePair<TowerComponentData, int>[8];
+    public Pair<TowerComponentData, int>[] inventory = new Pair<TowerComponentData, int>[8];
     public Image[] images = new Image[8];
     public int Selected;
 
@@ -37,23 +52,24 @@ public class Inventory : MonoBehaviour
     {
         if(Events.GetStone() - item.Cost[0] >= 0 && Events.GetIron() - item.Cost[1] >= 0 && Events.GetUranium() - item.Cost[2] >= 0)
         {
-            int i;
-            int nullIndex;
+            int nullIndex = -1;
 
-            for(i = 0; i < inventory.Length; i++)
+            for(int i = inventory.Length - 1; i >= 0; i--)
             {
-                if(inventory[i].Key == null)
+                //if the descriptions match, increase the counter of the specific slot by 1 (we are putting the item to the same slot)
+                if (inventory[i].Key.DisplayName.Equals(item.DisplayName))
                 {
-                    nullIndex = i;
-
-                    KeyValuePair<TowerComponentData, int> pair = new KeyValuePair<TowerComponentData, int>(item, 1);
-                    inventory[i] = pair;
-
-                    images[i].sprite = item.IconSprite;
-                    break;
+                    inventory[i].Value++;
                 }
             }
-            if(i > 7) return; //the null index does not exist and all inventory slots are full            
+            if(nullIndex == -1) return; //if it's -1, then return (this indicates, that there was no room in the inventory)
+
+            if (nullIndex != -2) //if there was no item of same type in the inventory (index is not -2), but there was room for new item
+            {
+                Pair<TowerComponentData, int> pair = new(item, 1);
+                inventory[nullIndex] = pair;
+                images[nullIndex].sprite = item.IconSprite;
+            }
 
             Events.SetStone(Events.GetStone() - item.Cost[0]);
             Events.SetIron(Events.GetIron() - item.Cost[1]);
