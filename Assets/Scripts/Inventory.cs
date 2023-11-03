@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,15 +23,27 @@ public class Inventory : MonoBehaviour
 
     public static Inventory instance;
     public Pair<TowerComponentData, int>[] inventory = new Pair<TowerComponentData, int>[8];
+
     public Image[] images = new Image[8];
+    public TextMeshProUGUI[] counts = new TextMeshProUGUI[8];
+
     public int Selected;
 
     // Start is called before the first frame update
     void Start()
     {
+
         instance = this;
         Selected = 0;
         Events.TowerComponentSelected(null);
+
+        //First, let's set all images and counts inactive (when there's no itme in the slot, let the gameobject be inactive)
+        for (int i = 0; i < 8; i++)
+        {
+            images[i].gameObject.SetActive(false);
+            counts[i].gameObject.SetActive(false);
+        }
+
     }
 
     // Update is called once per frame
@@ -48,27 +61,57 @@ public class Inventory : MonoBehaviour
         }
     }
 
+
     public void OnMake(TowerComponentData item)
     {
-        if(Events.GetStone() - item.Cost[0] >= 0 && Events.GetIron() - item.Cost[1] >= 0 && Events.GetUranium() - item.Cost[2] >= 0)
+        //When nothing is selected and make is pressed, then it won't throw an exception
+        if (item == null)
+        {
+            return;
+        }
+
+        if (Events.GetStone() - item.Cost[0] >= 0 && Events.GetIron() - item.Cost[1] >= 0 && Events.GetUranium() - item.Cost[2] >= 0)
         {
             int nullIndex = -1;
 
             for(int i = inventory.Length - 1; i >= 0; i--)
             {
-                //if the descriptions match, increase the counter of the specific slot by 1 (we are putting the item to the same slot)
-                if (inventory[i].Key.DisplayName.Equals(item.DisplayName))
+
+                if (inventory[i].Key == null)
                 {
-                    inventory[i].Value++;
+                    nullIndex = i;
+                }
+                else
+                {
+                    //if the descriptions match, increase the counter of the specific slot by 1 (we are putting the item to the same slot)
+                    if (inventory[i].Key.DisplayName.Equals(item.DisplayName))
+                    {
+                        nullIndex = -2;
+
+                        inventory[i].Value++;
+
+                        //print("Value: " + inventory[i].Value);
+
+                        counts[i].text = inventory[i].Value.ToString();
+
+                        break;
+                    }
                 }
             }
             if(nullIndex == -1) return; //if it's -1, then return (this indicates, that there was no room in the inventory)
 
             if (nullIndex != -2) //if there was no item of same type in the inventory (index is not -2), but there was room for new item
             {
+                //print("Null index: " + nullIndex);
+                   
                 Pair<TowerComponentData, int> pair = new(item, 1);
                 inventory[nullIndex] = pair;
+
+                images[nullIndex].gameObject.SetActive(true);
                 images[nullIndex].sprite = item.IconSprite;
+
+                counts[nullIndex].gameObject.SetActive(true);
+                counts[nullIndex].text = "1";
             }
 
             Events.SetStone(Events.GetStone() - item.Cost[0]);

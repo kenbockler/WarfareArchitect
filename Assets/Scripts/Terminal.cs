@@ -8,15 +8,14 @@ public class Terminal : MonoBehaviour
 {
     public static Terminal instance;
 
-    public GameObject IconObject;
-    public Image IconSprite;
-
     public TextMeshProUGUI StoneResourceText;
     public TextMeshProUGUI IronResourceText;
     public TextMeshProUGUI UraniumResourceText;
 
     public TextMeshProUGUI ItemNameText;
     public TextMeshProUGUI ItemTypeText;
+    public GameObject IconObject;
+    public Image IconSprite;
 
     public TextMeshProUGUI StatisticsText;
 
@@ -46,6 +45,10 @@ public class Terminal : MonoBehaviour
         instance = this;
 
         IconObject.SetActive(false);
+
+        Events.SetStone(Events.GetStone());
+        Events.SetIron(Events.GetIron());
+        Events.SetUranium(Events.GetUranium());
     }
 
     // Update is called once per frame
@@ -59,6 +62,8 @@ public class Terminal : MonoBehaviour
         SelectedItem = item;
 
         ItemNameText.text = item.DisplayName;
+
+        //print(item.DisplayName);
 
         if (item.IconSprite != null)
         {
