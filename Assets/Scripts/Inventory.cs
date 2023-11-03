@@ -59,6 +59,48 @@ public class Inventory : MonoBehaviour
             Selected = (Selected + 7) % 8;
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
+
+        //Teeme nii, et numbritega saaks ka inventorys ringi käia
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {            
+            Selected = 0;
+            Events.TowerComponentSelected(inventory[Selected].Key);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Selected = 1;
+            Events.TowerComponentSelected(inventory[Selected].Key);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Selected = 2;
+            Events.TowerComponentSelected(inventory[Selected].Key);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Selected = 3;
+            Events.TowerComponentSelected(inventory[Selected].Key);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Selected = 4;
+            Events.TowerComponentSelected(inventory[Selected].Key);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            Selected = 5;
+            Events.TowerComponentSelected(inventory[Selected].Key);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            Selected = 6;
+            Events.TowerComponentSelected(inventory[Selected].Key);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            Selected = 7;
+            Events.TowerComponentSelected(inventory[Selected].Key);
+        }
     }
 
 
