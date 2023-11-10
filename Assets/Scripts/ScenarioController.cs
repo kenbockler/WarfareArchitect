@@ -159,7 +159,5 @@ public class ScenarioController : MonoBehaviour
         {
             SelectedText.text = data.DisplayName;
         }
-
-        GameviewInventory.instance.InventoryItemSelected(data);
     }
 }

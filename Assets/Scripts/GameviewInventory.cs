@@ -27,7 +27,7 @@ public class GameviewInventory : MonoBehaviour
     public TextMeshProUGUI[] counts = new TextMeshProUGUI[8];
     public GameObject[] greenGlows = new GameObject[8];
 
-    public int Selected;
+    public int Selected;    
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class GameviewInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {       
-        Selected = 0;
+        Selected = 0;      
         Events.TowerComponentSelected(null);
 
         //First, let's set all images and counts inactive (when there's no itme in the slot, let the gameobject be inactive)
@@ -45,8 +45,10 @@ public class GameviewInventory : MonoBehaviour
         {
             images[i].gameObject.SetActive(false);
             counts[i].gameObject.SetActive(false);
-            greenGlows[i].gameObject.SetActive(false);
+            greenGlows[i].SetActive(false);
         }
+
+        InventoryItemSelected(Selected);
 
     }
 
@@ -56,11 +58,13 @@ public class GameviewInventory : MonoBehaviour
         if (Input.mouseScrollDelta.y > 0)
         {
             Selected = (Selected + 1) % 8;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
         if (Input.mouseScrollDelta.y < 0)
         {
             Selected = (Selected + 7) % 8;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
 
@@ -68,41 +72,49 @@ public class GameviewInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Selected = 0;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Selected = 1;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Selected = 2;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             Selected = 3;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             Selected = 4;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             Selected = 5;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             Selected = 6;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             Selected = 7;
+            InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
     }
@@ -120,27 +132,23 @@ public class GameviewInventory : MonoBehaviour
 
     }
 
-    public void RemoveItem(TowerComponentData item, int amount, int index)
+    public void SellItem(TowerComponentData item, int amount, int index)
     {
         // TODO
     }
 
-    public void InventoryItemSelected(TowerComponentData selectedItem)
+    public void InventoryItemSelected(int index)
     {
-        int index = 0;
-        foreach (var item in inventory)
+        for (int i = 0; i < inventory.Length; i++)
         {
-            if (selectedItem != null && item.Key != null && item.Key.DisplayName.Equals(selectedItem.DisplayName))
+            if (i == index)
             {
-                //Set green glow active
-                greenGlows[index].SetActive(true);                
+                greenGlows[i].SetActive(true);
             }
             else
             {
-                //Disable green glow
-                greenGlows[index].SetActive(false);
+                greenGlows[i].SetActive(false);
             }
-            index++;
         }
     }
 }
