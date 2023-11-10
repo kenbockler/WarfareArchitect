@@ -2047,6 +2047,8 @@ GameObject:
   m_Component:
   - component: {fileID: 233474127}
   - component: {fileID: 233474126}
+  - component: {fileID: 233474128}
+  - component: {fileID: 233474129}
   m_Layer: 0
   m_Name: Builder
   m_TagString: Untagged
@@ -2069,6 +2071,11 @@ MonoBehaviour:
   AllowColor: {r: 0, g: 1, b: 0, a: 1}
   DenyColor: {r: 1, g: 0, b: 0, a: 1}
   data: {fileID: 0}
+  FoundationPrefab: {fileID: 0}
+  StructurePrefab: {fileID: 0}
+  GunBasePrefab: {fileID: 0}
+  GunPrefab: {fileID: 0}
+  SupportBlockPrefab: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}
   Foundation: {fileID: 0}
   Structure: {fileID: 0}
@@ -2083,11 +2090,61 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 363.73602, y: 93.215866, z: -61.639374}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 55, y: 55, z: 55}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &233474128
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233474125}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: cb98435b1957aab4fbdb6a2815cebe1e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &233474129
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233474125}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &235564570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2735,7 +2792,7 @@ GameObject:
   - component: {fileID: 332002888}
   m_Layer: 0
   m_Name: TerrainLeft
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5269,7 +5326,7 @@ GameObject:
   - component: {fileID: 850166712}
   m_Layer: 0
   m_Name: TerrainRight
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8809,13 +8866,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c227d8608ca9fc040a5a829b353ff59c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IconObject: {fileID: 1292376183}
-  IconSprite: {fileID: 1292376185}
   StoneResourceText: {fileID: 1682995236}
   IronResourceText: {fileID: 669272403}
   UraniumResourceText: {fileID: 1760875861}
   ItemNameText: {fileID: 804838075}
   ItemTypeText: {fileID: 1789209184}
+  IconObject: {fileID: 1292376183}
+  IconSprite: {fileID: 1292376185}
   StatisticsText: {fileID: 2128556976}
   StoneCostText: {fileID: 896856394}
   IronCostText: {fileID: 102273714}
@@ -8842,6 +8899,15 @@ MonoBehaviour:
   - {fileID: 1175948516}
   - {fileID: 1231116140}
   - {fileID: 1382303784}
+  counts:
+  - {fileID: 314324995}
+  - {fileID: 2102603590}
+  - {fileID: 1846086091}
+  - {fileID: 900385968}
+  - {fileID: 892595242}
+  - {fileID: 968105220}
+  - {fileID: 968105220}
+  - {fileID: 1858224342}
   Selected: 0
 --- !u!1 &1287275358
 GameObject:

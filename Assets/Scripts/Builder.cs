@@ -6,15 +6,20 @@ using UnityEngine;
 
 public class Builder : MonoBehaviour
 {
-    private static readonly float ColliderCheckRadius = 0.4f; // Konstant kollisiooni kontrollimiseks
+    private static readonly float ColliderCheckRadius = 5f; // Konstant kollisiooni kontrollimiseks
     private Camera cam;
 
     public Color AllowColor = Color.green;
     public Color DenyColor = Color.red;
-    private MeshRenderer[] MeshRenderers;
+    private MeshRenderer MeshRenderer;
+    private MeshFilter MeshFilter;
 
     public TowerComponentData data;
-
+    public Foundation FoundationPrefab;
+    public Structure StructurePrefab;
+    public GunBase GunBasePrefab;
+    public Gun GunPrefab;
+    public SupportBlock SupportBlockPrefab;
     public Vector3 pos;
 
     public Foundation Foundation;
@@ -35,7 +40,7 @@ public class Builder : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        MeshRenderers = GetComponentsInChildren<MeshRenderer>();
+        MeshRenderer = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -48,10 +53,7 @@ public class Builder : MonoBehaviour
         bool isFree = IsFree();
         Color color = isFree ? AllowColor : DenyColor;
 
-        foreach (MeshRenderer renderer in MeshRenderers)
-        {
-            renderer.materials[0].color = color;
-        }
+        if (MeshRenderer.materials[0] != null) MeshRenderer.materials[0].color = color;
 
         // Ehitamine v�i desaktiveerimine
         if (Input.GetMouseButtonDown(0) && isFree)
@@ -66,24 +68,24 @@ public class Builder : MonoBehaviour
 
     bool IsFree()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ColliderCheckRadius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, ColliderCheckRadius);
 
         // Kontrollime kollisioone
-        foreach (Collider2D collider in colliders)
+        foreach (Collider collider in colliders)
         {
-            if (!collider.isTrigger && !IsAllowedToBuildOn(collider))
-                return false;
+            if (IsAllowedToBuildOn(collider))
+                return true;
         }
 
         // Kontrollime, kas kursor on �le UI elemendi
         if (EventSystem.current.IsPointerOverGameObject())
             return false;
 
-        return true;
+        return false;
     }
 
     // Kontrollime, kas saame antud kohta ehitada
-    private bool IsAllowedToBuildOn(Collider2D collider)
+    private bool IsAllowedToBuildOn(Collider collider)
     {
         if (data is FoundationData && collider.CompareTag("Terrain"))
             return true;
@@ -178,13 +180,46 @@ public class Builder : MonoBehaviour
     {
         gameObject.SetActive(true);
         data = _data;
+        if (data is FoundationData)
+        {
+            MeshRenderer.materials[0].CopyPropertiesFromMaterial(((FoundationData)data).FoundationPrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
+            MeshFilter = ((FoundationData)data).FoundationPrefab.GetComponent<MeshFilter>();
+            transform.localScale = ((FoundationData)data).FoundationPrefab.transform.localScale;
+        }
+
+        if (data is StructureData)
+        {
+            MeshRenderer.materials[0].CopyPropertiesFromMaterial(((StructureData)data).StructurePrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
+            MeshFilter = ((StructureData)data).StructurePrefab.GetComponent<MeshFilter>();
+            transform.localScale = ((StructureData)data).StructurePrefab.transform.localScale;
+        }
+
+        if (data is GunBaseData)
+        {
+            MeshRenderer.materials[0].CopyPropertiesFromMaterial(((GunBaseData)data).GunBasePrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
+            MeshFilter = ((GunBaseData)data).GunBasePrefab.GetComponent<MeshFilter>();
+            transform.localScale = ((GunBaseData)data).GunBasePrefab.transform.localScale;
+        }
+
+        if (data is GunData)
+        {
+            // MeshRenderer.materials[0].CopyPropertiesFromMaterial(((GunData)data).GunPrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
+            // MeshFilter = ((GunData)data).GunPrefab.GetComponent<MeshFilter>();
+            // transform.localScale = ((GunData)data).GunPrefab.transform.localScale;
+        }
+
+        if (data is SupportBlockData)
+        {
+            MeshRenderer.materials[0].CopyPropertiesFromMaterial(((SupportBlockData)data).SupportBlockPrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
+            MeshFilter = ((SupportBlockData)data).SupportBlockPrefab.GetComponent<MeshFilter>();
+            transform.localScale = ((SupportBlockData)data).SupportBlockPrefab.transform.localScale;
+        }
     }
 
     void GetGameObjectAtPosition()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(ray, out hit))
         {
             GameObject hitObject = hit.collider.gameObject;
@@ -193,6 +228,7 @@ public class Builder : MonoBehaviour
             pos.x = Mathf.Round(pos.x / 10f) * 10f;
             pos.y = Mathf.Round(pos.y / 10f) * 10f;
             pos.z = Mathf.Round(pos.z / 10f) * 10f;
+            transform.position = pos;
 
             // Puhastame eelmised viited
             Foundation = null;

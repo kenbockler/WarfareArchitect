@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6628434200361972507}
   - component: {fileID: 2206038632088419164}
   - component: {fileID: 2181176521127217221}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MGMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 7923072787353220504}
   - component: {fileID: 8427487075444026905}
   - component: {fileID: 7455271749984483115}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Swivel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1315158243596726036}
   - component: {fileID: 8177176375672772679}
   - component: {fileID: 1005542599187660854}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasicGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 4872997600050970800}
   - component: {fileID: 8559508520662640429}
   - component: {fileID: 8902577114270468726}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
