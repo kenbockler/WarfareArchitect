@@ -15,11 +15,6 @@ public class Builder : MonoBehaviour
     private MeshFilter MeshFilter;
 
     public TowerComponentData data;
-    public Foundation FoundationPrefab;
-    public Structure StructurePrefab;
-    public GunBase GunBasePrefab;
-    public Gun GunPrefab;
-    public SupportBlock SupportBlockPrefab;
     public Vector3 pos;
 
     public Foundation Foundation;
@@ -88,7 +83,18 @@ public class Builder : MonoBehaviour
     private bool IsAllowedToBuildOn(Collider collider)
     {
         if (data is FoundationData && collider.CompareTag("Terrain"))
+        {
+            foreach(Collider coll in Physics.OverlapSphere(transform.position, ((FoundationData)data).FoundationPrefab.transform.localScale.x / 2))
+            {
+                if (coll.GetComponent<Foundation>()) return false;
+            }
+            // Selle rea lõpus on konstant, mida peab muutma, kui muutub tee sügavus, mis praegu on 30.
+            foreach(Collider coll in Physics.OverlapSphere(transform.position, Mathf.Sqrt(((FoundationData)data).FoundationPrefab.transform.localScale.x / 2) + 35))
+            {
+                if (coll.CompareTag("Path")) return false;
+            }
             return true;
+        }
 
         if (data is StructureData && collider.CompareTag("Foundation"))
             return true;

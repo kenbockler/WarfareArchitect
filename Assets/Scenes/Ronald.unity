@@ -2071,11 +2071,6 @@ MonoBehaviour:
   AllowColor: {r: 0, g: 1, b: 0, a: 1}
   DenyColor: {r: 1, g: 0, b: 0, a: 1}
   data: {fileID: 0}
-  FoundationPrefab: {fileID: 0}
-  StructurePrefab: {fileID: 0}
-  GunBasePrefab: {fileID: 0}
-  GunPrefab: {fileID: 0}
-  SupportBlockPrefab: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}
   Foundation: {fileID: 0}
   Structure: {fileID: 0}
@@ -2090,7 +2085,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 363.73602, y: 93.215866, z: -61.639374}
-  m_LocalScale: {x: 55, y: 55, z: 55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
