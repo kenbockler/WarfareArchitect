@@ -157,7 +157,9 @@ public class ScenarioController : MonoBehaviour
         }
         else
         {
-            SelectedText.text = "Selected: " + data.DisplayName;
+            SelectedText.text = data.DisplayName;
         }
+
+        GameviewInventory.instance.InventoryItemSelected(data);
     }
 }

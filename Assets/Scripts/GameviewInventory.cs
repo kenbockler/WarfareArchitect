@@ -4,9 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
-{
-
+public class GameviewInventory : MonoBehaviour
+{   
+    
     // Custom data structure for a pair
     public struct Pair<T1, T2>
     {
@@ -18,22 +18,25 @@ public class Inventory : MonoBehaviour
             Key = first;
             Value = second;
         }
-    }
+    }    
 
-
-    public static Inventory instance;
+    public static GameviewInventory instance;
     public Pair<TowerComponentData, int>[] inventory = new Pair<TowerComponentData, int>[8];
 
     public Image[] images = new Image[8];
     public TextMeshProUGUI[] counts = new TextMeshProUGUI[8];
+    public GameObject[] greenGlows = new GameObject[8];
 
     public int Selected;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
-    {
-
-        instance = this;
+    {       
         Selected = 0;
         Events.TowerComponentSelected(null);
 
@@ -42,6 +45,7 @@ public class Inventory : MonoBehaviour
         {
             images[i].gameObject.SetActive(false);
             counts[i].gameObject.SetActive(false);
+            greenGlows[i].gameObject.SetActive(false);
         }
 
     }
@@ -49,12 +53,12 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.mouseScrollDelta.y > 0)
+        if (Input.mouseScrollDelta.y > 0)
         {
             Selected = (Selected + 1) % 8;
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
-        if(Input.mouseScrollDelta.y < 0)
+        if (Input.mouseScrollDelta.y < 0)
         {
             Selected = (Selected + 7) % 8;
             Events.TowerComponentSelected(inventory[Selected].Key);
@@ -62,7 +66,7 @@ public class Inventory : MonoBehaviour
 
         //Teeme nii, et numbritega saaks ka inventorys ringi käia
         if (Input.GetKeyDown(KeyCode.Alpha1))
-        {            
+        {
             Selected = 0;
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
@@ -103,66 +107,40 @@ public class Inventory : MonoBehaviour
         }
     }
 
-
-    public void OnMake(TowerComponentData item)
+    public void AddItem(TowerComponentData item, int amount, int index)
     {
-        //When nothing is selected and make is pressed, then it won't throw an exception
-        if (item == null)
+        Pair<TowerComponentData, int> pair = new Pair<TowerComponentData, int>(item, amount);
+        inventory[index] = pair;
+
+        images[index].gameObject.SetActive(true);
+        counts[index].gameObject.SetActive(true);
+
+        images[index].sprite = item.IconSprite;
+        counts[index].text = amount.ToString();
+
+    }
+
+    public void RemoveItem(TowerComponentData item, int amount, int index)
+    {
+        // TODO
+    }
+
+    public void InventoryItemSelected(TowerComponentData selectedItem)
+    {
+        int index = 0;
+        foreach (var item in inventory)
         {
-            return;
-        }
-
-        if (Events.GetStone() - item.Cost[0] >= 0 && Events.GetIron() - item.Cost[1] >= 0 && Events.GetUranium() - item.Cost[2] >= 0)
-        {
-            int nullIndex = -1;
-
-            for(int i = inventory.Length - 1; i >= 0; i--)
+            if (selectedItem != null && item.Key != null && item.Key.DisplayName.Equals(selectedItem.DisplayName))
             {
-
-                if (inventory[i].Key == null)
-                {
-                    nullIndex = i;
-                }
-                else
-                {
-                    //if the descriptions match, increase the counter of the specific slot by 1 (we are putting the item to the same slot)
-                    if (inventory[i].Key.DisplayName.Equals(item.DisplayName))
-                    {
-                        nullIndex = -2;
-
-                        inventory[i].Value++;
-
-                        //print("Value: " + inventory[i].Value);
-
-                        counts[i].text = inventory[i].Value.ToString();
-
-                        GameviewInventory.instance.AddItem(item, inventory[i].Value, i);
-
-                        break;
-                    }
-                }
+                //Set green glow active
+                greenGlows[index].SetActive(true);                
             }
-            if(nullIndex == -1) return; //if it's -1, then return (this indicates, that there was no room in the inventory)
-
-            if (nullIndex != -2) //if there was no item of same type in the inventory (index is not -2), but there was room for new item
+            else
             {
-                //print("Null index: " + nullIndex);
-                   
-                Pair<TowerComponentData, int> pair = new(item, 1);
-                inventory[nullIndex] = pair;
-
-                images[nullIndex].gameObject.SetActive(true);
-                images[nullIndex].sprite = item.IconSprite;
-
-                counts[nullIndex].gameObject.SetActive(true);
-                counts[nullIndex].text = "1";
-
-                GameviewInventory.instance.AddItem(item, 1, nullIndex);
+                //Disable green glow
+                greenGlows[index].SetActive(false);
             }
-
-            Events.SetStone(Events.GetStone() - item.Cost[0]);
-            Events.SetIron(Events.GetIron() - item.Cost[1]);
-            Events.SetUranium(Events.GetUranium() - item.Cost[2]);
+            index++;
         }
     }
 }
