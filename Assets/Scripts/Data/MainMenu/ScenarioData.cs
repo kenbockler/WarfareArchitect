@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/ScenarioData")]
-public class ScenarioData : MonoBehaviour
+[CreateAssetMenu(menuName = "Data/Scenario")]
+public class ScenarioData : ScriptableObject
 {
-    public string scenarioName;
+    public string PresentedName;
     public string SceneName;
     public int stone = 0;
     public int iron = 0;

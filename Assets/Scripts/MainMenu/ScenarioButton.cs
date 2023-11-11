@@ -7,8 +7,7 @@ using Unity.VisualScripting;
 
 public class ScenarioButton : MonoBehaviour
 {
-    // TODO
-    // public ScenarioData ScenaroData;
+    public ScenarioData ScenarioData;
 
     public TextMeshProUGUI NameText;
     private Button button;
@@ -19,15 +18,15 @@ public class ScenarioButton : MonoBehaviour
         button.onClick.AddListener(OnClick);
     }
 
-    public void Start()
+    public void SetData(ScenarioData data)
     {
-        // TODO
-        // NameText.text = ScenarioData.PresentedName;
+        ScenarioData = data;
+        NameText.text = ScenarioData.PresentedName;
     }
 
     public void OnClick()
     {
-        print("Card pressed");
+        LevelMenuKomponendid.Instance.ScenarioSelected(ScenarioData);
     }
 
 
