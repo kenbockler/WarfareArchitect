@@ -13,6 +13,7 @@ public class MainMenuKomponendid : MonoBehaviour
     public Button ExitButton;
 
     public GameObject levelMenuKomponendid;
+    public GameObject optionsMenuKomponendid;
 
     public void Awake()
     {
@@ -31,10 +32,8 @@ public class MainMenuKomponendid : MonoBehaviour
 
     public void OnOptions()
     {
-        // Peida kogu MainMenuKomponendid GameObject
         gameObject.SetActive(false);
-
-        // todo : ava OptionsMenuKomponendid
+        optionsMenuKomponendid.SetActive(true);
     }
 
     public void OnExit()
