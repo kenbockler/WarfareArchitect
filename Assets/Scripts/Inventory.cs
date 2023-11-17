@@ -49,12 +49,12 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.mouseScrollDelta.y > 0)
+        if(Input.mouseScrollDelta.y < 0)
         {
             Selected = (Selected + 1) % 8;
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
-        if(Input.mouseScrollDelta.y < 0)
+        if(Input.mouseScrollDelta.y > 0)
         {
             Selected = (Selected + 7) % 8;
             Events.TowerComponentSelected(inventory[Selected].Key);
