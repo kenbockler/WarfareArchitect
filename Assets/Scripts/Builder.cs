@@ -36,6 +36,7 @@ public class Builder : MonoBehaviour
     {
         cam = Camera.main;
         MeshRenderer = GetComponent<MeshRenderer>();
+        MeshFilter = GetComponent<MeshFilter>();
     }
 
     // Update is called once per frame
@@ -189,35 +190,35 @@ public class Builder : MonoBehaviour
         if (data is FoundationData)
         {
             MeshRenderer.materials[0].CopyPropertiesFromMaterial(((FoundationData)data).FoundationPrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
-            MeshFilter = ((FoundationData)data).FoundationPrefab.GetComponent<MeshFilter>();
+            MeshFilter.mesh = ((FoundationData)data).FoundationPrefab.GetComponent<MeshFilter>().sharedMesh;
             transform.localScale = ((FoundationData)data).FoundationPrefab.transform.localScale;
         }
 
         if (data is StructureData)
         {
             MeshRenderer.materials[0].CopyPropertiesFromMaterial(((StructureData)data).StructurePrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
-            MeshFilter = ((StructureData)data).StructurePrefab.GetComponent<MeshFilter>();
+            MeshFilter.mesh = ((StructureData)data).StructurePrefab.GetComponent<MeshFilter>().sharedMesh;
             transform.localScale = ((StructureData)data).StructurePrefab.transform.localScale;
         }
 
         if (data is GunBaseData)
         {
             MeshRenderer.materials[0].CopyPropertiesFromMaterial(((GunBaseData)data).GunBasePrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
-            MeshFilter = ((GunBaseData)data).GunBasePrefab.GetComponent<MeshFilter>();
+            MeshFilter.mesh = ((GunBaseData)data).GunBasePrefab.GetComponent<MeshFilter>().sharedMesh;
             transform.localScale = ((GunBaseData)data).GunBasePrefab.transform.localScale;
         }
 
         if (data is GunData)
         {
-            // MeshRenderer.materials[0].CopyPropertiesFromMaterial(((GunData)data).GunPrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
-            // MeshFilter = ((GunData)data).GunPrefab.GetComponent<MeshFilter>();
-            // transform.localScale = ((GunData)data).GunPrefab.transform.localScale;
+            MeshRenderer.materials[0].CopyPropertiesFromMaterial(((GunData)data).GunPrefab.gameObject.GetComponentsInChildren<MeshRenderer>()[0].sharedMaterials[0]);
+            MeshFilter.mesh = ((GunData)data).GunPrefab.gameObject.GetComponentsInChildren<MeshFilter>()[0].sharedMesh;
+            transform.localScale = ((GunData)data).GunPrefab.transform.localScale;
         }
 
         if (data is SupportBlockData)
         {
             MeshRenderer.materials[0].CopyPropertiesFromMaterial(((SupportBlockData)data).SupportBlockPrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
-            MeshFilter = ((SupportBlockData)data).SupportBlockPrefab.GetComponent<MeshFilter>();
+            MeshFilter.mesh = ((SupportBlockData)data).SupportBlockPrefab.GetComponent<MeshFilter>().sharedMesh;
             transform.localScale = ((SupportBlockData)data).SupportBlockPrefab.transform.localScale;
         }
     }

@@ -8,6 +8,7 @@ TagManager:
   - Foundation
   - Structure
   - GunBase
+  - Path
   layers:
   - Default
   - TransparentFX
