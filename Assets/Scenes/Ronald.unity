@@ -9202,7 +9202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1106276135
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11179,9 +11179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6375a6b80f0884a8ef2bd7f6d848a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResourceText: {fileID: 670376626}
-  LivesText: {fileID: 1227701623}
-  SelectedText: {fileID: 540849984}
+  ResourceText: {fileID: 475578863}
+  LivesText: {fileID: 1519454412}
+  SelectedText: {fileID: 1892317922}
   EndPanel: {fileID: 1392544015}
   EndText: {fileID: 683265197}
   FinalScoreText: {fileID: 1670580787}

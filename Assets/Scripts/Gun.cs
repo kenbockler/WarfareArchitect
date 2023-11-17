@@ -20,15 +20,19 @@ public class Gun : MonoBehaviour
 
     private List<Health> targets = new List<Health>{};
 
-    public bool Seeking;
+    public bool Seeking; // Kas kuul püüab vaenlasi targalt
+    public bool Piercing; // Kas kuul saab vaenlasest läbi minna
+    public bool Persistent; // Kas kuul jääb pärast teekonna lõpetamist alles, kui vaenlast ei taba
+    public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu järel neid kahjustab
+    public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv mõjub hirmuefektina
 
     // Siia juurde v�ib panna teisi laskmisega seotud atribuute, t�ev��rtusi.
 
     // Start is called before the first frame update
     void Start()
     {
-        Damage = (int) Mathf.Ceil(Damage * GunBase.DamageModifier);
-        FireRate *= GunBase.FirerateModifier;
+        Damage = (int) Mathf.Ceil(Damage * GunBase.DamageModifier * GunBase.Structure.DamageModifier);
+        FireRate *= GunBase.FirerateModifier * GunBase.Structure.FirerateModifier;
         Range = GunBase.Structure.Range * RangeModifier;
         SpawnDelay = 1 / FireRate;
         NextSpawnTime = Time.time;
@@ -46,8 +50,13 @@ public class Gun : MonoBehaviour
             if(target != null)
             {
                 Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
-                projectile.Speed *= GunBase.BulletSpeedModifier;
-                projectile.Seeking = Seeking;
+                projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
+                projectile.Seeking = Seeking || GunBase.Structure.Seeking;
+                projectile.Piercing = Piercing || GunBase.Structure.Piercing;
+                projectile.Persistent = Persistent || GunBase.Structure.Persistent;
+                projectile.Poison = GunBase.Structure.Poison;
+                projectile.Slow = GunBase.Structure.Slow;
+
                 projectile.transform.position = transform.position;
                 projectile.Target = target;
                 projectile.TargetPos = target.transform.position;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1976203166791687810}
   - component: {fileID: 5030155723220525435}
   m_Layer: 0
-  m_Name: Support
+  m_Name: TechBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 62eb0888047495445b48c61d953eaa8c, type: 2}
+  - {fileID: 2100000, guid: 297b872a48d550f45ac98319cb3d8ff0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

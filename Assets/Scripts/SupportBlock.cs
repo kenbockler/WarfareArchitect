@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class SupportBlock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float RangeModifier;
+    public float FirerateModifier;
+    public float DamageModifier;
+    public float BulletSpeedModifier;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool Seeking; // Kas kuul püüab vaenlasi targalt
+    public bool Piercing; // Kas kuul saab vaenlasest läbi minna
+    public bool Persistent; // Kas kuul jääb pärast teekonna lõpetamist alles, kui vaenlast ei taba
+    public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu järel neid kahjustab
+    public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv mõjub hirmuefektina
 }
