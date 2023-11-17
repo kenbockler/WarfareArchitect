@@ -29,6 +29,9 @@ public class Inventory : MonoBehaviour
 
     public int Selected;
 
+    public int CurrentGameviewIndex = 0;
+    public TowerComponentData CurrentBuilderItem = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,6 +104,8 @@ public class Inventory : MonoBehaviour
             Selected = 7;
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
+
+        CurrentBuilderItem = inventory[CurrentGameviewIndex].Key;
     }
 
 
@@ -162,7 +167,7 @@ public class Inventory : MonoBehaviour
 
             Events.SetStone(Events.GetStone() - item.Cost[0]);
             Events.SetIron(Events.GetIron() - item.Cost[1]);
-            Events.SetUranium(Events.GetUranium() - item.Cost[2]);
+            Events.SetUranium(Events.GetUranium() - item.Cost[2]);         
         }
     }
 }

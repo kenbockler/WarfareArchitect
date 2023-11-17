@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Builder : MonoBehaviour
 {
+    public static Builder Instance;
+
     private static readonly float ColliderCheckRadius = 5f; // Konstant kollisiooni kontrollimiseks
     private Camera cam;
 
@@ -23,6 +25,7 @@ public class Builder : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
         Events.OnTowerComponentSelected += SetTowerComponentData;
     }
 
@@ -183,8 +186,16 @@ public class Builder : MonoBehaviour
         //gameObject.SetActive(false);
     }
     
-    void SetTowerComponentData(TowerComponentData _data)
+    public void SetTowerComponentData(TowerComponentData _data)
     {
+        if (_data == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        //print(_data.DisplayName);
+
         gameObject.SetActive(true);
         data = _data;
         if (data is FoundationData)
@@ -255,6 +266,14 @@ public class Builder : MonoBehaviour
                 GunBase = hitObject.GetComponent<GunBase>();
             }
             // Kui on veel teisi objekte, millele v�ib ehitada, siis lisa siia..
+        }
+    }
+
+    public void SetGameObjectState(bool state)
+    {
+        if (gameObject.activeSelf != state)
+        {
+            gameObject.SetActive(state);
         }
     }
 }

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class ScenarioController : MonoBehaviour
 {
+    public static ScenarioController Instance;
+
     public TextMeshProUGUI ResourceText;
     public TextMeshProUGUI LivesText;
     public TextMeshProUGUI SelectedText;
@@ -28,6 +30,8 @@ public class ScenarioController : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         Events.OnSetLives += SetLives;
         Events.OnGetLives += GetLives;
         Events.OnSetStone += SetStone;
@@ -151,7 +155,12 @@ public class ScenarioController : MonoBehaviour
 
     void TowerComponentSelected(TowerComponentData data)
     {
-        if(data == null)
+        SetSelectedText(data);
+    }
+
+    public void SetSelectedText(TowerComponentData data)
+    {
+        if (data == null)
         {
             SelectedText.text = "Empty";
         }

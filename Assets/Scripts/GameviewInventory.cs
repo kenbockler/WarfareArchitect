@@ -49,7 +49,6 @@ public class GameviewInventory : MonoBehaviour
         }
 
         InventoryItemSelected(Selected);
-
     }
 
     // Update is called once per frame
@@ -60,12 +59,16 @@ public class GameviewInventory : MonoBehaviour
             Selected = (Selected + 1) % 8;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
         if (Input.mouseScrollDelta.y > 0)
         {
             Selected = (Selected + 7) % 8;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
 
         //Teeme nii, et numbritega saaks ka inventorys ringi käia
@@ -74,48 +77,64 @@ public class GameviewInventory : MonoBehaviour
             Selected = 0;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Selected = 1;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Selected = 2;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             Selected = 3;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             Selected = 4;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             Selected = 5;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             Selected = 6;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             Selected = 7;
             InventoryItemSelected(Selected);
             Events.TowerComponentSelected(inventory[Selected].Key);
+
+            IsNullSetBuilderFalse(inventory[Selected].Key);
         }
     }
 
@@ -149,6 +168,14 @@ public class GameviewInventory : MonoBehaviour
             {
                 greenGlows[i].SetActive(false);
             }
+        }
+    }
+
+    public void IsNullSetBuilderFalse(TowerComponentData item)
+    {
+        if (item == null)
+        {
+            Builder.Instance.SetGameObjectState(false);
         }
     }
 }

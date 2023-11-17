@@ -2239,7 +2239,7 @@ GameObject:
   - component: {fileID: 222454797}
   m_Layer: 0
   m_Name: TerrainEnemyPath
-  m_TagString: Untagged
+  m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12170,6 +12170,8 @@ MonoBehaviour:
   - {fileID: 968105220}
   - {fileID: 1858224342}
   Selected: 0
+  CurrentGameviewIndex: 0
+  CurrentBuilderItem: {fileID: 0}
 --- !u!1 &1292376183
 GameObject:
   m_ObjectHideFlags: 0

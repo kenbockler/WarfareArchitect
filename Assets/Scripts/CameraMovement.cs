@@ -20,7 +20,7 @@ public class CameraMovement : MonoBehaviour
     private bool _playerMovementEnabled = true;
 
     public void Awake()
-    {
+    {        
         Events.OnEndGame += Unlock;
     }
     public void OnDestroy()
@@ -34,7 +34,7 @@ public class CameraMovement : MonoBehaviour
         TerminalMenu.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true; // For debugging set to true
+        Cursor.visible = false; // For debugging set to true
     }
 
     
@@ -47,10 +47,10 @@ public class CameraMovement : MonoBehaviour
             {                
                 _playerMovementEnabled = true;
                 OptionsMenu.SetActive(false);
-                TerminalMenu.SetActive(false);
+                TerminalMenu.SetActive(false);                              
 
                 Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = true;
+                Cursor.visible = false;
             }
 
 
@@ -63,8 +63,19 @@ public class CameraMovement : MonoBehaviour
                 OptionsMenu.SetActive(false);
                 TerminalMenu.SetActive(false);
 
+                //print(Inventory.instance.CurrentGameviewIndex);
+
+                //enable the gameview inventory
+                GameviewInventory.instance.gameObject.SetActive(true);
+
+                //set current builder item
+                Builder.Instance.gameObject.SetActive(true);
+                Builder.Instance.SetTowerComponentData(Inventory.instance.CurrentBuilderItem);
+                ScenarioController.Instance.SetSelectedText(Inventory.instance.CurrentBuilderItem);
+                ScenarioController.Instance.SelectedText.enabled = true;
+
                 Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = true;
+                Cursor.visible = false;
             }
 
 
@@ -87,6 +98,17 @@ public class CameraMovement : MonoBehaviour
                 OptionsMenu.SetActive(false);
                 TerminalMenu.SetActive(true);
                 _playerMovementEnabled = false;
+
+                //disable the builder
+                Builder.Instance.gameObject.SetActive(false);
+
+                //disable the gameview inventory
+                GameviewInventory.instance.gameObject.SetActive(false);
+                ScenarioController.Instance.SelectedText.enabled = false;
+
+                //get the current gameview inventory selected item's index and save its value to
+                // terminal inventory
+                Inventory.instance.CurrentGameviewIndex = GameviewInventory.instance.Selected;                
 
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
