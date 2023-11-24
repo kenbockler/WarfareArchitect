@@ -146,7 +146,7 @@ public class Builder : MonoBehaviour
         if (data is DrillData)
         {
             Vector3 newPos = pos;
-            newPos.y = 110;
+            newPos.y = 50;
             Instantiate(((DrillData)data).DrillPrefab, newPos, Quaternion.identity);
         }
         else if (data is FoundationData && Foundation == null)
