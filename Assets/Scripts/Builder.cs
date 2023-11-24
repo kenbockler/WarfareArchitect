@@ -63,12 +63,15 @@ public class Builder : MonoBehaviour
         // Ehitamine v�i desaktiveerimine
         if (Input.GetMouseButtonDown(0) && isFree)
         {
-            Build();
-            PlacementAudio.Play();
+            boolean built = Build();
+            if(built)
+            {
+                PlacementAudio.Play();
 
-            //And decrease item quantity in inventory by 1
-            GameviewInventory.instance.DecrementItemQuantity();
-            Inventory.instance.DecrementBuymenuItemQuantity(GameviewInventory.instance.Selected);
+                //And decrease item quantity in inventory by 1
+                GameviewInventory.instance.DecrementItemQuantity();
+                Inventory.instance.DecrementBuymenuItemQuantity(GameviewInventory.instance.Selected);
+            }
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -149,8 +152,9 @@ public class Builder : MonoBehaviour
     }
 
 
-    void Build()
+    boolean Build()
     {
+        boolean built = true;
         if (data is DrillData)
         {
             Vector3 newPos = pos;
@@ -221,6 +225,11 @@ public class Builder : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            built = false;
+        }
+        return built;
         // Siia saab lisada teisi komponente...
         //gameObject.SetActive(false);
     }
