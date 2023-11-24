@@ -177,7 +177,7 @@ public class Builder : MonoBehaviour
         {
             Gun newGun = Instantiate(((GunData)data).GunPrefab, pos, Quaternion.identity);
             newGun.GunBase = GunBase;
-            newGun.transform.position = GunBase.transform.position + new Vector3(0, (newGun.transform.localScale.y + GunBase.transform.localScale.y) / 2, 0);
+            newGun.transform.position = GunBase.transform.position + new Vector3(0, (newGun.transform.localScale.y + GunBase.transform.localScale.y) * 1.75f, 0);
         }
         else if (data is SupportBlockData && Structure != null)
         {
