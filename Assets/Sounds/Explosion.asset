@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7f36bc969beb24f8ba4c66ae3e2df6, type: 3}
   m_Name: Explosion
   m_EditorClassIdentifier: 
-  VolumeMin: 1
-  VolumeMax: 1
+  VolumeMin: 0.2
+  VolumeMax: 0.3
   PitchMin: 0.696
   PitchMax: 1
   Cooldown: 0.4

@@ -46,11 +46,20 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Health target = GetTarget();
+        if(target != null)
+        {
+            Vector3 direction = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            Debug.DrawRay(transform.position, direction, Color.yellow);
+            transform.eulerAngles = Vector3.up * angle;
+        }
         if(NextSpawnTime < Time.time)
         {
-            Health target = GetTarget();
+            target = GetTarget();
             if(target != null)
             {
+                transform.Rotate(0, Vector3.SignedAngle(transform.forward, target.transform.position - transform.position, Vector3.up), 0);
                 GunAudio.Play(transform.position);
                 Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
                 projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
