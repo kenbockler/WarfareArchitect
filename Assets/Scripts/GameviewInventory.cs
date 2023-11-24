@@ -178,4 +178,24 @@ public class GameviewInventory : MonoBehaviour
             Builder.Instance.SetGameObjectState(false);
         }
     }
+
+    //vähenda selected item kogust 1 võrra (kui läheb nulli, vabasta koht)
+    public void DecrementItemQuantity()
+    {
+        inventory[Selected].Value--;
+        counts[Selected].text = inventory[Selected].Value.ToString();
+        if (inventory[Selected].Value <= 0)
+        {
+            //Peame itemi kustutama mõlemast inventoryst
+            inventory[Selected].Key = null;
+            inventory[Selected].Value = 0;
+
+            images[Selected].gameObject.SetActive(false);
+            counts[Selected].gameObject.SetActive(false);
+
+            //Paneme builderi inaktiivseks, kui item sai otsa
+            IsNullSetBuilderFalse(null);
+        }
+        ScenarioController.Instance.SetSelectedText(inventory[Selected].Key);
+    }
 }

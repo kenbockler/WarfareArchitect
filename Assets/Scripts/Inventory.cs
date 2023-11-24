@@ -170,4 +170,18 @@ public class Inventory : MonoBehaviour
             Events.SetUranium(Events.GetUranium() - item.Cost[2]);         
         }
     }
+
+    public void DecrementBuymenuItemQuantity(int index)
+    {
+        inventory[index].Value--;
+        counts[index].text = inventory[index].Value.ToString();
+        if (inventory[index].Value <= 0)
+        {
+            inventory[index].Key = null;
+            inventory[index].Value = 0;
+
+            images[index].gameObject.SetActive(false);
+            counts[index].gameObject.SetActive(false);
+        }
+    }
 }

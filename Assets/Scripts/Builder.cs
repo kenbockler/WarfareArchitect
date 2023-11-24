@@ -54,10 +54,18 @@ public class Builder : MonoBehaviour
 
         if (MeshRenderer.materials[0] != null) MeshRenderer.materials[0].color = color;
 
+
+        //Proov
+        //GameviewInventory.instance.inventory[GameviewInventory.instance.Selected].Value;
+
         // Ehitamine v�i desaktiveerimine
         if (Input.GetMouseButtonDown(0) && isFree)
         {
             Build();
+
+            //And decrease item quantity in inventory by 1
+            GameviewInventory.instance.DecrementItemQuantity();
+            Inventory.instance.DecrementBuymenuItemQuantity(GameviewInventory.instance.Selected);
         }
         if (Input.GetMouseButtonDown(1))
         {
