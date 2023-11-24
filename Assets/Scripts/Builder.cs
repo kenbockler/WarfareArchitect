@@ -63,7 +63,7 @@ public class Builder : MonoBehaviour
         // Ehitamine v�i desaktiveerimine
         if (Input.GetMouseButtonDown(0) && isFree)
         {
-            boolean built = Build();
+            bool built = Build();
             if(built)
             {
                 PlacementAudio.Play();
@@ -152,9 +152,9 @@ public class Builder : MonoBehaviour
     }
 
 
-    boolean Build()
+    bool Build()
     {
-        boolean built = true;
+        bool built = true;
         if (data is DrillData)
         {
             Vector3 newPos = pos;
