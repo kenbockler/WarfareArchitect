@@ -94,6 +94,20 @@ public class Builder : MonoBehaviour
     // Kontrollime, kas saame antud kohta ehitada
     private bool IsAllowedToBuildOn(Collider collider)
     {
+        if (data is DrillData && collider.CompareTag("Terrain"))
+        {
+            foreach (Collider coll in Physics.OverlapSphere(transform.position, ((DrillData)data).DrillPrefab.transform.localScale.x / 2))
+            {
+                if (coll.GetComponent<Drill>()) return false;
+            }
+            // Selle rea lõpus on konstant, mida peab muutma, kui muutub tee sügavus, mis praegu on 30.
+            foreach (Collider coll in Physics.OverlapSphere(transform.position, Mathf.Sqrt(((DrillData)data).DrillPrefab.transform.localScale.x / 2) + 35))
+            {
+                if (coll.CompareTag("Path")) return false;
+            }
+            return true;
+        }
+
         if (data is FoundationData && collider.CompareTag("Terrain"))
         {
             foreach(Collider coll in Physics.OverlapSphere(transform.position, ((FoundationData)data).FoundationPrefab.transform.localScale.x / 2))
@@ -126,7 +140,11 @@ public class Builder : MonoBehaviour
 
     void Build()
     {
-        if (data is FoundationData && Foundation == null)
+        if (data is DrillData)
+        {
+            Instantiate(((DrillData)data).DrillPrefab, pos, Quaternion.identity);
+        }
+        else if (data is FoundationData && Foundation == null)
         {
             Instantiate(((FoundationData)data).FoundationPrefab, pos, Quaternion.identity);
         }
@@ -206,6 +224,12 @@ public class Builder : MonoBehaviour
 
         gameObject.SetActive(true);
         data = _data;
+        if (data is DrillData)
+        {
+            MeshRenderer.materials[0].CopyPropertiesFromMaterial(((DrillData)data).DrillPrefab.GetComponentsInChildren<MeshRenderer>()[0].sharedMaterials[0]);
+            MeshFilter.mesh = ((DrillData)data).DrillPrefab.GetComponentsInChildren<MeshFilter>()[0].sharedMesh;
+            transform.localScale = ((DrillData)data).DrillPrefab.transform.localScale;
+        }
         if (data is FoundationData)
         {
             MeshRenderer.materials[0].CopyPropertiesFromMaterial(((FoundationData)data).FoundationPrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);

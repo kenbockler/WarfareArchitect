@@ -129,14 +129,14 @@ public class CameraMovement : MonoBehaviour
             float moveX = 0f;
             float moveY = 0f;
 
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                 moveX = -1f;
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
                 moveX = 1f;
 
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
                 moveY = -1f;
-            else if (Input.GetKey(KeyCode.UpArrow))
+            else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
                 moveY = 1f;
 
             Vector3 moveDirection = new Vector3(moveX, 0, moveY).normalized;
