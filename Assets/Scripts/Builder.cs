@@ -241,7 +241,7 @@ public class Builder : MonoBehaviour
         {
             MeshRenderer.materials[0].CopyPropertiesFromMaterial(((DrillData)data).DrillPrefab.GetComponentsInChildren<MeshRenderer>()[0].sharedMaterials[0]);
             MeshFilter.mesh = ((DrillData)data).DrillPrefab.GetComponentsInChildren<MeshFilter>()[0].sharedMesh;
-            transform.localScale = ((DrillData)data).DrillPrefab.transform.localScale;
+            transform.localScale = ((DrillData)data).DrillPrefab.GetComponentsInChildren<Transform>()[1].transform.localScale;
         }
         if (data is FoundationData)
         {
