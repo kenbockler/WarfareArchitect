@@ -9,6 +9,7 @@ TagManager:
   - Structure
   - GunBase
   - Path
+  - DrillHitbox
   layers:
   - Default
   - TransparentFX

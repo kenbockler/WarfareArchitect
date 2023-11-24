@@ -99,12 +99,16 @@ public class Builder : MonoBehaviour
     {
         if (data is DrillData && collider.CompareTag("Terrain"))
         {
-            foreach (Collider coll in Physics.OverlapSphere(transform.position, ((DrillData)data).DrillPrefab.transform.localScale.x / 2))
+            foreach (Collider coll in Physics.OverlapSphere(transform.position, ((DrillData)data).DrillPrefab.transform.Find("CubeHitbox").localScale.x / 2))
             {
                 if (coll.GetComponent<Drill>()) return false;
+                if (coll.CompareTag("DrillHitbox") || coll.CompareTag("Foundation"))
+                {
+                    return false;
+                }                               
             }
             // Selle rea lõpus on konstant, mida peab muutma, kui muutub tee sügavus, mis praegu on 30.
-            foreach (Collider coll in Physics.OverlapSphere(transform.position, Mathf.Sqrt(((DrillData)data).DrillPrefab.transform.localScale.x / 2) + 35))
+            foreach (Collider coll in Physics.OverlapSphere(transform.position, Mathf.Sqrt(((DrillData)data).DrillPrefab.transform.Find("CubeHitbox").localScale.x / 2) + 60))
             {
                 if (coll.CompareTag("Path")) return false;
             }
@@ -116,6 +120,10 @@ public class Builder : MonoBehaviour
             foreach(Collider coll in Physics.OverlapSphere(transform.position, ((FoundationData)data).FoundationPrefab.transform.localScale.x / 2))
             {
                 if (coll.GetComponent<Foundation>()) return false;
+                if (coll.CompareTag("DrillHitbox"))
+                {
+                    return false;
+                }
             }
             // Selle rea lõpus on konstant, mida peab muutma, kui muutub tee sügavus, mis praegu on 30.
             foreach(Collider coll in Physics.OverlapSphere(transform.position, Mathf.Sqrt(((FoundationData)data).FoundationPrefab.transform.localScale.x / 2) + 35))
