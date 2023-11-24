@@ -2514,6 +2514,7 @@ MonoBehaviour:
   Foundation: {fileID: 0}
   Structure: {fileID: 0}
   GunBase: {fileID: 0}
+  PlacementAudio: {fileID: 11400000, guid: 413e3adf4c31d5c42b88e39d777c31dc, type: 2}
 --- !u!4 &233474127
 Transform:
   m_ObjectHideFlags: 0
@@ -11309,6 +11310,7 @@ MonoBehaviour:
   IronCostText: {fileID: 102273714}
   UraniumCostText: {fileID: 1780582418}
   SelectedItem: {fileID: 0}
+  SelectedAudio: {fileID: 11400000, guid: e7079a2a9f6bd1543aa74e92031a2ff3, type: 2}
 --- !u!114 &1246805869
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Ronald.unity
     guid: a836aebf874655e43b68001019136cf1
+  - enabled: 1
+    path: Assets/Scenes/Rauno.unity
+    guid: 5cbfbf58e9c041e4dbb5ddd18c6ae533
   m_configObjects: {}

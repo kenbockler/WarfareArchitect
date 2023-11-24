@@ -119,9 +119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Range: 200
-  RangeModifier: 0
-  FirerateModifier: 0
-  DamageModifier: 0
+  RangeModifier: 1
+  FirerateModifier: 1
+  DamageModifier: 1
+  BulletSpeedModifier: 1
   Seeking: 0
   Piercing: 0
   Persistent: 0

@@ -25,6 +25,8 @@ public class Terminal : MonoBehaviour
 
     public TowerComponentData SelectedItem;
 
+    public AudioClipGroup SelectedAudio;
+
     private void Awake()
     {
         Events.OnSetStone += SetStone;
@@ -59,6 +61,7 @@ public class Terminal : MonoBehaviour
 
     public void OnItemSelected(TowerComponentData item)
     {
+        SelectedAudio.Play();
         SelectedItem = item;
 
         ItemNameText.text = item.DisplayName;

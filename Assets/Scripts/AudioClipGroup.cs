@@ -79,8 +79,6 @@ public class AudioClipGroup : ScriptableObject
         source.clip = AudioClips[Random.Range(0, AudioClips.Count)];
         source.volume = Random.Range(VolumeMin, VolumeMax);
         source.pitch = Random.Range(PitchMin, PitchMax);
-        Debug.Log(source.transform.parent.transform.position);
-        Debug.Log(location);
         source.transform.position = location;
         source.Play();
         nextPlayTime = Time.time + Cooldown;

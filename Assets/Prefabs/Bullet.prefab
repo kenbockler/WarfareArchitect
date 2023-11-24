@@ -123,3 +123,8 @@ MonoBehaviour:
   TargetPos: {x: 0, y: 0, z: 0}
   Damage: 1
   Seeking: 0
+  Piercing: 0
+  Persistent: 0
+  Poison: 0
+  Slow: 0
+  ExplosionAudio: {fileID: 11400000, guid: 5eae7e5543ca653498ad65a1f16c2910, type: 2}

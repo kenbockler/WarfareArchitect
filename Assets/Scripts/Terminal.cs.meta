@@ -3,7 +3,20 @@ guid: c227d8608ca9fc040a5a829b353ff59c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - StoneResourceText: {instanceID: 0}
+  - IronResourceText: {instanceID: 0}
+  - UraniumResourceText: {instanceID: 0}
+  - ItemNameText: {instanceID: 0}
+  - ItemTypeText: {instanceID: 0}
+  - IconObject: {instanceID: 0}
+  - IconSprite: {instanceID: 0}
+  - StatisticsText: {instanceID: 0}
+  - StoneCostText: {instanceID: 0}
+  - IronCostText: {instanceID: 0}
+  - UraniumCostText: {instanceID: 0}
+  - SelectedItem: {instanceID: 0}
+  - SelectedAudio: {fileID: 11400000, guid: e7079a2a9f6bd1543aa74e92031a2ff3, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

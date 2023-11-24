@@ -15,6 +15,8 @@ public class Projectile : MonoBehaviour
     public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu j�rel neid kahjustab
     public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv m�jub hirmuefektina
     
+    public AudioClipGroup ExplosionAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,7 @@ public class Projectile : MonoBehaviour
         Health enemy = collision.GetComponent<Health>();
         if(enemy != null)
         {
+            ExplosionAudio.Play(transform.position);
             if(!Piercing) GameObject.Destroy(gameObject);
             enemy.Damage(Damage);
         }

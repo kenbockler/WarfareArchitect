@@ -23,6 +23,8 @@ public class Builder : MonoBehaviour
     public Structure Structure;
     public GunBase GunBase;
 
+    public AudioClipGroup PlacementAudio;
+
     void Awake()
     {
         Instance = this;
@@ -62,6 +64,7 @@ public class Builder : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isFree)
         {
             Build();
+            PlacementAudio.Play();
 
             //And decrease item quantity in inventory by 1
             GameviewInventory.instance.DecrementItemQuantity();

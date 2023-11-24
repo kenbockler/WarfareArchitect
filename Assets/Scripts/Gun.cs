@@ -28,6 +28,8 @@ public class Gun : MonoBehaviour
 
     // Siia juurde v�ib panna teisi laskmisega seotud atribuute, t�ev��rtusi.
 
+    public AudioClipGroup GunAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,7 @@ public class Gun : MonoBehaviour
             Health target = GetTarget();
             if(target != null)
             {
+                GunAudio.Play(transform.position);
                 Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
                 projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
                 projectile.Seeking = Seeking || GunBase.Structure.Seeking;
