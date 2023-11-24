@@ -10,19 +10,19 @@ public class Structure : MonoBehaviour
     public float DamageModifier;
     public float BulletSpeedModifier;
 
-    public bool Seeking; // Kas kuul püüab vaenlasi targalt
-    public bool Piercing; // Kas kuul saab vaenlasest läbi minna
-    public bool Persistent; // Kas kuul jääb pärast teekonna lõpetamist alles, kui vaenlast ei taba
-    public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu järel neid kahjustab
-    public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv mõjub hirmu- või segadusefektina
+    public bool Seeking; // Kas kuul pï¿½ï¿½ab vaenlasi targalt
+    public bool Piercing; // Kas kuul saab vaenlasest lï¿½bi minna
+    public bool Persistent; // Kas kuul jï¿½ï¿½b pï¿½rast teekonna lï¿½petamist alles, kui vaenlast ei taba
+    public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu jï¿½rel neid kahjustab
+    public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv mï¿½jub hirmu- vï¿½i segadusefektina
 
     public Foundation Foundation;
     public SupportBlock[] SupportBlocks;
 
     public void ComputeSupportBlocks()
     {
-        // Siia tuleb kood, mis tugiplokkide arvu ja omavahelise asetuse põhjal
-        // täidab suurema osa struktuuriväljadest.
+        // Siia tuleb kood, mis tugiplokkide arvu ja omavahelise asetuse pï¿½hjal
+        // tï¿½idab suurema osa struktuurivï¿½ljadest.
         float range = Range;
         float firerate = 1;
         float damage = 1;
@@ -33,7 +33,7 @@ public class Structure : MonoBehaviour
         float poison = 0;
         float slow = 1;
 
-        // Kõigepealt arvestame iga tugiploki atribuute eraldi.
+        // Kï¿½igepealt arvestame iga tugiploki atribuute eraldi.
         foreach(SupportBlock supportblock in SupportBlocks)
         {
             if(supportblock != null)
@@ -51,9 +51,9 @@ public class Structure : MonoBehaviour
                 slow *= supportblock.Slow;
             }
         }
-        Persistent &= !Piercing; // Keelab igavesed miinid, vähemalt niisama liitmisest.
+        Persistent &= !Piercing; // Keelab igavesed miinid, vï¿½hemalt niisama liitmisest.
 
-        // Vahele kombinatsioonide kood. Kombinatsioon on näiteks: kui tugiplokid üle ühe on tech-tüüpi, tekivad igavesed miinid (praktikas on see näide kole, saab elegantsemalt).
+        // Vahele kombinatsioonide kood. Kombinatsioon on nï¿½iteks: kui tugiplokid ï¿½le ï¿½he on tech-tï¿½ï¿½pi, tekivad igavesed miinid (praktikas on see nï¿½ide kole, saab elegantsemalt).
 
         RangeModifier = range;
         FirerateModifier = firerate;

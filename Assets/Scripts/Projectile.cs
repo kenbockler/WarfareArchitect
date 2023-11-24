@@ -9,11 +9,11 @@ public class Projectile : MonoBehaviour
     public Vector3 TargetPos;
     public int Damage = 1;
 
-    public bool Seeking; // Kas kuul püüab vaenlasi targalt
-    public bool Piercing; // Kas kuul saab vaenlasest läbi minna
-    public bool Persistent; // Kas kuul jääb pärast teekonna lõpetamist alles, kui vaenlast ei taba
-    public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu järel neid kahjustab
-    public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv mõjub hirmuefektina
+    public bool Seeking; // Kas kuul pï¿½ï¿½ab vaenlasi targalt
+    public bool Piercing; // Kas kuul saab vaenlasest lï¿½bi minna
+    public bool Persistent; // Kas kuul jï¿½ï¿½b pï¿½rast teekonna lï¿½petamist alles, kui vaenlast ei taba
+    public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu jï¿½rel neid kahjustab
+    public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv mï¿½jub hirmuefektina
     
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
                 TargetPos = Target.transform.position;
                 if(Vector3.Distance(transform.position, TargetPos) < 10)
                 {
-                    if(Piercing) Seeking = false; // Siin tuleks tegelikult midagi intelligentsemat teha, et ta järgmise vaenlase poole kihutaks.
+                    if(Piercing) Seeking = false; // Siin tuleks tegelikult midagi intelligentsemat teha, et ta jï¿½rgmise vaenlase poole kihutaks.
                     else GameObject.Destroy(gameObject);
                     Target.Damage(Damage);
                 }

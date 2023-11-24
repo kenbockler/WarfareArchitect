@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +28,7 @@ public class optionsMenuKomponendid : MonoBehaviour
 
     void Start()
     {
-        // Seo nuppude sündmused
+        // Seo nuppude sï¿½ndmused
         backButton.onClick.AddListener(OnBackButtonClicked);
         masterVolumeSlider.onValueChanged.AddListener(delegate { OnMasterVolumeChanged(masterVolumeSlider.value); });
         resolutionDropdown.onValueChanged.AddListener(delegate { OnResolutionChange(resolutionDropdown.value); });
@@ -45,19 +43,19 @@ public class optionsMenuKomponendid : MonoBehaviour
 
     public void OnResolutionChange(int resolutionIndex)
     {
-        // Muuda eraldusvõimet
-        Debug.Log("Valitud eraldusvõime: " + resolutionDropdown.options[resolutionIndex].text);
+        // Muuda eraldusvï¿½imet
+        Debug.Log("Valitud eraldusvï¿½ime: " + resolutionDropdown.options[resolutionIndex].text);
     }
 
     public void OnMuteChanged(bool isMuted)
     {
-        // Lülita heli välja või sisse
-        Debug.Log("Helid " + (isMuted ? "välja lülitatud" : "sisse lülitatud"));
+        // Lï¿½lita heli vï¿½lja vï¿½i sisse
+        Debug.Log("Helid " + (isMuted ? "vï¿½lja lï¿½litatud" : "sisse lï¿½litatud"));
     }
 
     public void OnBackButtonClicked()
     {
-        // Peida Options-menüü ja näita peamenüüd
+        // Peida Options-menï¿½ï¿½ ja nï¿½ita peamenï¿½ï¿½d
         gameObject.SetActive(false);
         mainMenuKomponendid.SetActive(true);
     }
