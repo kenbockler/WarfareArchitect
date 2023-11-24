@@ -8,6 +8,8 @@ public class Drill : MonoBehaviour
     public int IronMiningSpeed;
     public int UraniumMiningSpeed;
 
+    public AudioClipGroup DrillAudio;
+
     private bool enable;
 
     public void Awake()
@@ -36,6 +38,7 @@ public class Drill : MonoBehaviour
             Events.SetStone(Events.GetStone() + Time.deltaTime * StoneMiningSpeed / 60);
             Events.SetIron(Events.GetIron() + Time.deltaTime * IronMiningSpeed / 60);
             Events.SetUranium(Events.GetUranium() + Time.deltaTime * UraniumMiningSpeed / 60);
+            DrillAudio.Play(transform.position);
         }
     }
 

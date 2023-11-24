@@ -473,6 +473,7 @@ MonoBehaviour:
   StoneMiningSpeed: 60
   IronMiningSpeed: 0
   UraniumMiningSpeed: 0
+  DrillAudio: {fileID: 11400000, guid: 144ed2cef51aa9e4cb00a6f61536f176, type: 2}
 --- !u!1 &6144606376160016953
 GameObject:
   m_ObjectHideFlags: 0

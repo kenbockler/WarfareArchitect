@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7f36bc969beb24f8ba4c66ae3e2df6, type: 3}
+  m_Name: Drill
+  m_EditorClassIdentifier: 
+  VolumeMin: 0.9
+  VolumeMax: 1
+  PitchMin: 0.97
+  PitchMax: 1.03
+  Cooldown: 1
+  AudioClips:
+  - {fileID: 8300000, guid: b125a94c5854ba248a320ceb8cc77b0f, type: 3}
+  - {fileID: 8300000, guid: 770ce70f7f23c2240b27d374d58f7ead, type: 3}
+  - {fileID: 8300000, guid: f873d673b7b519843920ae72105c20e1, type: 3}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7f36bc969beb24f8ba4c66ae3e2df6, type: 3}
+  m_Name: Laser
+  m_EditorClassIdentifier: 
+  VolumeMin: 0.9
+  VolumeMax: 1
+  PitchMin: 0.9
+  PitchMax: 1.1
+  Cooldown: 1
+  AudioClips:
+  - {fileID: 8300000, guid: e3d712be11af88c4d987dc82065d8cbd, type: 3}
+  - {fileID: 8300000, guid: 3c17c0c946e1d7847b2b70f66c3a2842, type: 3}
