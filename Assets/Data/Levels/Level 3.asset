@@ -18,4 +18,5 @@ MonoBehaviour:
   iron: 5
   uranium: 5
   lives: 10
+  IsLocked: 1
   Waves: []

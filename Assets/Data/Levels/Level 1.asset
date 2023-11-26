@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   PresentedName: Level 1
-  SceneName: 
+  SceneName: Rauno
   stone: 5
   iron: 5
   uranium: 5
   lives: 10
-  Waves: []
+  IsLocked: 0
+  Waves:
+  - {fileID: 11400000, guid: 5408c925933aac540a0e6d63ce662463, type: 2}
+  - {fileID: 11400000, guid: e0b6b5c0b53dfa848bf1824c96b29c1c, type: 2}
+  - {fileID: 11400000, guid: 4985a7b8982d57a488771d3130d3e5cd, type: 2}
