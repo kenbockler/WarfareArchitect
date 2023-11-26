@@ -154,6 +154,11 @@ public class ScenarioController : MonoBehaviour
         Win = false;
     }
 
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     void TowerComponentSelected(TowerComponentData data)
     {
         SetSelectedText(data);
