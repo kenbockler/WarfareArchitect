@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9fe1b13c402a64ea1fc71ad4657783, type: 3}
   m_Name: SpeedBlock
   m_EditorClassIdentifier: 
-  DisplayName: Speed block
+  DisplayName: Speed Block
   Cost: 140000000000000000000000
   IconSprite: {fileID: 21300000, guid: b0f240a138e3e9b428f590820dda540a, type: 3}
   Hotkey: 0
