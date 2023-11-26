@@ -33,7 +33,7 @@ public class CameraMovement : MonoBehaviour
         HandleMenuToggle();
         HandleCameraMovement();
     }
-
+    
     private void HandleMenuToggle()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ronald.unity
     guid: 04494a4def3cde644a6b0204ce320a11
+  - enabled: 1
+    path: Assets/Scenes/Rauno.unity
+    guid: 2a5103c7019f63d4db9ddca8ad717a75
   m_configObjects: {}
