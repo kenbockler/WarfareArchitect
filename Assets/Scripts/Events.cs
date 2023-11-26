@@ -59,4 +59,7 @@ public static class Events
 
     public static event Action<bool> OnEndGame;
     public static void EndGame(bool win) => OnEndGame?.Invoke(win);
+
+    public static event Action<bool> OnPlaceSupportBlock;
+    public static void PlaceSupportBlock(bool b) => OnPlaceSupportBlock?.Invoke(b);
 }

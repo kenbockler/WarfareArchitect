@@ -62,12 +62,12 @@ public class Structure : MonoBehaviour
         if(OverEvery(1, "SpeedBlock"))
         {
             firerate *= 5;
-            bulletspeed *= 5;
+            //bulletspeed *= 5;
         }
         if(OverEvery(1, "PowerBlock"))
         {
             damage *= 5;
-            bulletspeed *= 3;
+            //bulletspeed *= 3;
         }
         if(OverEvery(2, "TechBlock") && OverEvery(2, "PowerBlock"))
         {
@@ -84,7 +84,7 @@ public class Structure : MonoBehaviour
             range *= 2;
             firerate *= 3;
             damage *= 2;
-            bulletspeed *= 4;
+            //bulletspeed *= 4;
         }
         if(OverEvery(3, "TechBlock") && OverEvery(3, "PowerBlock") && OverEvery(3, "SpeedBlock"))
         {

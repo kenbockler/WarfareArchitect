@@ -12,6 +12,9 @@ public class Gun : MonoBehaviour
     public float RangeModifier;
     public SphereCollider rangeApplied;
 
+    public float DamageModifier;
+    public float FirerateModifier;
+
     public Projectile ProjectilePrefab;
 
     public GunBase GunBase;
@@ -33,11 +36,20 @@ public class Gun : MonoBehaviour
 
     public Vector3 InitialRotation = Vector3.zero;
 
+    public void Awake()
+    {
+        Events.OnPlaceSupportBlock += PlaceSupportBlock;
+    }
+    public void OnDestroy()
+    {
+        Events.OnPlaceSupportBlock -= PlaceSupportBlock;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Damage = (int) Mathf.Ceil(Damage * GunBase.DamageModifier * GunBase.Structure.DamageModifier);
-        FireRate *= GunBase.FirerateModifier * GunBase.Structure.FirerateModifier;
+        Damage = (int) Mathf.Ceil(DamageModifier * GunBase.DamageModifier * GunBase.Structure.DamageModifier);
+        FireRate = FirerateModifier * GunBase.FirerateModifier * GunBase.Structure.FirerateModifier;
         Range = GunBase.Structure.Range * RangeModifier;
         SpawnDelay = 1 / FireRate;
         NextSpawnTime = Time.time;
@@ -139,5 +151,10 @@ public class Gun : MonoBehaviour
         {
             targets.Remove(health);
         }
+    }
+
+    private void PlaceSupportBlock(bool b)
+    {
+        Start();
     }
 }
