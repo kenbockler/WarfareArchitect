@@ -172,6 +172,8 @@ public class CameraMovement : MonoBehaviour
         Builder.Instance.SetGameObjectState(false);
         GameviewInventory.instance.gameObject.SetActive(false);
         ScenarioController.Instance.SelectedText.gameObject.SetActive(false);
+        ScenarioController.Instance.WaveInfoText.enabled = false;
+        ScenarioController.Instance.IsGameOver = true;
         ToggleMenus(false);
         SetCursorState(true);
     }

@@ -10,11 +10,14 @@ public class ScenarioController : MonoBehaviour
     public TextMeshProUGUI ResourceText;
     public TextMeshProUGUI LivesText;
     public TextMeshProUGUI SelectedText;
+    public TextMeshProUGUI WaveInfoText;
 
     public GameObject EndPanel;
     public TextMeshProUGUI EndText;
     public TextMeshProUGUI FinalScoreText;
     public TextMeshProUGUI ButtonText;
+
+    public bool IsGameOver = false;
 
     private float stone = 50;
     private float iron = 0;
@@ -41,6 +44,8 @@ public class ScenarioController : MonoBehaviour
         Events.OnGetUranium += GetUranium;
 
         Events.OnTowerComponentSelected += TowerComponentSelected;
+
+        WaveInfoText.enabled = false;
     }
 
     private void OnDestroy()
@@ -71,10 +76,27 @@ public class ScenarioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if (GameObject.FindObjectsOfType<Health>().Length == 0)
+        {            
+            if (IsGameOver)
+            {
+                WaveInfoText.enabled = false;
+            }
+            else
+            {
+                WaveInfoText.enabled = true;
+            }
+        }
+        else
+        {
+            WaveInfoText.enabled = false;
+        }
+
+        if(!IsGameOver && Input.GetKeyDown(KeyCode.Return))
         {
             if(GameObject.FindObjectsOfType<Health>().Length == 0)
             {
+                WaveInfoText.enabled=false;
                 NewWave(Waves[0]);
             }
         }
