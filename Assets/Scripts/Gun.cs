@@ -103,7 +103,7 @@ public class Gun : MonoBehaviour
         if(NextSpawnTime < Time.time)
         {
             target = GetTarget();
-            if(target != null)
+            if(target != null && !target.IsDead)
             {
                 GunAudio.Play(transform.position);
                 Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
@@ -130,7 +130,7 @@ public class Gun : MonoBehaviour
     {
         foreach(Health target in targets)
         {
-            if(target != null) return target;
+            if(target != null && !target.IsDead) return target;
         }
         return null;
     }

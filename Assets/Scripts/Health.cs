@@ -8,18 +8,26 @@ public class Health : MonoBehaviour
 
     private Animator animator;
 
+    private WaypointFollower wpf;
+    public bool IsDead = false;
+
     public void Damage(int value)
     {
         HealthPoints -= value;
         if(HealthPoints <= 0)
         {
-            StartCoroutine(WaitForDeathAnimation());
+            if (!IsDead)
+            {
+                IsDead = true;
+                StartCoroutine(WaitForDeathAnimation());
+            }
         }
     }
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();           
+        animator = GetComponent<Animator>();
+        wpf = GetComponent<WaypointFollower>();
     }
 
     IEnumerator WaitForDeathAnimation()
