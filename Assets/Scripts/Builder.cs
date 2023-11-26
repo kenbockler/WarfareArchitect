@@ -68,7 +68,7 @@ public class Builder : MonoBehaviour
             {
                 PlacementAudio.Play();
 
-                //And decrease item quantity in inventory by 1
+                //And decrease item quantity in inventory by 1 (comment out for testing)
                 GameviewInventory.instance.DecrementItemQuantity();
                 Inventory.instance.DecrementBuymenuItemQuantity(GameviewInventory.instance.Selected);
             }
@@ -185,8 +185,8 @@ public class Builder : MonoBehaviour
         }
         else if (data is SupportBlockData && Structure != null)
         {
-            float xd = (pos.x - ((SupportBlockData)data).SupportBlockPrefab.transform.localScale.x / 2) - Structure.transform.position.x;
-            float zd = (pos.z - ((SupportBlockData)data).SupportBlockPrefab.transform.localScale.z / 2) - Structure.transform.position.z;
+            float xd = pos.x - Structure.transform.position.x;
+            float zd = pos.z - Structure.transform.position.z;
             float d = Mathf.Abs(xd) + Mathf.Abs(zd);
             if(d > 10 && d <= 30 && Mathf.Abs(xd) < 20 && Mathf.Abs(zd) < 20)
             {
@@ -218,11 +218,17 @@ public class Builder : MonoBehaviour
 
                 if(Structure.SupportBlocks[i] == null)
                 {
-                    SupportBlock newSupportBlock = Instantiate(((SupportBlockData)data).SupportBlockPrefab, new Vector3(pos.x, Structure.transform.position.y + Structure.transform.localScale.y / 2, pos.z), Quaternion.identity);
-                    newSupportBlock.transform.position += new Vector3(-newSupportBlock.transform.localScale.x / 2, newSupportBlock.transform.localScale.y / 2, -newSupportBlock.transform.localScale.z / 2);
-
+                    SupportBlock newSupportBlock = Instantiate(((SupportBlockData)data).SupportBlockPrefab, transform.position, Quaternion.identity);
                     Structure.SupportBlocks[i] = newSupportBlock;
                 }
+                else
+                {
+                    built = false;
+                }
+            }
+            else
+            {
+                built = false;
             }
         }
         else
@@ -320,6 +326,14 @@ public class Builder : MonoBehaviour
                 GunBase = hitObject.GetComponent<GunBase>();
             }
             // Kui on veel teisi objekte, millele v�ib ehitada, siis lisa siia..
+
+            if (data is SupportBlockData && Structure != null)
+            {
+                pos.x = (pos.x - ((SupportBlockData)data).SupportBlockPrefab.transform.localScale.x / 2);
+                pos.y = Structure.transform.position.y + Structure.transform.localScale.y / 2 + ((SupportBlockData)data).SupportBlockPrefab.transform.localScale.y / 2;
+                pos.z = (pos.z - ((SupportBlockData)data).SupportBlockPrefab.transform.localScale.z / 2);
+                transform.position = pos;
+            }
         }
     }
 
