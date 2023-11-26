@@ -11543,6 +11543,7 @@ MonoBehaviour:
   sensitivityX: 2
   sensitivityY: 2
   moveSpeed: 50
+  speedMultiplier: 2
   OptionsMenu: {fileID: 1398220754}
   TerminalMenu: {fileID: 20943591}
 --- !u!1 &1124366746
