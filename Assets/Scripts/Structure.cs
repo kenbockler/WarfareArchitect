@@ -61,37 +61,37 @@ public class Structure : MonoBehaviour
         }
         if(OverEvery(1, "SpeedBlock"))
         {
-            FirerateModifier *= 5;
-            BulletSpeedModifier *= 5;
+            firerate *= 5;
+            bulletspeed *= 5;
         }
         if(OverEvery(1, "PowerBlock"))
         {
-            DamageModifier *= 5;
-            BulletSpeedModifier *= 3;
+            damage *= 5;
+            bulletspeed *= 3;
         }
         if(OverEvery(2, "TechBlock") && OverEvery(2, "PowerBlock"))
         {
-            DamageModifier *= 3;
-            Slow *= -0.1;
+            damage *= 3;
+            Slow *= -0.1f;
         }
         if(OverEvery(2, "TechBlock") && OverEvery(2, "SpeedBlock"))
         {
-            FireRateModifier *= 3;
+            firerate *= 3;
             Piercing = true;
         }
         if(OverEvery(2, "PowerBlock") && OverEvery(2, "SpeedBlock"))
         {
-            RangeModifier *= 2;
-            FireRateModifier *= 3;
-            DamageModifier *= 2;
-            BulletSpeedModifier *= 4;
+            range *= 2;
+            firerate *= 3;
+            damage *= 2;
+            bulletspeed *= 4;
         }
         if(OverEvery(3, "TechBlock") && OverEvery(3, "PowerBlock") && OverEvery(3, "SpeedBlock"))
         {
-            RangeModifier *= 1.5;
-            FireRateModifier *= 2;
-            DamageModifier *= 2;
-            BulletSpeedModifier *= 2;
+            range *= 1.5f;
+            firerate *= 2;
+            damage *= 2;
+            bulletspeed *= 2;
         }
 
         RangeModifier = range;
