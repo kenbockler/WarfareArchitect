@@ -87,7 +87,7 @@ public class Structure : MonoBehaviour
         return true;
     }
 
-    private bool OverEvery(int n, string id)
+    private bool OverEvery(int n, string id) // 12 ploki puhul huvitavad meid n väärtused 1, 2, 3, 4, 6.
     {
         int i = 0;
         bool[] b = new bool[n];

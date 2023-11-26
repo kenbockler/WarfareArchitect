@@ -11543,6 +11543,7 @@ MonoBehaviour:
   sensitivityX: 2
   sensitivityY: 2
   moveSpeed: 50
+  speedMultiplier: 2
   OptionsMenu: {fileID: 1398220754}
   TerminalMenu: {fileID: 20943591}
 --- !u!1 &1124366746
@@ -20152,7 +20153,7 @@ GameObject:
   - component: {fileID: 1970693183}
   m_Layer: 0
   m_Name: Spawn
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
