@@ -38,21 +38,36 @@ public class CameraMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (OptionsMenu.activeSelf || TerminalMenu.activeSelf)
+            if (OptionsMenu.activeSelf)
             {
                 ToggleMenus(false);
                 SetCursorState(false);
                 _playerMovementEnabled = true;
             }
+            else if (TerminalMenu.activeSelf)
+            {
+                ToggleMenus(false);
+                SetCursorState(false);
+                _playerMovementEnabled = true;
+
+                //enable the gameview inventory
+                GameviewInventory.instance.gameObject.SetActive(true);
+
+                //set current builder item
+                Builder.Instance.gameObject.SetActive(true);
+                Builder.Instance.SetTowerComponentData(Inventory.instance.CurrentBuilderItem);
+                ScenarioController.Instance.SetSelectedText(Inventory.instance.CurrentBuilderItem);
+                ScenarioController.Instance.SelectedText.enabled = true;
+            }
             else
             {
-                // Siia saab hiljem lisada options menüü avamise
-                ToggleMenus(true, isOptionsMenu: true); // Näiteks selline
+                // Siia saab hiljem lisada options menuu avamise
+                ToggleMenus(true, isOptionsMenu: true); // Nï¿½iteks selline
             }
         }
         else if (Input.GetKeyDown(KeyCode.O))
         {
-            // Kui menüü on juba avatud, siis sulge see
+            // Kui menuu on juba avatud, siis sulge see
             if (OptionsMenu.activeSelf)
             {
                 ToggleMenus(false);
@@ -66,16 +81,39 @@ public class CameraMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            // Kui menüü on juba avatud, siis sulge see
+            // Kui menuu on juba avatud, siis sulge see
             if (TerminalMenu.activeSelf)
             {
                 ToggleMenus(false);
                 SetCursorState(false);
                 _playerMovementEnabled = true;
+
+                //enable the gameview inventory
+                GameviewInventory.instance.gameObject.SetActive(true);
+
+                //set current builder item
+                Builder.Instance.gameObject.SetActive(true);
+                Builder.Instance.SetTowerComponentData(Inventory.instance.CurrentBuilderItem);
+                ScenarioController.Instance.SetSelectedText(Inventory.instance.CurrentBuilderItem);
+                ScenarioController.Instance.SelectedText.enabled = true;
             }
             else
             {
                 ToggleMenus(true, isOptionsMenu: false);
+
+                //disable the builder
+                Builder.Instance.gameObject.SetActive(false);
+
+                //disable the gameview inventory
+                GameviewInventory.instance.gameObject.SetActive(false);
+                ScenarioController.Instance.SelectedText.enabled = false;
+
+                //get the current gameview inventory selected item's index and save its value to
+                // terminal inventory
+                Inventory.instance.CurrentGameviewIndex = GameviewInventory.instance.Selected;
+
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }
