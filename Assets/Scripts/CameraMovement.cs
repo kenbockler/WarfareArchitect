@@ -5,7 +5,7 @@ public class CameraMovement : MonoBehaviour
     public float sensitivityX = 2.0f;
     public float sensitivityY = 2.0f;
     public float moveSpeed = 5.0f;
-    public float speedMultiplier = 2.0f; // Kiiruse kordaja kiiremaks liikumiseks
+    public float speedMultiplier = 2.0f;
     public GameObject OptionsMenu;
     public GameObject TerminalMenu;
     private float rotationX = 0f;
@@ -36,19 +36,47 @@ public class CameraMovement : MonoBehaviour
 
     private void HandleMenuToggle()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && (OptionsMenu.activeSelf || TerminalMenu.activeSelf))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToggleMenus(false);
-            SetCursorState(false);
-            _playerMovementEnabled = true;
+            if (OptionsMenu.activeSelf || TerminalMenu.activeSelf)
+            {
+                ToggleMenus(false);
+                SetCursorState(false);
+                _playerMovementEnabled = true;
+            }
+            else
+            {
+                // Siia saab hiljem lisada options menüü avamise
+                ToggleMenus(true, isOptionsMenu: true); // Näiteks selline
+            }
         }
         else if (Input.GetKeyDown(KeyCode.O))
         {
-            ToggleMenus(true, isOptionsMenu: true);
+            // Kui menüü on juba avatud, siis sulge see
+            if (OptionsMenu.activeSelf)
+            {
+                ToggleMenus(false);
+                SetCursorState(false);
+                _playerMovementEnabled = true;
+            }
+            else
+            {
+                ToggleMenus(true, isOptionsMenu: true);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            ToggleMenus(true, isOptionsMenu: false);
+            // Kui menüü on juba avatud, siis sulge see
+            if (TerminalMenu.activeSelf)
+            {
+                ToggleMenus(false);
+                SetCursorState(false);
+                _playerMovementEnabled = true;
+            }
+            else
+            {
+                ToggleMenus(true, isOptionsMenu: false);
+            }
         }
     }
 
