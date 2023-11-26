@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,8 @@ public class Gun : MonoBehaviour
 
     public AudioClipGroup GunAudio;
 
+    public Vector3 InitialRotation = Vector3.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,12 +52,23 @@ public class Gun : MonoBehaviour
         Health target = GetTarget();
         if(target != null)
         {
-            Vector3 direction = target.transform.position - transform.position;
-            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            //Vector3 direction = target.transform.position - transform.position;
+            //float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             //Debug.DrawRay(transform.position, direction, Color.yellow);
-            Vector3 korrutatav = new (-1, 1, 0);
-            transform.GetChild(0).eulerAngles = korrutatav * angle;
-            transform.GetChild(2).eulerAngles = Vector3.up * angle;
+            //Vector3 korrutatav = new (-1, 1, 0);
+            //transform.GetChild(0).eulerAngles = korrutatav * angle;
+            //transform.GetChild(2).eulerAngles = Vector3.up * angle;
+
+            Transform child0 = transform.GetChild(0);
+            Transform child2 = transform.GetChild(2);
+
+            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y, target.transform.position.z - transform.position.z));
+            child0.transform.rotation = targetRotation;
+
+            Vector3 eulerA = targetRotation.eulerAngles;
+            eulerA.x = 0;
+            eulerA.z = 0;
+            child2.transform.rotation = Quaternion.Euler(eulerA);
         }
         else
         {
@@ -66,8 +80,8 @@ public class Gun : MonoBehaviour
             Transform child0 = transform.GetChild(0);
             Transform child2 = transform.GetChild(2);
 
-            child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(Vector3.zero), Time.deltaTime * rotationSpeed);
-            child2.rotation = Quaternion.Lerp(child2.rotation, Quaternion.Euler(Vector3.zero), Time.deltaTime * rotationSpeed);
+            child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
+            child2.rotation = Quaternion.Lerp(child2.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
         }
         if(NextSpawnTime < Time.time)
         {

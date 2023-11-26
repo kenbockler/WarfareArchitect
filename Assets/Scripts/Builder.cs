@@ -182,6 +182,15 @@ public class Builder : MonoBehaviour
             Gun newGun = Instantiate(((GunData)data).GunPrefab, pos, Quaternion.identity);
             newGun.GunBase = GunBase;
             newGun.transform.position = GunBase.transform.position + new Vector3(0, (newGun.transform.localScale.y + GunBase.transform.localScale.y) * 1.75f, 0);
+
+            GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawn");
+
+            //hetkel votame positsiooni lihtsalt esimese spawni jargi
+            GameObject spawn = spawns[0];
+            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(spawn.transform.position.x - newGun.transform.position.x, 0, 0));
+
+            newGun.transform.rotation = targetRotation;
+            newGun.InitialRotation = targetRotation.eulerAngles;
         }
         else if (data is SupportBlockData && Structure != null)
         {
