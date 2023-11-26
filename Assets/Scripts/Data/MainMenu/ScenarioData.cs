@@ -12,5 +12,6 @@ public class ScenarioData : ScriptableObject
     public int uranium = 0;
     public int lives = 10;
 
+    public bool IsLocked;
     public List<WaveData> Waves;
 }
