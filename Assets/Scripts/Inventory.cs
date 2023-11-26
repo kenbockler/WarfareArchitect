@@ -165,7 +165,7 @@ public class Inventory : MonoBehaviour
 
             Events.SetStone(Events.GetStone() - item.Cost[0]);
             Events.SetIron(Events.GetIron() - item.Cost[1]);
-            Events.SetUranium(Events.GetUranium() - item.Cost[2]);         
+            Events.SetUranium(Events.GetUranium() - item.Cost[2]);   
         }
     }
 

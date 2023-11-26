@@ -135,6 +135,7 @@ public class Terminal : MonoBehaviour
 
     public void OnMakePressed()
     {
+        SelectedAudio.Play();
         Inventory.instance.OnMake(SelectedItem);
     }
 
