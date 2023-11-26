@@ -12,6 +12,8 @@ public class CameraMovement : MonoBehaviour
     private float rotationY = 0f;
     private bool _playerMovementEnabled = true;
 
+    private bool isGameFinished = false;
+
     public void Awake()
     {
         Events.OnEndGame += Unlock;

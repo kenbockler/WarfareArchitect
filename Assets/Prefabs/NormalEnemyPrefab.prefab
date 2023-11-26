@@ -2815,3 +2815,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthPoints: 5
+  IsDead: 0
