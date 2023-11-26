@@ -2735,8 +2735,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Power Block
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4121,8 +4121,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tech Block
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5774,8 +5774,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Selected: None'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7174,8 +7174,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resource text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8325,8 +8325,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Item Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13054,8 +13054,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lives text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 0bce2ff6fa0100445b27fe0512aa9db4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13526,12 +13526,9 @@ MonoBehaviour:
   SelectedText: {fileID: 540849984}
   EndPanel: {fileID: 1392544015}
   EndText: {fileID: 683265197}
-  FinalScoreText: {fileID: 1670580787}
+  FinalScoreText: {fileID: 0}
   ButtonText: {fileID: 276001699}
-  Waves:
-  - {fileID: 11400000, guid: 5408c925933aac540a0e6d63ce662463, type: 2}
-  - {fileID: 11400000, guid: e0b6b5c0b53dfa848bf1824c96b29c1c, type: 2}
-  - {fileID: 11400000, guid: 4985a7b8982d57a488771d3130d3e5cd, type: 2}
+  Level: {fileID: 11400000, guid: f3c56eb87a5f2e940ac69749c9f8e4e1, type: 2}
 --- !u!114 &1246805864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17298,17 +17295,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669200684}
   m_CullTransparentMesh: 1
---- !u!114 &1670580787 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4352344168180125230, guid: 395f1a8e390016a4890900fd9bb7a179, type: 3}
-  m_PrefabInstance: {fileID: 1243756389}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1672369637
 GameObject:
   m_ObjectHideFlags: 0

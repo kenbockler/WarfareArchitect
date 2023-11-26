@@ -21,7 +21,8 @@ public class ScenarioController : MonoBehaviour
     private float uranium = 0;
     private int lives = 4;
 
-    public List<WaveData> Waves;
+    public ScenarioData Level;
+    private List<WaveData> Waves;
     private int currentWave = 0;
 
     private bool Win;
@@ -64,6 +65,7 @@ public class ScenarioController : MonoBehaviour
         SetStone(GetStone());
         SetIron(GetIron());
         SetUranium(GetUranium());
+        Waves = Level.Waves;
     }
 
     // Update is called once per frame

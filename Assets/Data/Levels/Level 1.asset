@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PresentedName: Level 1
   SceneName: Rauno
-  stone: 5
-  iron: 5
-  uranium: 5
-  lives: 10
+  stone: 50
+  iron: 0
+  uranium: 0
+  lives: 4
   IsLocked: 0
   Waves:
   - {fileID: 11400000, guid: 5408c925933aac540a0e6d63ce662463, type: 2}
