@@ -181,6 +181,12 @@ public class ScenarioController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+
     void TowerComponentSelected(TowerComponentData data)
     {
         SetSelectedText(data);
