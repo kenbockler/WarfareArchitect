@@ -32,8 +32,11 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        HandleMenuToggle();
-        HandleCameraMovement();
+        if (!isGameFinished)
+        {
+            HandleMenuToggle();
+            HandleCameraMovement();
+        }
     }
     
     private void HandleMenuToggle()
@@ -165,6 +168,8 @@ public class CameraMovement : MonoBehaviour
 
     void Unlock(bool win)
     {
+        isGameFinished = true;
+        ToggleMenus(false);
         SetCursorState(true);
     }
 }
