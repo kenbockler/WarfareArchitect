@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaypointFollower : MonoBehaviour
@@ -8,10 +7,12 @@ public class WaypointFollower : MonoBehaviour
 
     public float Speed = 50f;
 
+    public Animator animator;    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,11 +25,29 @@ public class WaypointFollower : MonoBehaviour
                 Next = Next.GetNextWaypoint();
                 if(Next == null)
                 {
-                    Destroy(gameObject);
-                    Events.SetLives(Events.GetLives() - 1);
+                    //After playing the death animation, we should destroy the gameobject
+                    //animator.SetTrigger("Death");
+                    //Destroy(gameObject);
+                    //Events.SetLives(Events.GetLives() - 1);
+                    StartCoroutine(WaitForDeathAnimation());
                 }
             }
             if(Next != null) transform.position = Vector3.MoveTowards(transform.position, Next.transform.position, Time.deltaTime * Speed);
-        }
+        }        
+    }
+
+    IEnumerator WaitForDeathAnimation()
+    {
+        // Play the death animation
+        animator.SetTrigger("Death");
+
+        // Wait for the length of the death animation
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Destroy the GameObject after the animation has finished
+        Destroy(gameObject);
+
+        // Update other game-related events, e.g., decrement lives
+        Events.SetLives(Events.GetLives() - 1);
     }
 }

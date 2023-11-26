@@ -15,4 +15,4 @@ MonoBehaviour:
   Health: 1
   Speed: 50
   Sprite: {fileID: 0}
-  EnemyPrefab: {fileID: -5973010700675221721, guid: 8521c6c8b48315a4eb41afd8cb160d5b, type: 3}
+  EnemyPrefab: {fileID: 6145836852543452355, guid: b7d4363cde2cb754ca430e87e9be660c, type: 3}

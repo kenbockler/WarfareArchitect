@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -7,24 +6,33 @@ public class Health : MonoBehaviour
     [SerializeField]
     private int HealthPoints;
 
+    private Animator animator;
+
     public void Damage(int value)
     {
         HealthPoints -= value;
         if(HealthPoints <= 0)
         {
-            Destroy(gameObject);
+            StartCoroutine(WaitForDeathAnimation());
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        animator = GetComponent<Animator>();           
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator WaitForDeathAnimation()
     {
-        
+        // Play the death animation
+        animator.SetTrigger("Death");
+
+        // Wait for the length of the death animation
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Destroy the GameObject after the animation has finished
+        Destroy(gameObject);
+
+
     }
 }

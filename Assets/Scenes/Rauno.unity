@@ -3042,7 +3042,7 @@ Transform:
   m_GameObject: {fileID: 309839161}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 900, y: -25, z: -50}
+  m_LocalPosition: {x: 875.9, y: -25, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18709,7 +18709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60f18979c702bd4486e830a4d98c1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowerPrefab: {fileID: -5973010700675221721, guid: 8521c6c8b48315a4eb41afd8cb160d5b, type: 3}
+  FollowerPrefab: {fileID: 6145836852543452355, guid: b7d4363cde2cb754ca430e87e9be660c, type: 3}
   SpawnDelay: 3
   waveData: {fileID: 0}
   count: 0
