@@ -54,6 +54,21 @@ public class Structure : MonoBehaviour
         Persistent &= !Piercing; // Keelab igavesed miinid, v�hemalt niisama liitmisest.
 
         // Vahele kombinatsioonide kood. Kombinatsioon on n�iteks: kui tugiplokid �le �he on tech-t��pi, tekivad igavesed miinid (praktikas on see n�ide kole, saab elegantsemalt).
+        if(OverEvery(1, "TechBlock"))
+        {
+            Piercing = true;
+            Persistent = true;
+        }
+        if(OverEvery(1, "SpeedBlock"))
+        {
+            FirerateModifier *= 5;
+            BulletSpeedModifier *= 5;
+        }
+        if(OverEvery(1, "PowerBlock"))
+        {
+            DamageModifier *= 5;
+            BulletSpeedModifier *= 3;
+        }
 
         RangeModifier = range;
         FirerateModifier = firerate;
@@ -61,5 +76,33 @@ public class Structure : MonoBehaviour
         BulletSpeedModifier = bulletspeed;
         Poison = poison;
         Slow = slow;
+    }
+
+    private bool All(string id) // See peaks v6rduma k2suga OverEvery(1, id).
+    {
+        foreach(SupportBlock supportblock in SupportBlocks)
+        {
+            if(supportblock == null || supportblock.id != id) return false;
+        }
+        return true;
+    }
+
+    private bool OverEvery(int n, string id)
+    {
+        int i = 0;
+        bool[] b = new bool[n];
+        for(int j = 0; j < n; j += 1) b[j] = true;
+        foreach(SupportBlock supportblock in SupportBlocks){
+            for(int j = 0; j < n; j += 1)
+            {
+                if(i % n == j && (supportblock == null || supportblock.id != id)) b[j] = false;
+            }
+            i += 1;
+        }
+        foreach(bool answer in b)
+        {
+            if(answer) return answer;
+        }
+        return false;
     }
 }

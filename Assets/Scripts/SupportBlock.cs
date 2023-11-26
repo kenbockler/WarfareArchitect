@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SupportBlock : MonoBehaviour
 {
+    public string id;
+
     public float RangeModifier;
     public float FirerateModifier;
     public float DamageModifier;

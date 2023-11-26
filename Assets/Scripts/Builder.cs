@@ -229,6 +229,7 @@ public class Builder : MonoBehaviour
                 {
                     SupportBlock newSupportBlock = Instantiate(((SupportBlockData)data).SupportBlockPrefab, transform.position, Quaternion.identity);
                     Structure.SupportBlocks[i] = newSupportBlock;
+                    Structure.ComputeSupportBlocks();
                 }
                 else
                 {

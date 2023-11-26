@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9efaa533de4d864e8b6deda084b0cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: TechBlock
   RangeModifier: 1
   FirerateModifier: 1
   DamageModifier: 1
