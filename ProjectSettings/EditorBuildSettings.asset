@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Ronald.unity
     guid: a836aebf874655e43b68001019136cf1
   - enabled: 1
-    path: Assets/Scenes/Rauno.unity
+    path: Assets/Scenes/RaunoBackup.unity
     guid: 5cbfbf58e9c041e4dbb5ddd18c6ae533
   m_configObjects: {}
