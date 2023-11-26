@@ -52,7 +52,22 @@ public class Gun : MonoBehaviour
             Vector3 direction = target.transform.position - transform.position;
             float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             //Debug.DrawRay(transform.position, direction, Color.yellow);
-            transform.eulerAngles = Vector3.up * angle;
+            Vector3 korrutatav = new (-1, 1, 0);
+            transform.GetChild(0).eulerAngles = korrutatav * angle;
+            transform.GetChild(2).eulerAngles = Vector3.up * angle;
+        }
+        else
+        {
+            //transform.GetChild(0).eulerAngles = Vector3.zero;
+            //transform.GetChild(2).eulerAngles = Vector3.zero;
+
+            float rotationSpeed = 3.0f;
+
+            Transform child0 = transform.GetChild(0);
+            Transform child2 = transform.GetChild(2);
+
+            child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(Vector3.zero), Time.deltaTime * rotationSpeed);
+            child2.rotation = Quaternion.Lerp(child2.rotation, Quaternion.Euler(Vector3.zero), Time.deltaTime * rotationSpeed);
         }
         if(NextSpawnTime < Time.time)
         {
