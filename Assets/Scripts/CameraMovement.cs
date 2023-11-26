@@ -169,6 +169,9 @@ public class CameraMovement : MonoBehaviour
     void Unlock(bool win)
     {
         isGameFinished = true;
+        Builder.Instance.SetGameObjectState(false);
+        GameviewInventory.instance.gameObject.SetActive(false);
+        ScenarioController.Instance.SelectedText.gameObject.SetActive(false);
         ToggleMenus(false);
         SetCursorState(true);
     }

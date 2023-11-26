@@ -80,6 +80,7 @@ public class ScenarioController : MonoBehaviour
 
     void SetLives(int lives)
     {
+        lives = Mathf.Max(lives, 0);
         this.lives = lives;
         LivesText.text = "Lives: " + lives;
         if(lives < 1)

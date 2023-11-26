@@ -52,6 +52,8 @@ public class WaypointFollower : MonoBehaviour
 
     IEnumerator WaitForDeathAnimation()
     {
+        transform.rotation = Quaternion.Euler(0,90,0);
+
         // Play the death animation
         animator.SetTrigger("Death");
 
