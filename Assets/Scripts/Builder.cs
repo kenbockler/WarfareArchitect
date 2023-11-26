@@ -187,7 +187,12 @@ public class Builder : MonoBehaviour
 
             //hetkel votame positsiooni lihtsalt esimese spawni jargi
             GameObject spawn = spawns[0];
-            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(spawn.transform.position.x - newGun.transform.position.x, 0, 0));
+
+            Vector3 vec = new (spawn.transform.position.x - newGun.transform.position.x, 0, 0);
+            Quaternion targetRotation;
+            targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
+
+            //Quaternion targetRotation = Quaternion.LookRotation(new Vector3(spawn.transform.position.x - newGun.transform.position.x, 0, 0));
 
             newGun.transform.rotation = targetRotation;
             newGun.InitialRotation = targetRotation.eulerAngles;

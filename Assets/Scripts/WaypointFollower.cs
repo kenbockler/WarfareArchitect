@@ -36,7 +36,11 @@ public class WaypointFollower : MonoBehaviour
             if (Next != null) { 
                 transform.position = Vector3.MoveTowards(transform.position, Next.transform.position, Time.deltaTime * Speed);
 
-                Quaternion rot = Quaternion.LookRotation(new Vector3(Next.transform.position.x - transform.position.x, 0, Next.transform.position.z - transform.position.z));
+                Vector3 vec = new Vector3(Next.transform.position.x - transform.position.x, 0, Next.transform.position.z - transform.position.z);
+                Quaternion rot;
+                rot = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
+
+                //Quaternion rot = Quaternion.LookRotation(new Vector3(Next.transform.position.x - transform.position.x, 0, Next.transform.position.z - transform.position.z));
                 transform.rotation = rot;
             }
         }        

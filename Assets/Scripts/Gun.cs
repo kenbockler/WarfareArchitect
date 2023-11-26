@@ -62,7 +62,12 @@ public class Gun : MonoBehaviour
             Transform child0 = transform.GetChild(0);
             Transform child2 = transform.GetChild(2);
 
-            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y, target.transform.position.z - transform.position.z));
+            Vector3 vec = new Vector3(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y, target.transform.position.z - transform.position.z);
+
+            Quaternion targetRotation;
+            targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
+
+            //Quaternion targetRotation = Quaternion.LookRotation(new Vector3(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y, target.transform.position.z - transform.position.z));
             child0.transform.rotation = targetRotation;
 
             Vector3 eulerA = targetRotation.eulerAngles;
