@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_margin: {x: 76.888115, y: 12.268893, z: 76.76938, w: 24.464664}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &93212993
@@ -1212,7 +1212,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 30.760757, w: 4.841179}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &104722610
@@ -2677,7 +2677,7 @@ MonoBehaviour:
   m_margin: {x: -0.5161438, y: 0.081481695, z: -0.35669708, w: -0.5047741}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &229833292
@@ -3490,7 +3490,7 @@ MonoBehaviour:
   m_margin: {x: 76.888115, y: 12.268893, z: 76.76938, w: 24.464664}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &314324996
@@ -5264,7 +5264,7 @@ MonoBehaviour:
   m_margin: {x: -0.12597285, y: -0.05054289, z: 0.45652008, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &486088334
@@ -6130,7 +6130,7 @@ MonoBehaviour:
   m_margin: {x: 0.36989978, y: 0.31589103, z: -0.18758789, w: 0.4539089}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &567930874
@@ -7064,7 +7064,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 13.5898, z: 64.53303, w: 12.976703}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &669272404
@@ -9437,7 +9437,7 @@ MonoBehaviour:
   m_margin: {x: 76.888115, y: 12.268893, z: 76.76938, w: 24.464664}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &892595243
@@ -9654,7 +9654,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 30.760757, w: 4.841179}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &900385966
@@ -9780,7 +9780,7 @@ MonoBehaviour:
   m_margin: {x: 76.888115, y: 12.268893, z: 76.76938, w: 24.464664}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &900385969
@@ -10781,7 +10781,7 @@ MonoBehaviour:
   m_margin: {x: 76.888115, y: 12.268893, z: 76.76938, w: 24.464664}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &968105221
@@ -13549,10 +13549,7 @@ MonoBehaviour:
   EndText: {fileID: 827786392}
   FinalScoreText: {fileID: 827786390}
   ButtonText: {fileID: 827786391}
-  Waves:
-  - {fileID: 11400000, guid: 5408c925933aac540a0e6d63ce662463, type: 2}
-  - {fileID: 11400000, guid: e0b6b5c0b53dfa848bf1824c96b29c1c, type: 2}
-  - {fileID: 11400000, guid: 4985a7b8982d57a488771d3130d3e5cd, type: 2}
+  Level: {fileID: 11400000, guid: f3c56eb87a5f2e940ac69749c9f8e4e1, type: 2}
 --- !u!114 &1246805864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14083,7 +14080,7 @@ MonoBehaviour:
   m_margin: {x: 0.34464264, y: 0.01317572, z: 0.23448944, w: 0.7128162}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1314816756
@@ -15486,7 +15483,7 @@ MonoBehaviour:
   m_margin: {x: -0.020431027, y: 0.15993889, z: 0.0087242, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1429526164
@@ -15712,7 +15709,7 @@ MonoBehaviour:
   m_margin: {x: -0.07815934, y: 0.20803072, z: 0.07867812, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1456793795
@@ -16700,7 +16697,7 @@ MonoBehaviour:
   m_margin: {x: 0.4285774, y: 0.3068769, z: 0.011501317, w: 0.55720705}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1587819104
@@ -17226,7 +17223,7 @@ MonoBehaviour:
   m_margin: {x: 0.47565082, y: -0.027956018, z: -0.16559601, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1625210794
@@ -17437,7 +17434,7 @@ MonoBehaviour:
   m_margin: {x: 0.16383736, y: 0.48842022, z: 0.3822136, w: 0.14798535}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1672369640
@@ -17552,7 +17549,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 13.5898, z: 64.53303, w: 12.976703}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1682995237
@@ -17823,7 +17820,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 13.5898, z: 64.53303, w: 12.976703}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1760875862
@@ -18275,7 +18272,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 30.760757, w: 4.841179}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1780582419
@@ -18732,7 +18729,7 @@ MonoBehaviour:
   m_margin: {x: 0.14392093, y: -0.12525463, z: -0.404068, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1811612826
@@ -19111,7 +19108,7 @@ MonoBehaviour:
   m_margin: {x: 76.888115, y: 12.268893, z: 76.76938, w: 24.464664}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1846086092
@@ -19245,7 +19242,7 @@ MonoBehaviour:
   m_margin: {x: 76.888115, y: 12.268893, z: 76.76938, w: 24.464664}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1858224343
@@ -20464,7 +20461,7 @@ MonoBehaviour:
   m_margin: {x: -0.16491699, y: 0.25742918, z: -0.02946852, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1959327488
@@ -21551,7 +21548,7 @@ MonoBehaviour:
   m_margin: {x: 76.888115, y: 12.268893, z: 76.76938, w: 24.464664}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2102603591
@@ -22047,7 +22044,7 @@ MonoBehaviour:
   m_margin: {x: -26.16124, y: 0, z: -29.76101, w: -56.410347}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2128556977

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7f36bc969beb24f8ba4c66ae3e2df6, type: 3}
   m_Name: Drill
   m_EditorClassIdentifier: 
-  VolumeMin: 0.5
-  VolumeMax: 0.8
+  VolumeMin: 0.3
+  VolumeMax: 0.5
   PitchMin: 0.97
   PitchMax: 1.03
   Cooldown: 1
