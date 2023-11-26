@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -32,7 +33,12 @@ public class WaypointFollower : MonoBehaviour
                     StartCoroutine(WaitForDeathAnimation());
                 }
             }
-            if(Next != null) transform.position = Vector3.MoveTowards(transform.position, Next.transform.position, Time.deltaTime * Speed);
+            if (Next != null) { 
+                transform.position = Vector3.MoveTowards(transform.position, Next.transform.position, Time.deltaTime * Speed);
+
+                Quaternion rot = Quaternion.LookRotation(new Vector3(Next.transform.position.x - transform.position.x, 0, Next.transform.position.z - transform.position.z));
+                transform.rotation = rot;
+            }
         }        
     }
 
