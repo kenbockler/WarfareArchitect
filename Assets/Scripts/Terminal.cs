@@ -110,7 +110,15 @@ public class Terminal : MonoBehaviour
         {
             ItemTypeText.text = "Support Block";
             SupportBlockData data = (SupportBlockData)item;
-            StatisticsText.text = "Statistics coming soon";
+            StatisticsText.text = "Range modifier: " + data.SupportBlockPrefab.RangeModifier +
+                                  "\nFirerate modifier: " + data.SupportBlockPrefab.FirerateModifier +
+                                  "\nDamage modifier: " + data.SupportBlockPrefab.DamageModifier +
+                                  "\nBullet speed modifier: " + data.SupportBlockPrefab.BulletSpeedModifier +
+                                  (data.SupportBlockPrefab.Seeking ? "\nSeeking bullets" : "") +
+                                  (data.SupportBlockPrefab.Piercing ? "\nPiercing bullets" : "") +
+                                  (data.SupportBlockPrefab.Persistent ? "\nPersistent bullets" : "") +
+                                  (data.SupportBlockPrefab.Poison > 0 ? "\nPoisonous bullets " + data.SupportBlockPrefab.Poison : "") +
+                                  (data.SupportBlockPrefab.Slow != 1f ? "\nSlowing bullets " + data.SupportBlockPrefab.Slow : "");
         }
 
         if (item is DrillData)

@@ -127,4 +127,4 @@ MonoBehaviour:
   Piercing: 1
   Persistent: 0
   Poison: 0
-  Slow: 0
+  Slow: 1
