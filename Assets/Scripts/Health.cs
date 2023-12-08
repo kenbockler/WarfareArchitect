@@ -11,6 +11,9 @@ public class Health : MonoBehaviour
     private WaypointFollower wpf;
     public bool IsDead = false;
 
+    public int poison;
+    private float poisonTick;
+
     public void Damage(int value)
     {
         HealthPoints -= value;
@@ -21,6 +24,20 @@ public class Health : MonoBehaviour
                 IsDead = true;
                 StartCoroutine(WaitForDeathAnimation());
             }
+        }
+    }
+
+    private void Start()
+    {
+        poisonTick = Time.time;
+    }
+
+    private void Update()
+    {
+        if(Time.time < poisonTick)
+        {
+            Damage(poison);
+            poisonTick = Time.time + 1f; // Viimane siin on konstant: mürk toimib iga sekund.
         }
     }
 

@@ -5,7 +5,9 @@ using UnityEngine;
 public class WaypointFollower : MonoBehaviour
 {
     public Waypoint Next;
-
+    
+    public float Slow = 1f;
+    public float SlowCooldown = 0f;
     public float Speed = 50f;
 
     public Animator animator;
@@ -38,7 +40,7 @@ public class WaypointFollower : MonoBehaviour
                 }
             }
             if (Next != null && !h.IsDead) { 
-                transform.position = Vector3.MoveTowards(transform.position, Next.transform.position, Time.deltaTime * Speed);
+                transform.position = Vector3.MoveTowards(transform.position, Next.transform.position, Time.deltaTime * Speed * Slow);
 
                 Vector3 vec = new Vector3(Next.transform.position.x - transform.position.x, 0, Next.transform.position.z - transform.position.z);
                 Quaternion rot;
@@ -47,7 +49,12 @@ public class WaypointFollower : MonoBehaviour
                 //Quaternion rot = Quaternion.LookRotation(new Vector3(Next.transform.position.x - transform.position.x, 0, Next.transform.position.z - transform.position.z));
                 transform.rotation = rot;
             }
-        }        
+        }
+
+        if(SlowCooldown < Time.time)
+        {
+            Slow = 1f;
+        }
     }
 
     IEnumerator WaitForDeathAnimation()

@@ -8,6 +8,8 @@ public class Builder : MonoBehaviour
 {
     public static Builder Instance;
 
+    public GameObject BuilderRange;
+
     private static readonly float ColliderCheckRadius = 5f; // Konstant kollisiooni kontrollimiseks
     private Camera cam;
 
@@ -48,6 +50,7 @@ public class Builder : MonoBehaviour
     void Update()
     {
         GetGameObjectAtPosition();
+        UpdateRange();
         //MeshRenderers = GetComponentsInChildren<MeshRenderer>();
 
         // Kontrolli, kas saab ehitada
@@ -370,6 +373,23 @@ public class Builder : MonoBehaviour
         if (gameObject.activeSelf != state)
         {
             gameObject.SetActive(state);
+        }
+    }
+
+    void UpdateRange()
+    {
+        BuilderRange.transform.position = transform.position;
+        if(data is StructureData)
+        {
+            BuilderRange.transform.localScale = new Vector3(((StructureData)data).StructurePrefab.Range, ((StructureData)data).StructurePrefab.Range, ((StructureData)data).StructurePrefab.Range);
+        }
+        else if(data is GunData)
+        {
+            BuilderRange.transform.localScale = new Vector3(((GunData)data).GunPrefab.Range, ((GunData)data).GunPrefab.Range, ((GunData)data).GunPrefab.Range);
+        }
+        else
+        {
+            BuilderRange.transform.localScale = Vector3.zero;
         }
     }
 }

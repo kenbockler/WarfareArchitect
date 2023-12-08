@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     public bool Seeking; // Kas kuul p��ab vaenlasi targalt
     public bool Piercing; // Kas kuul saab vaenlasest l�bi minna
     public bool Persistent; // Kas kuul j��b p�rast teekonna l�petamist alles, kui vaenlast ei taba
-    public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu j�rel neid kahjustab
+    public int Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu j�rel neid kahjustab
     public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv m�jub hirmuefektina
     
     public AudioClipGroup ExplosionAudio;
@@ -67,6 +67,10 @@ public class Projectile : MonoBehaviour
         {
             ExplosionAudio.Play(transform.position);
             if(!Piercing) GameObject.Destroy(gameObject);
+            enemy.poison += Poison;
+            WaypointFollower enemyw = enemy.transform.parent.GetComponent<WaypointFollower>();
+            if(enemyw.Slow > Slow) enemyw.Slow = Slow;
+            enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit.
             enemy.Damage(Damage);
         }
     }

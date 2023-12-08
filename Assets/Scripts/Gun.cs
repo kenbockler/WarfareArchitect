@@ -111,7 +111,7 @@ public class Gun : MonoBehaviour
                 projectile.Seeking = Seeking || GunBase.Structure.Seeking;
                 projectile.Piercing = Piercing || GunBase.Structure.Piercing;
                 projectile.Persistent = Persistent || GunBase.Structure.Persistent;
-                projectile.Poison = GunBase.Structure.Poison;
+                projectile.Poison = (int)GunBase.Structure.Poison;
                 projectile.Slow = GunBase.Structure.Slow;
 
                 projectile.transform.position = transform.position;
