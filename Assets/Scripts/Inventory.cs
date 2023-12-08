@@ -115,8 +115,8 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        if (Events.GetStone() - item.Cost[0] >= 0 && Events.GetIron() - item.Cost[1] >= 0 && Events.GetUranium() - item.Cost[2] >= 0)
-        {
+        //if (Events.GetStone() - item.Cost[0] >= 0 && Events.GetIron() - item.Cost[1] >= 0 && Events.GetUranium() - item.Cost[2] >= 0)
+        //{
             int nullIndex = -1;
 
             for(int i = inventory.Length - 1; i >= 0; i--)
@@ -163,14 +163,16 @@ public class Inventory : MonoBehaviour
                 GameviewInventory.instance.AddItem(item, 1, nullIndex);
             }
 
-            Events.SetStone(Events.GetStone() - item.Cost[0]);
-            Events.SetIron(Events.GetIron() - item.Cost[1]);
-            Events.SetUranium(Events.GetUranium() - item.Cost[2]);   
-        }
+            // Kui blueprint-süsteem ei tööta, kommenteerida sisse ja võtta Builderi Build-meetodist maha.
+            //Events.SetStone(Events.GetStone() - item.Cost[0]);
+            //Events.SetIron(Events.GetIron() - item.Cost[1]);
+            //Events.SetUranium(Events.GetUranium() - item.Cost[2]);   
+        //}
     }
 
     public void DecrementBuymenuItemQuantity(int index)
     {
+        /*
         inventory[index].Value--;
         counts[index].text = inventory[index].Value.ToString();
         if (inventory[index].Value <= 0)
@@ -181,5 +183,6 @@ public class Inventory : MonoBehaviour
             images[index].gameObject.SetActive(false);
             counts[index].gameObject.SetActive(false);
         }
+        */
     }
 }

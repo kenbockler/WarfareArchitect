@@ -154,88 +154,96 @@ public class Builder : MonoBehaviour
 
     bool Build()
     {
-        bool built = true;
-        if (data is DrillData)
+        bool built = false;
+        if (Events.GetStone() - data.Cost[0] >= 0 && Events.GetIron() - data.Cost[1] >= 0 && Events.GetUranium() - data.Cost[2] >= 0)
         {
-            Vector3 newPos = pos;
-            newPos.y = 50;
-            Instantiate(((DrillData)data).DrillPrefab, newPos, Quaternion.identity);
-        }
-        else if (data is FoundationData && Foundation == null)
-        {
-            Instantiate(((FoundationData)data).FoundationPrefab, pos, Quaternion.identity);
-        }
-        else if (data is StructureData && Foundation != null)
-        {
-            Structure newStructure = Instantiate(((StructureData)data).StructurePrefab, pos, Quaternion.identity);
-            newStructure.Foundation = Foundation;
-            newStructure.transform.position = Foundation.transform.position + new Vector3(0, (newStructure.transform.localScale.y + Foundation.transform.localScale.y) / 2, 0);
-        }
-        else if (data is GunBaseData && Structure != null)
-        {
-            GunBase newGunBase = Instantiate(((GunBaseData)data).GunBasePrefab, pos, Quaternion.identity);
-            newGunBase.Structure = Structure;
-            newGunBase.transform.position = Structure.transform.position + new Vector3(0, (newGunBase.transform.localScale.y + Structure.transform.localScale.y) / 2, 0);
-        }
-        else if (data is GunData && GunBase != null)
-        {
-            Gun newGun = Instantiate(((GunData)data).GunPrefab, pos, Quaternion.identity);
-            newGun.GunBase = GunBase;
-            newGun.transform.position = GunBase.transform.position + new Vector3(0, (newGun.transform.localScale.y + GunBase.transform.localScale.y) * 1.75f, 0);
-
-            GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawn");
-
-            //hetkel votame positsiooni lihtsalt esimese spawni jargi
-            GameObject spawn = spawns[0];
-
-            Vector3 vec = new (spawn.transform.position.x - newGun.transform.position.x, 0, 0);
-            Quaternion targetRotation;
-            targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
-
-            //Quaternion targetRotation = Quaternion.LookRotation(new Vector3(spawn.transform.position.x - newGun.transform.position.x, 0, 0));
-
-            newGun.transform.rotation = targetRotation;
-            newGun.InitialRotation = targetRotation.eulerAngles;
-        }
-        else if (data is SupportBlockData && Structure != null)
-        {
-            float xd = pos.x - Structure.transform.position.x;
-            float zd = pos.z - Structure.transform.position.z;
-            float d = Mathf.Abs(xd) + Mathf.Abs(zd);
-            if(d > 10 && d <= 30 && Mathf.Abs(xd) < 20 && Mathf.Abs(zd) < 20)
+            built = true;
+            if (data is DrillData)
             {
-                int i = 0;
-                if(xd == 15)
-                {
-                    if(zd == 15) i = 0;
-                    else if(zd == 5) i = 1;
-                    else if(zd == -5) i = 2;
-                    else if(zd == -15) i = 3;
-                }
-                else if(xd == 5)
-                {
-                    if(zd == 15) i = 11;
-                    else if(zd == -15) i = 4;
-                }
-                else if(xd == -5)
-                {
-                    if(zd == 15) i = 10;
-                    else if(zd == -15) i = 5;
-                }
-                else if(xd == -15)
-                {
-                    if(zd == 15) i = 9;
-                    else if(zd == 5) i = 8;
-                    else if(zd == -5) i = 7;
-                    else if(zd == -15) i = 6;
-                }
+                Vector3 newPos = pos;
+                newPos.y = 50;
+                Instantiate(((DrillData)data).DrillPrefab, newPos, Quaternion.identity);
+            }
+            else if (data is FoundationData && Foundation == null)
+            {
+                Instantiate(((FoundationData)data).FoundationPrefab, pos, Quaternion.identity);
+            }
+            else if (data is StructureData && Foundation != null)
+            {
+                Structure newStructure = Instantiate(((StructureData)data).StructurePrefab, pos, Quaternion.identity);
+                newStructure.Foundation = Foundation;
+                newStructure.transform.position = Foundation.transform.position + new Vector3(0, (newStructure.transform.localScale.y + Foundation.transform.localScale.y) / 2, 0);
+            }
+            else if (data is GunBaseData && Structure != null)
+            {
+                GunBase newGunBase = Instantiate(((GunBaseData)data).GunBasePrefab, pos, Quaternion.identity);
+                newGunBase.Structure = Structure;
+                newGunBase.transform.position = Structure.transform.position + new Vector3(0, (newGunBase.transform.localScale.y + Structure.transform.localScale.y) / 2, 0);
+            }
+            else if (data is GunData && GunBase != null)
+            {
+                Gun newGun = Instantiate(((GunData)data).GunPrefab, pos, Quaternion.identity);
+                newGun.GunBase = GunBase;
+                newGun.transform.position = GunBase.transform.position + new Vector3(0, (newGun.transform.localScale.y + GunBase.transform.localScale.y) * 1.75f, 0);
 
-                if(Structure.SupportBlocks[i] == null)
+                GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawn");
+
+                //hetkel votame positsiooni lihtsalt esimese spawni jargi
+                GameObject spawn = spawns[0];
+
+                Vector3 vec = new (spawn.transform.position.x - newGun.transform.position.x, 0, 0);
+                Quaternion targetRotation;
+                targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
+
+                //Quaternion targetRotation = Quaternion.LookRotation(new Vector3(spawn.transform.position.x - newGun.transform.position.x, 0, 0));
+
+                newGun.transform.rotation = targetRotation;
+                newGun.InitialRotation = targetRotation.eulerAngles;
+            }
+            else if (data is SupportBlockData && Structure != null)
+            {
+                float xd = pos.x - Structure.transform.position.x;
+                float zd = pos.z - Structure.transform.position.z;
+                float d = Mathf.Abs(xd) + Mathf.Abs(zd);
+                if(d > 10 && d <= 30 && Mathf.Abs(xd) < 20 && Mathf.Abs(zd) < 20)
                 {
-                    SupportBlock newSupportBlock = Instantiate(((SupportBlockData)data).SupportBlockPrefab, transform.position, Quaternion.identity);
-                    Structure.SupportBlocks[i] = newSupportBlock;
-                    Structure.ComputeSupportBlocks();
-                    Events.PlaceSupportBlock(true);
+                    int i = 0;
+                    if(xd == 15)
+                    {
+                        if(zd == 15) i = 0;
+                        else if(zd == 5) i = 1;
+                        else if(zd == -5) i = 2;
+                        else if(zd == -15) i = 3;
+                    }
+                    else if(xd == 5)
+                    {
+                        if(zd == 15) i = 11;
+                        else if(zd == -15) i = 4;
+                    }
+                    else if(xd == -5)
+                    {
+                        if(zd == 15) i = 10;
+                        else if(zd == -15) i = 5;
+                    }
+                    else if(xd == -15)
+                    {
+                        if(zd == 15) i = 9;
+                        else if(zd == 5) i = 8;
+                        else if(zd == -5) i = 7;
+                        else if(zd == -15) i = 6;
+                    }
+
+                    if(Structure.SupportBlocks[i] == null)
+                    {
+                        SupportBlock newSupportBlock = Instantiate(((SupportBlockData)data).SupportBlockPrefab, transform.position, Quaternion.identity);
+                        Structure.SupportBlocks[i] = newSupportBlock;
+                        Structure.ComputeSupportBlocks();
+                        Events.PlaceSupportBlock(true);
+                    }
+                    else
+                    {
+                        built = false;
+                    }
                 }
                 else
                 {
@@ -247,10 +255,14 @@ public class Builder : MonoBehaviour
                 built = false;
             }
         }
-        else
+
+        if(built)
         {
-            built = false;
+            Events.SetStone(Events.GetStone() - data.Cost[0]);
+            Events.SetIron(Events.GetIron() - data.Cost[1]);
+            Events.SetUranium(Events.GetUranium() - data.Cost[2]);
         }
+
         return built;
         // Siia saab lisada teisi komponente...
         //gameObject.SetActive(false);

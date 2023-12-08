@@ -182,6 +182,7 @@ public class GameviewInventory : MonoBehaviour
     //vähenda selected item kogust 1 võrra (kui läheb nulli, vabasta koht)
     public void DecrementItemQuantity()
     {
+        /*
         inventory[Selected].Value--;
         counts[Selected].text = inventory[Selected].Value.ToString();
         if (inventory[Selected].Value <= 0)
@@ -197,5 +198,6 @@ public class GameviewInventory : MonoBehaviour
             IsNullSetBuilderFalse(null);
         }
         ScenarioController.Instance.SetSelectedText(inventory[Selected].Key);
+        */
     }
 }
