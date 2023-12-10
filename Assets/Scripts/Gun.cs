@@ -5,36 +5,76 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    //Kuna need väärtused saadakse koodi sees, ei peaks neid editoris näitama
+    [HideInInspector]
     public int Damage;
+
+    [HideInInspector]
     public float FireRate;
+
+    [HideInInspector]
     public float Range;
 
-    public float RangeModifier;
+    [HideInInspector]
     public SphereCollider rangeApplied;
 
-    public float DamageModifier;
-    public float FirerateModifier;
+    [HideInInspector] // Seda pole hetkel vaja editoris näidata
+    public Vector3 InitialRotation = Vector3.zero;
 
-    public Projectile ProjectilePrefab;
-
+    // Kuna see lisatakse läbi builderi (ehk ka koodi sees), siis pole seda vaja editoris näidata
+    [HideInInspector]
     public GunBase GunBase;
 
-    private float SpawnDelay;
-    private float NextSpawnTime;
+    [Space]
+    [Header("Multiplicative Tower Modifiers From This Gun's Prefab")]
+    [Space]
 
-    private List<Health> targets = new List<Health>{};
+    [Range(0.5f, 2)]
+    [Tooltip("Multiplicatively increases the tower's RANGE. For example setting this value from 1 to 2 will double the tower's RANGE.")]
+    public float RangeModifier;
 
+    [Range(0.5f, 2)]
+    [Tooltip("Multiplicatively increases the tower's DAMAGE. For example setting this value from 1 to 2 will double the tower's DAMAGE.")]
+    public float DamageModifier;
+
+    [Range(0.5f, 2)]
+    [Tooltip("Multiplicatively increases the tower's FIRERATE. For example setting this value from 1 to 2 will double the tower's FIRERATE.")]
+    public float FirerateModifier;
+
+    [Space]
+    [Space]
+    [Header("Tower Effects From This Gun's Prefab")]
+    [Space]
+
+    [Tooltip("If set to true, the projectile will chase the enemy.")]
     public bool Seeking; // Kas kuul püüab vaenlasi targalt
+    [Tooltip("If set to true, the projectile can go through the enemies (won't be destroyed by hitting the first enemy).")]
     public bool Piercing; // Kas kuul saab vaenlasest läbi minna
+    [Tooltip("If set to true, the projectile will stay on the ground and damage enemies who step on it.")]
     public bool Persistent; // Kas kuul jääb pärast teekonna lõpetamist alles, kui vaenlast ei taba
+    [Range(0,10)]
+    [Tooltip("If set to higher than 0, does this damage to the enemy after the projectile hit each second.")]
     public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu järel neid kahjustab
+    [Range(-1, 1)]
+    [Tooltip("If set below than 1, the projectile hit will make the enemy move slower. Negative values can be used for confusion and fear effects.")]   
     public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv mõjub hirmuefektina
 
     // Siia juurde v�ib panna teisi laskmisega seotud atribuute, t�ev��rtusi.
 
-    public AudioClipGroup GunAudio;
+    [Space]
+    [Space]
+    [Header("Prefabs Used for This Gun's Prefab")]
+    [Space]
 
-    public Vector3 InitialRotation = Vector3.zero;
+    [Tooltip("Projectile prefab used for this gun's prefab.")]    
+    public Projectile ProjectilePrefab;
+    [Tooltip("Audio (audio clip group) used for this gun's shooting.")]
+    public AudioClipGroup GunAudio;   
+
+    // Privaatsed isendiväljad
+    private float SpawnDelay;
+    private float NextSpawnTime;
+    private List<Health> targets = new List<Health> { };
 
     public void Awake()
     {
