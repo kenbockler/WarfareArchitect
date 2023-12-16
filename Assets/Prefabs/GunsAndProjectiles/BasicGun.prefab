@@ -264,19 +264,19 @@ MonoBehaviour:
   Damage: 1
   FireRate: 1
   Range: 0
-  RangeModifier: 1
   rangeApplied: {fileID: 0}
+  InitialRotation: {x: 0, y: 0, z: 0}
+  GunBase: {fileID: 0}
+  RangeModifier: 1
   DamageModifier: 1
   FirerateModifier: 1
-  ProjectilePrefab: {fileID: 6946478370186997899, guid: 00dfc03b3950f9541a145b16f389d3fe, type: 3}
-  GunBase: {fileID: 0}
   Seeking: 0
   Piercing: 0
   Persistent: 0
   Poison: 0
-  Slow: 0
+  Slow: 1
+  ProjectilePrefab: {fileID: 6946478370186997899, guid: 00dfc03b3950f9541a145b16f389d3fe, type: 3}
   GunAudio: {fileID: 11400000, guid: 70e5d15d3ca2a64469afb1a05eb474a5, type: 2}
-  InitialRotation: {x: 0, y: 0, z: 0}
 --- !u!135 &1005542599187660854
 SphereCollider:
   m_ObjectHideFlags: 0

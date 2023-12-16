@@ -68,7 +68,7 @@ public class Projectile : MonoBehaviour
             ExplosionAudio.Play(transform.position);
             if(!Piercing) GameObject.Destroy(gameObject);
             enemy.poison += Poison;
-            WaypointFollower enemyw = enemy.transform.parent.GetComponent<WaypointFollower>();
+            WaypointFollower enemyw = collision.GetComponent<WaypointFollower>();
             if(enemyw.Slow > Slow) enemyw.Slow = Slow;
             enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit.
             enemy.Damage(Damage);

@@ -54,20 +54,111 @@ public class Structure : MonoBehaviour
         Persistent &= !Piercing; // Keelab igavesed miinid, v�hemalt niisama liitmisest.
 
         // Vahele kombinatsioonide kood. Kombinatsioon on n�iteks: kui tugiplokid �le �he on tech-t��pi, tekivad igavesed miinid (praktikas on see n�ide kole, saab elegantsemalt).
-        if(OverEvery(1, "TechBlock"))
+        // KAKS TEINETEISE VASTAS
+        if(OverEvery(6, "TechBlock"))
         {
-            Piercing = true;
-            Persistent = true;
+
         }
-        if(OverEvery(1, "SpeedBlock"))
+        if(OverEvery(6, "SpeedBlock"))
         {
-            firerate *= 5;
-            //bulletspeed *= 5;
+            firerate *= 1.05f;
         }
-        if(OverEvery(1, "PowerBlock"))
+        if(OverEvery(6, "PowerBlock"))
         {
-            damage *= 5;
-            //bulletspeed *= 3;
+            damage *= 1.05f;
+        }
+        if(OverEvery(6, "TechBlock") && OverEvery(6, "PowerBlock"))
+        {
+
+        }
+        if(OverEvery(6, "TechBlock") && OverEvery(6, "SpeedBlock"))
+        {
+
+        }
+        if(OverEvery(6, "PowerBlock") && OverEvery(6, "SpeedBlock"))
+        {
+
+        }
+        if(OverEvery(6, "TechBlock") && OverEvery(6, "PowerBlock") && OverEvery(6, "SpeedBlock"))
+        {
+
+        }
+
+        // IGA NELJAS - KOLMNURK
+        if(OverEvery(4, "TechBlock"))
+        {
+
+        }
+        if(OverEvery(4, "SpeedBlock"))
+        {
+            firerate *= 1.15f;
+        }
+        if(OverEvery(4, "PowerBlock"))
+        {
+            damage *= 1.15f;
+        }
+        if(OverEvery(4, "TechBlock") && OverEvery(4, "PowerBlock"))
+        {
+
+        }
+        if(OverEvery(4, "TechBlock") && OverEvery(4, "SpeedBlock"))
+        {
+
+        }
+        if(OverEvery(4, "PowerBlock") && OverEvery(4, "SpeedBlock"))
+        {
+
+        }
+        if(OverEvery(4, "TechBlock") && OverEvery(4, "PowerBlock") && OverEvery(4, "SpeedBlock"))
+        {
+
+        }
+
+        // IGA KOLMAS - RUUT
+        if(OverEvery(3, "TechBlock"))
+        {
+
+        }
+        if(OverEvery(3, "SpeedBlock"))
+        {
+            firerate *= 1.25f;
+        }
+        if(OverEvery(3, "PowerBlock"))
+        {
+            damage *= 1.25f;
+        }
+        if(OverEvery(3, "TechBlock") && OverEvery(3, "PowerBlock"))
+        {
+
+        }
+        if(OverEvery(3, "TechBlock") && OverEvery(3, "SpeedBlock"))
+        {
+
+        }
+        if(OverEvery(3, "PowerBlock") && OverEvery(3, "SpeedBlock"))
+        {
+
+        }
+        if(OverEvery(3, "TechBlock") && OverEvery(3, "PowerBlock") && OverEvery(3, "SpeedBlock"))
+        {
+            range *= 1.5f;
+            firerate *= 2;
+            damage *= 2;
+            bulletspeed *= 2;
+        }
+
+        // IGA TEINE
+        if(OverEvery(2, "TechBlock"))
+        {
+
+        }
+        if(OverEvery(2, "SpeedBlock"))
+        {
+            firerate *= 1.35f;
+        }
+        if(OverEvery(2, "PowerBlock"))
+        {
+            damage *= 1.35f;
         }
         if(OverEvery(2, "TechBlock") && OverEvery(2, "PowerBlock"))
         {
@@ -86,12 +177,20 @@ public class Structure : MonoBehaviour
             damage *= 2;
             //bulletspeed *= 4;
         }
-        if(OverEvery(3, "TechBlock") && OverEvery(3, "PowerBlock") && OverEvery(3, "SpeedBlock"))
+
+        // KÕIK
+        if(OverEvery(1, "TechBlock"))
         {
-            range *= 1.5f;
-            firerate *= 2;
-            damage *= 2;
-            bulletspeed *= 2;
+            Piercing = true;
+            Persistent = true;
+        }
+        if(OverEvery(1, "SpeedBlock"))
+        {
+            firerate *= 1.45f;
+        }
+        if(OverEvery(1, "PowerBlock"))
+        {
+            damage *= 1.45f;
         }
 
         RangeModifier = range;

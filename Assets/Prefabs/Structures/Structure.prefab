@@ -127,7 +127,7 @@ MonoBehaviour:
   Piercing: 0
   Persistent: 0
   Poison: 0
-  Slow: 0
+  Slow: 1
   Foundation: {fileID: -1952014020244934206, guid: 30365444e4008234abd7071848440528, type: 3}
   SupportBlocks:
   - {fileID: 0}
