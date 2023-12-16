@@ -381,11 +381,22 @@ public class Builder : MonoBehaviour
         BuilderRange.transform.position = transform.position;
         if(data is StructureData)
         {
-            BuilderRange.transform.localScale = new Vector3(((StructureData)data).StructurePrefab.Range, ((StructureData)data).StructurePrefab.Range, ((StructureData)data).StructurePrefab.Range);
+            BuilderRange.transform.localScale = new Vector3(((StructureData)data).StructurePrefab.Range, 1, ((StructureData)data).StructurePrefab.Range);
         }
         else if(data is GunData)
         {
-            BuilderRange.transform.localScale = new Vector3(((GunData)data).GunPrefab.Range, ((GunData)data).GunPrefab.Range, ((GunData)data).GunPrefab.Range);
+            if(Structure != null)
+            {
+                BuilderRange.transform.localScale = new Vector3(Structure.Range * ((GunData)data).GunPrefab.RangeModifier, 1, Structure.Range * ((GunData)data).GunPrefab.RangeModifier);
+            }
+            else if(GunBase != null)
+            {
+                BuilderRange.transform.localScale = new Vector3(GunBase.Structure.Range * ((GunData)data).GunPrefab.RangeModifier, 1, GunBase.Structure.Range * ((GunData)data).GunPrefab.RangeModifier);
+            }
+            else
+            {
+                BuilderRange.transform.localScale = Vector3.zero;
+            }
         }
         else
         {
