@@ -58,6 +58,7 @@ public class Gun : MonoBehaviour
     [Range(-1, 1)]
     [Tooltip("If set below than 1, the projectile hit will make the enemy move slower. Negative values can be used for confusion and fear effects.")]   
     public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv mõjub hirmuefektina
+    public int Targets;
 
     // Siia juurde v�ib panna teisi laskmisega seotud atribuute, t�ev��rtusi.
 
@@ -91,6 +92,8 @@ public class Gun : MonoBehaviour
         Damage = (int) Mathf.Ceil(DamageModifier * GunBase.DamageModifier * GunBase.Structure.DamageModifier);
         FireRate = FirerateModifier * GunBase.FirerateModifier * GunBase.Structure.FirerateModifier;
         Range = GunBase.Structure.Range * RangeModifier;
+        print(GunBase.Structure.Targets);
+        Targets = GunBase.Structure.Targets;
         SpawnDelay = 1 / FireRate;
         NextSpawnTime = Time.time;
 
@@ -101,8 +104,8 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Health target = GetTarget();
-        if(target != null)
+        Health[] targets = GetTargets();
+        if(targets[0] != null)
         {
             //Vector3 direction = target.transform.position - transform.position;
             //float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
@@ -114,7 +117,7 @@ public class Gun : MonoBehaviour
             Transform child0 = transform.GetChild(0);
             Transform child2 = transform.GetChild(2);
 
-            Vector3 vec = new Vector3(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y, target.transform.position.z - transform.position.z);
+            Vector3 vec = new Vector3(targets[0].transform.position.x - transform.position.x, targets[0].transform.position.y - transform.position.y, targets[0].transform.position.z - transform.position.z);
 
             Quaternion targetRotation;
             targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
@@ -142,37 +145,50 @@ public class Gun : MonoBehaviour
         }
         if(NextSpawnTime < Time.time)
         {
-            target = GetTarget();
-            if(target != null && !target.IsDead)
+            targets = GetTargets();
+            if(targets.Length > 0)
             {
-                GunAudio.Play(transform.position);
-                Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
-                projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
-                projectile.Seeking = Seeking || GunBase.Structure.Seeking;
-                projectile.Piercing = Piercing || GunBase.Structure.Piercing;
-                projectile.Persistent = Persistent || GunBase.Structure.Persistent;
-                projectile.Poison = (int)GunBase.Structure.Poison;
-                projectile.Slow = GunBase.Structure.Slow;
+                foreach(Health target in targets)
+                {
+                    if(target != null && !target.IsDead)
+                    {
+                        GunAudio.Play(transform.position);
+                        Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
+                        projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
+                        projectile.Seeking = Seeking || GunBase.Structure.Seeking;
+                        projectile.Piercing = Piercing || GunBase.Structure.Piercing;
+                        projectile.Persistent = Persistent || GunBase.Structure.Persistent;
+                        projectile.Poison = (int)GunBase.Structure.Poison;
+                        projectile.Slow = GunBase.Structure.Slow;
 
-                projectile.transform.position = transform.position;
-                projectile.Target = target;
-                projectile.TargetPos = target.transform.position;
-                NextSpawnTime += SpawnDelay;
+                        projectile.transform.position = transform.position;
+                        projectile.Target = target;
+                        projectile.TargetPos = target.transform.position;
+                        NextSpawnTime = Time.time + SpawnDelay;
+                    }
+                }
             }
             else
             {
                 NextSpawnTime = Time.time;
             }
         }
+        CleanTargets();
     }
 
-    public Health GetTarget()
+    public Health[] GetTargets()
     {
-        foreach(Health target in targets)
+        Health[] targetArray = new Health[Math.Max(targets.Count, Targets)];
+        int targetNumber = Targets;
+        for(int i = 0; i < targets.Count; i++)
         {
-            if(target != null && !target.IsDead) return target;
+            if(targetNumber > 0)
+            {
+                targetArray[i] = targets[i];
+                targetNumber--;
+            }
         }
-        return null;
+        return targetArray;
     }
     
     private void OnTriggerEnter(Collider collision)
@@ -190,6 +206,17 @@ public class Gun : MonoBehaviour
         if(health != null)
         {
             targets.Remove(health);
+        }
+    }
+
+    private void CleanTargets()
+    {
+        foreach(Health t in targets)
+        {
+            if(t == null)
+            {
+                targets.Remove(t);
+            }
         }
     }
 

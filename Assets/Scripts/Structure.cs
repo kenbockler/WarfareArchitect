@@ -15,6 +15,7 @@ public class Structure : MonoBehaviour
     public bool Persistent; // Kas kuul j��b p�rast teekonna l�petamist alles, kui vaenlast ei taba
     public float Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu j�rel neid kahjustab
     public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv m�jub hirmu- v�i segadusefektina
+    public int Targets; // Sihtmärkide arv, keda korraga lasta saab.
 
     public Foundation Foundation;
     public SupportBlock[] SupportBlocks;
@@ -32,6 +33,7 @@ public class Structure : MonoBehaviour
         Persistent = false;
         float poison = 0;
         float slow = 1;
+        int targets = 1;
 
         // K�igepealt arvestame iga tugiploki atribuute eraldi.
         foreach(SupportBlock supportblock in SupportBlocks)
@@ -57,7 +59,7 @@ public class Structure : MonoBehaviour
         // KAKS TEINETEISE VASTAS
         if(OverEvery(6, "TechBlock"))
         {
-
+            // Ei anna midagi.
         }
         if(OverEvery(6, "SpeedBlock"))
         {
@@ -69,25 +71,25 @@ public class Structure : MonoBehaviour
         }
         if(OverEvery(6, "TechBlock") && OverEvery(6, "PowerBlock"))
         {
-
+            slow = 0.8f;
         }
         if(OverEvery(6, "TechBlock") && OverEvery(6, "SpeedBlock"))
         {
-
+            range *= 1.1f;
         }
         if(OverEvery(6, "PowerBlock") && OverEvery(6, "SpeedBlock"))
         {
-
+            range *= 1.1f;
         }
         if(OverEvery(6, "TechBlock") && OverEvery(6, "PowerBlock") && OverEvery(6, "SpeedBlock"))
         {
-
+            targets += 1;
         }
 
         // IGA NELJAS - KOLMNURK
         if(OverEvery(4, "TechBlock"))
         {
-
+            range *= 1.2f;
         }
         if(OverEvery(4, "SpeedBlock"))
         {
@@ -99,25 +101,28 @@ public class Structure : MonoBehaviour
         }
         if(OverEvery(4, "TechBlock") && OverEvery(4, "PowerBlock"))
         {
-
+            damage *= 1.1f;
+            slow *= 0.75f;
         }
         if(OverEvery(4, "TechBlock") && OverEvery(4, "SpeedBlock"))
         {
-
+            firerate *= 1.1f;
+            range *= 1.1f;
         }
         if(OverEvery(4, "PowerBlock") && OverEvery(4, "SpeedBlock"))
         {
-
+            range *= 1.2f;
         }
         if(OverEvery(4, "TechBlock") && OverEvery(4, "PowerBlock") && OverEvery(4, "SpeedBlock"))
         {
-
+            targets += 2;
         }
 
         // IGA KOLMAS - RUUT
         if(OverEvery(3, "TechBlock"))
         {
-
+            Persistent = true;
+            Piercing = false;
         }
         if(OverEvery(3, "SpeedBlock"))
         {
@@ -129,28 +134,26 @@ public class Structure : MonoBehaviour
         }
         if(OverEvery(3, "TechBlock") && OverEvery(3, "PowerBlock"))
         {
-
+            slow = 0.5f;
         }
         if(OverEvery(3, "TechBlock") && OverEvery(3, "SpeedBlock"))
         {
-
+            firerate *= 1.25f;
+            bulletspeed *= 2;
         }
         if(OverEvery(3, "PowerBlock") && OverEvery(3, "SpeedBlock"))
         {
-
+            range *= 1.25f;
         }
         if(OverEvery(3, "TechBlock") && OverEvery(3, "PowerBlock") && OverEvery(3, "SpeedBlock"))
         {
-            range *= 1.5f;
-            firerate *= 2;
-            damage *= 2;
-            bulletspeed *= 2;
+            targets = 1000;
         }
 
         // IGA TEINE
         if(OverEvery(2, "TechBlock"))
         {
-
+            bulletspeed *= 2;
         }
         if(OverEvery(2, "SpeedBlock"))
         {
@@ -162,19 +165,18 @@ public class Structure : MonoBehaviour
         }
         if(OverEvery(2, "TechBlock") && OverEvery(2, "PowerBlock"))
         {
-            damage *= 3;
-            Slow *= -0.1f;
+            Slow *= -1f;
         }
         if(OverEvery(2, "TechBlock") && OverEvery(2, "SpeedBlock"))
         {
-            firerate *= 3;
+            firerate *= 1.2f;
             Piercing = true;
         }
         if(OverEvery(2, "PowerBlock") && OverEvery(2, "SpeedBlock"))
         {
-            range *= 2;
-            firerate *= 3;
-            damage *= 2;
+            range *= 1.5f;
+            firerate *= 1.1f;
+            damage *= 1.1f;
             //bulletspeed *= 4;
         }
 
@@ -199,6 +201,7 @@ public class Structure : MonoBehaviour
         BulletSpeedModifier = bulletspeed;
         Poison = poison;
         Slow = slow;
+        Targets = targets;
     }
 
     private bool All(string id) // See peaks v6rduma k2suga OverEvery(1, id).
