@@ -18,6 +18,7 @@ public class Structure : MonoBehaviour
     public int Targets; // Sihtmärkide arv, keda korraga lasta saab.
 
     public Foundation Foundation;
+    public bool BuiltOn;
     public SupportBlock[] SupportBlocks;
 
     public void ComputeSupportBlocks()

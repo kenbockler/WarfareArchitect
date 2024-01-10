@@ -5,4 +5,5 @@ using UnityEngine;
 public class Foundation : MonoBehaviour
 {
     public bool Limited;
+    public bool BuiltOn;
 }

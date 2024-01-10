@@ -9,4 +9,5 @@ public class GunBase : MonoBehaviour
     public float BulletSpeedModifier;
 
     public Structure Structure;
+    public bool BuiltOn;
 }

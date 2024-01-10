@@ -139,13 +139,13 @@ public class Builder : MonoBehaviour
             return true;
         }
 
-        if (data is StructureData && collider.CompareTag("Foundation"))
+        if (data is StructureData && collider.CompareTag("Foundation") && !Foundation.BuiltOn)
             return true;
 
-        if (data is GunBaseData && collider.CompareTag("Structure"))
+        if (data is GunBaseData && collider.CompareTag("Structure") && !Structure.BuiltOn)
             return true;
 
-        if (data is GunData && collider.CompareTag("GunBase"))
+        if (data is GunData && collider.CompareTag("GunBase") && !GunBase.BuiltOn)
             return true;
 
         if (data is SupportBlockData && collider.CompareTag("Structure"))
@@ -173,18 +173,21 @@ public class Builder : MonoBehaviour
             }
             else if (data is StructureData && Foundation != null)
             {
+                Foundation.BuiltOn = true;
                 Structure newStructure = Instantiate(((StructureData)data).StructurePrefab, pos, Quaternion.identity);
                 newStructure.Foundation = Foundation;
                 newStructure.transform.position = Foundation.transform.position + new Vector3(0, (newStructure.transform.localScale.y + Foundation.transform.localScale.y) / 2, 0);
             }
             else if (data is GunBaseData && Structure != null)
             {
+                Structure.BuiltOn = true;
                 GunBase newGunBase = Instantiate(((GunBaseData)data).GunBasePrefab, pos, Quaternion.identity);
                 newGunBase.Structure = Structure;
                 newGunBase.transform.position = Structure.transform.position + new Vector3(0, (newGunBase.transform.localScale.y + Structure.transform.localScale.y) / 2, 0);
             }
             else if (data is GunData && GunBase != null)
             {
+                GunBase.BuiltOn = true;
                 Gun newGun = Instantiate(((GunData)data).GunPrefab, pos, Quaternion.identity);
                 newGun.GunBase = GunBase;
                 newGun.transform.position = GunBase.transform.position + new Vector3(0, (newGun.transform.localScale.y + GunBase.transform.localScale.y) * 1.75f, 0);
