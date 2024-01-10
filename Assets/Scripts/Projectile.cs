@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public float Speed;
     public Health Target;
     public Vector3 TargetPos;
-    public int Damage = 1;
+    public int Damage;
 
     public bool Seeking; // Kas kuul p��ab vaenlasi targalt
     public bool Piercing; // Kas kuul saab vaenlasest l�bi minna

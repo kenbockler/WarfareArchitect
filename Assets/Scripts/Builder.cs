@@ -27,6 +27,9 @@ public class Builder : MonoBehaviour
 
     public AudioClipGroup PlacementAudio;
 
+    public GameObject TowerInfoCanvas;
+    public TextMeshProUGUI TowerInfoText;
+
     void Awake()
     {
         Instance = this;
@@ -347,6 +350,9 @@ public class Builder : MonoBehaviour
             Structure = null;
             GunBase = null;
 
+            // Kustutame torniinfo.
+            TowerInfoCanvas.SetActive(false);
+
             if (hitObject.GetComponent<Foundation>() != null)
             {
                 Foundation = hitObject.GetComponent<Foundation>();
@@ -358,6 +364,12 @@ public class Builder : MonoBehaviour
             else if (hitObject.GetComponent<GunBase>() != null)
             {
                 GunBase = hitObject.GetComponent<GunBase>();
+            }
+            // Püssi nägemisel kuvame torniinfo.
+            else if (hitObject.transform.parent.GetComponent<Gun>() != null)
+            {
+                UpdateInfo(hitObject.transform.parent.GetComponent<Gun>());
+                TowerInfoCanvas.SetActive(true);
             }
             // Kui on veel teisi objekte, millele v�ib ehitada, siis lisa siia..
 
@@ -405,5 +417,19 @@ public class Builder : MonoBehaviour
         {
             BuilderRange.transform.localScale = Vector3.zero;
         }
+    }
+
+    public void UpdateInfo(Gun gun)
+    {
+        TowerInfoText.text = "Tower info:\nRange: " + gun.Range +
+        "\nDamage: " + gun.Damage +
+        "\nFirerate: " + gun.FireRate +
+        "\nBullet speed: " + gun.ProjectilePrefab.Speed * gun.GunBase.BulletSpeedModifier * gun.GunBase.Structure.BulletSpeedModifier +
+        (gun.Seeking ? "\nSeeking bullets" : "") +
+        (gun.Piercing ? "\nPiercing bullets" : "") +
+        (gun.Persistent ? "\nPersistent bullets" : "") +
+        "\nPoison: " + gun.Poison +
+        "\nSpeed modifier: " + gun.Slow +
+        "\nMax targets: " + gun.Targets;
     }
 }

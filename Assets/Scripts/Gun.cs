@@ -153,6 +153,7 @@ public class Gun : MonoBehaviour
                     {
                         GunAudio.Play(transform.position);
                         Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
+                        projectile.Damage = Damage;
                         projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
                         projectile.Seeking = Seeking || GunBase.Structure.Seeking;
                         projectile.Piercing = Piercing || GunBase.Structure.Piercing;
