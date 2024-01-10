@@ -92,7 +92,6 @@ public class Gun : MonoBehaviour
         Damage = (int) Mathf.Ceil(DamageModifier * GunBase.DamageModifier * GunBase.Structure.DamageModifier);
         FireRate = FirerateModifier * GunBase.FirerateModifier * GunBase.Structure.FirerateModifier;
         Range = GunBase.Structure.Range * RangeModifier;
-        print(GunBase.Structure.Targets);
         Targets = GunBase.Structure.Targets;
         SpawnDelay = 1 / FireRate;
         NextSpawnTime = Time.time;

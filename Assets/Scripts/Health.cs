@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time < poisonTick)
+        if(Time.time > poisonTick)
         {
             Damage(poison);
             poisonTick = Time.time + 1f; // Viimane siin on konstant: mürk toimib iga sekund.
