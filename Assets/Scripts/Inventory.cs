@@ -6,24 +6,21 @@ public class Inventory : MonoBehaviour
 {
 
     // Custom data structure for a pair
-    public struct Pair<T1, T2>
+    public struct Pair<T1>
     {
         public T1 Key;
-        public T2 Value;
 
-        public Pair(T1 first, T2 second)
+        public Pair(T1 first)
         {
             Key = first;
-            Value = second;
         }
     }
 
 
     public static Inventory instance;
-    public Pair<TowerComponentData, int>[] inventory = new Pair<TowerComponentData, int>[8];
+    public Pair<TowerComponentData>[] inventory = new Pair<TowerComponentData>[8];
 
     public Image[] images = new Image[8];
-    public TextMeshProUGUI[] counts = new TextMeshProUGUI[8];
 
     public int Selected;
 
@@ -42,7 +39,6 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             images[i].gameObject.SetActive(false);
-            counts[i].gameObject.SetActive(false);
         }
 
     }
@@ -133,13 +129,9 @@ public class Inventory : MonoBehaviour
                     {
                         nullIndex = -2;
 
-                        inventory[i].Value++;
-
                         //print("Value: " + inventory[i].Value);
 
-                        counts[i].text = inventory[i].Value.ToString();
-
-                        GameviewInventory.instance.AddItem(item, inventory[i].Value, i);
+                        GameviewInventory.instance.AddItem(item, i);
 
                         break;
                     }
@@ -151,16 +143,13 @@ public class Inventory : MonoBehaviour
             {
                 //print("Null index: " + nullIndex);
                    
-                Pair<TowerComponentData, int> pair = new(item, 1);
+                Pair<TowerComponentData> pair = new(item);
                 inventory[nullIndex] = pair;
 
                 images[nullIndex].gameObject.SetActive(true);
                 images[nullIndex].sprite = item.IconSprite;
 
-                counts[nullIndex].gameObject.SetActive(true);
-                counts[nullIndex].text = "1";
-
-                GameviewInventory.instance.AddItem(item, 1, nullIndex);
+                GameviewInventory.instance.AddItem(item, nullIndex);
             }
 
             // Kui blueprint-süsteem ei tööta, kommenteerida sisse ja võtta Builderi Build-meetodist maha.
@@ -172,17 +161,6 @@ public class Inventory : MonoBehaviour
 
     public void DecrementBuymenuItemQuantity(int index)
     {
-        /*
-        inventory[index].Value--;
-        counts[index].text = inventory[index].Value.ToString();
-        if (inventory[index].Value <= 0)
-        {
-            inventory[index].Key = null;
-            inventory[index].Value = 0;
-
-            images[index].gameObject.SetActive(false);
-            counts[index].gameObject.SetActive(false);
-        }
-        */
+        //TODO
     }
 }

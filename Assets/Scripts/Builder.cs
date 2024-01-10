@@ -75,8 +75,8 @@ public class Builder : MonoBehaviour
                 PlacementAudio.Play();
 
                 //And decrease item quantity in inventory by 1 (comment out for testing)
-                GameviewInventory.instance.DecrementItemQuantity();
-                Inventory.instance.DecrementBuymenuItemQuantity(GameviewInventory.instance.Selected);
+                //GameviewInventory.instance.DecrementItemQuantity();
+                //Inventory.instance.DecrementBuymenuItemQuantity(GameviewInventory.instance.Selected);
             }
         }
         if (Input.GetMouseButtonDown(1))

@@ -8,23 +8,20 @@ public class GameviewInventory : MonoBehaviour
 {   
     
     // Custom data structure for a pair
-    public struct Pair<T1, T2>
+    public struct Pair<T1>
     {
         public T1 Key;
-        public T2 Value;
 
-        public Pair(T1 first, T2 second)
+        public Pair(T1 first)
         {
             Key = first;
-            Value = second;
         }
     }    
 
     public static GameviewInventory instance;
-    public Pair<TowerComponentData, int>[] inventory = new Pair<TowerComponentData, int>[8];
+    public Pair<TowerComponentData>[] inventory = new Pair<TowerComponentData>[8];
 
     public Image[] images = new Image[8];
-    public TextMeshProUGUI[] counts = new TextMeshProUGUI[8];
     public GameObject[] greenGlows = new GameObject[8];
 
     public int Selected;    
@@ -44,7 +41,6 @@ public class GameviewInventory : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             images[i].gameObject.SetActive(false);
-            counts[i].gameObject.SetActive(false);
             greenGlows[i].SetActive(false);
         }
 
@@ -138,16 +134,14 @@ public class GameviewInventory : MonoBehaviour
         }
     }
 
-    public void AddItem(TowerComponentData item, int amount, int index)
+    public void AddItem(TowerComponentData item, int index)
     {
-        Pair<TowerComponentData, int> pair = new Pair<TowerComponentData, int>(item, amount);
+        Pair<TowerComponentData> pair = new Pair<TowerComponentData>(item);
         inventory[index] = pair;
 
         images[index].gameObject.SetActive(true);
-        counts[index].gameObject.SetActive(true);
 
         images[index].sprite = item.IconSprite;
-        counts[index].text = amount.ToString();
 
     }
 
@@ -179,25 +173,9 @@ public class GameviewInventory : MonoBehaviour
         }
     }
 
-    //vähenda selected item kogust 1 võrra (kui läheb nulli, vabasta koht)
-    public void DecrementItemQuantity()
+    //eemalda blueprint inventoryst
+    public void RemoveItem()
     {
-        /*
-        inventory[Selected].Value--;
-        counts[Selected].text = inventory[Selected].Value.ToString();
-        if (inventory[Selected].Value <= 0)
-        {
-            //Peame itemi kustutama mõlemast inventoryst
-            inventory[Selected].Key = null;
-            inventory[Selected].Value = 0;
-
-            images[Selected].gameObject.SetActive(false);
-            counts[Selected].gameObject.SetActive(false);
-
-            //Paneme builderi inaktiivseks, kui item sai otsa
-            IsNullSetBuilderFalse(null);
-        }
-        ScenarioController.Instance.SetSelectedText(inventory[Selected].Key);
-        */
+        //TODO
     }
 }
