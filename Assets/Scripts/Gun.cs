@@ -29,15 +29,15 @@ public class Gun : MonoBehaviour
     [Header("Multiplicative Tower Modifiers From This Gun's Prefab")]
     [Space]
 
-    [Range(0.5f, 2)]
+    [Range(0.01f, 100)]
     [Tooltip("Multiplicatively increases the tower's RANGE. For example setting this value from 1 to 2 will double the tower's RANGE.")]
     public float RangeModifier;
 
-    [Range(0.5f, 2)]
+    [Range(0.01f, 100)]
     [Tooltip("Multiplicatively increases the tower's DAMAGE. For example setting this value from 1 to 2 will double the tower's DAMAGE.")]
     public float DamageModifier;
 
-    [Range(0.5f, 2)]
+    [Range(0.01f, 100)]
     [Tooltip("Multiplicatively increases the tower's FIRERATE. For example setting this value from 1 to 2 will double the tower's FIRERATE.")]
     public float FirerateModifier;
 
@@ -92,6 +92,11 @@ public class Gun : MonoBehaviour
         Damage = (int) Mathf.Ceil(DamageModifier * GunBase.DamageModifier * GunBase.Structure.DamageModifier);
         FireRate = FirerateModifier * GunBase.FirerateModifier * GunBase.Structure.FirerateModifier;
         Range = GunBase.Structure.Range * RangeModifier;
+
+        Seeking = GunBase.Structure.Seeking;
+        Piercing = GunBase.Structure.Piercing;
+        Persistent = GunBase.Structure.Persistent;
+
         Targets = GunBase.Structure.Targets;
         SpawnDelay = 1 / FireRate;
         NextSpawnTime = Time.time;

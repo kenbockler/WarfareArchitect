@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9a8ee6c4c6dbc84b90b52e56f42eee8, type: 3}
-  m_Name: FollowingGun
+  m_Name: LaserGun
   m_EditorClassIdentifier: 
-  DisplayName: Smart Machine Gun
-  Cost: 0a0000000000000000000000
-  IconSprite: {fileID: 21300000, guid: 6bb333838732baf4980acd5b428481cf, type: 3}
-  Hotkey: 55
-  GunPrefab: {fileID: 995645061699283922, guid: 860bd356e8b14194fbaf2f311b591ef6, type: 3}
+  DisplayName: Laser Gun
+  Cost: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  IconSprite: {fileID: 21300000, guid: f68120f173b50324d9f7719e88ec51a2, type: 3}
+  Hotkey: 50
+  GunPrefab: {fileID: -6171782834978276301, guid: c578d2b28876d5d489ceb04d093d1f7d, type: 3}
