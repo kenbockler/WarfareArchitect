@@ -267,6 +267,7 @@ MonoBehaviour:
   rangeApplied: {fileID: 0}
   InitialRotation: {x: 0, y: 0, z: 0}
   GunBase: {fileID: 0}
+  Name: MachineGun
   RangeModifier: 1
   DamageModifier: 1
   FirerateModifier: 1

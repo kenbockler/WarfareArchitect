@@ -124,6 +124,7 @@ MonoBehaviour:
   rangeApplied: {fileID: 0}
   InitialRotation: {x: 0, y: 0, z: 0}
   GunBase: {fileID: 0}
+  Name: Irradiator
   RangeModifier: 1
   DamageModifier: 0.5
   FirerateModifier: 1

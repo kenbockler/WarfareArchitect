@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +25,9 @@ public class Gun : MonoBehaviour
     // Kuna see lisatakse läbi builderi (ehk ka koodi sees), siis pole seda vaja editoris näidata
     [HideInInspector]
     public GunBase GunBase;
+
+    [Tooltip("Name of the gun for the animating part")]
+    public String Name;
 
     [Space]
     [Header("Multiplicative Tower Modifiers From This Gun's Prefab")]

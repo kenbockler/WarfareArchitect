@@ -135,6 +135,7 @@ MonoBehaviour:
   rangeApplied: {fileID: 0}
   InitialRotation: {x: 0, y: 0, z: 0}
   GunBase: {fileID: 0}
+  Name: LaserGun
   RangeModifier: 1
   DamageModifier: 0.05
   FirerateModifier: 20
@@ -144,7 +145,7 @@ MonoBehaviour:
   Poison: 0
   Slow: 1
   Targets: 1
-  ProjectilePrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: -1920434537118717541, guid: a79578addd223984484faa3992c0b4ef, type: 3}
   GunAudio: {fileID: 0}
 --- !u!1 &7561778088707682630
 GameObject:

@@ -250,6 +250,7 @@ MonoBehaviour:
   rangeApplied: {fileID: 0}
   InitialRotation: {x: 0, y: 0, z: 0}
   GunBase: {fileID: 0}
+  Name: RocketLauncher
   RangeModifier: 1
   DamageModifier: 10
   FirerateModifier: 0.2
