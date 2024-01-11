@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 3166689116561691831}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6532815, y: -0.27059805, z: 0.27059805, w: 0.65328145}
-  m_LocalPosition: {x: 0.0009473872, y: 0.1723333, z: 0.0011061281}
-  m_LocalScale: {x: 2.0313811, y: 2.0313811, z: 2.0313811}
+  m_LocalPosition: {x: 0.0009473872, y: 0.16, z: 0.0011061281}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8719532634180320956}
@@ -135,7 +135,7 @@ MonoBehaviour:
   rangeApplied: {fileID: 0}
   InitialRotation: {x: 0, y: 0, z: 0}
   GunBase: {fileID: 0}
-  Name: LaserGun
+  Name: 
   RangeModifier: 1
   DamageModifier: 0.05
   FirerateModifier: 20
@@ -174,8 +174,8 @@ Transform:
   m_GameObject: {fileID: 7561778088707682630}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.0009473872, y: 0.00000017701602, z: 0.00012845919}
-  m_LocalScale: {x: 12.620867, y: 12.620867, z: 1.3960705}
+  m_LocalPosition: {x: 0.0009473872, y: 0, z: 0.00012845919}
+  m_LocalScale: {x: 12.5, y: 12.5, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8719532634180320956}

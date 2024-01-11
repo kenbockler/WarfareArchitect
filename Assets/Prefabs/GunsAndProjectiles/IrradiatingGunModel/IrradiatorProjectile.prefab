@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5037681755421332211}
   - component: {fileID: 4059168774824621408}
   - component: {fileID: 9115954106773780716}
+  - component: {fileID: -6130858175895908883}
   m_Layer: 0
   m_Name: IrradiatorProjectile
   m_TagString: Untagged
@@ -106,3 +107,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-6130858175895908883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8742398372715597820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196af4043c1ebd14fac49a5b27d2fec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 100
+  Target: {fileID: 0}
+  TargetPos: {x: 0, y: 0, z: 0}
+  Damage: 1
+  Seeking: 0
+  Piercing: 0
+  Persistent: 0
+  Poison: 0
+  Slow: 1
+  ExplosionAudio: {fileID: 0}

@@ -193,7 +193,7 @@ public class Builder : MonoBehaviour
                 GunBase.BuiltOn = true;
                 Gun newGun = Instantiate(((GunData)data).GunPrefab, pos, Quaternion.identity);
                 newGun.GunBase = GunBase;
-                newGun.transform.position = GunBase.transform.position + new Vector3(0, (newGun.transform.localScale.y + GunBase.transform.localScale.y) * 1.75f, 0);
+                newGun.transform.position = GunBase.transform.position + new Vector3(0, (0 + GunBase.transform.localScale.y) * 0.5f, 0);
 
                 GameObject[] spawns = GameObject.FindGameObjectsWithTag("Spawn");
 
