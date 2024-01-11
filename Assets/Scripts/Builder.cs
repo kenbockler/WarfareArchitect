@@ -367,7 +367,7 @@ public class Builder : MonoBehaviour
                 GunBase = hitObject.GetComponent<GunBase>();
             }
             // Püssi nägemisel kuvame torniinfo.
-            else if (hitObject.transform.parent.GetComponent<Gun>() != null)
+            else if (hitObject.transform.parent != null && hitObject.transform.parent.GetComponent<Gun>() != null)
             {
                 UpdateInfo(hitObject.transform.parent.GetComponent<Gun>());
                 TowerInfoCanvas.SetActive(true);

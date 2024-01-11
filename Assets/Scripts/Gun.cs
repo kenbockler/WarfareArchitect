@@ -93,9 +93,9 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print(DamageModifier);
-        print(GunBase.DamageModifier);
-        print(GunBase.Structure.DamageModifier);
+        //print(DamageModifier);
+        //print(GunBase.DamageModifier);
+        //print(GunBase.Structure.DamageModifier);
 
         Damage = (int) Mathf.Ceil(DamageModifier * GunBase.DamageModifier * GunBase.Structure.DamageModifier);
         FireRate = FirerateModifier * GunBase.FirerateModifier * GunBase.Structure.FirerateModifier;
@@ -126,8 +126,9 @@ public class Gun : MonoBehaviour
             //transform.GetChild(0).eulerAngles = korrutatav * angle;
             //transform.GetChild(2).eulerAngles = Vector3.up * angle;
 
+            //print(Name);
             //Animeerimiseks
-            switch (name)
+            switch (Name)
             {
                 case "MachineGun":
                     Transform child0 = transform.GetChild(0);
@@ -148,12 +149,41 @@ public class Gun : MonoBehaviour
                     break;
 
                 case "Irradiator":
+                    vec = new Vector3(targets[0].transform.position.x - transform.position.x, targets[0].transform.position.y - transform.position.y, targets[0].transform.position.z - transform.position.z);
+                    targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
+                    eulerA = targetRotation.eulerAngles;
+
+                    Quaternion currentRotation = transform.rotation;
+                    transform.rotation = Quaternion.Euler(currentRotation.x, eulerA.y + 90, currentRotation.z);
+                    //transform.rotation = targetRotation;
+
                     break;
 
                 case "RocketLauncher":
+
+                    Transform childParent = transform.GetChild(0);
+                    child0 = childParent.GetChild(0);
+
+                    vec = new Vector3(targets[0].transform.position.x - child0.transform.position.x, targets[0].transform.position.y - child0.transform.position.y, targets[0].transform.position.z - child0.transform.position.z);
+                    targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
+                    eulerA = targetRotation.eulerAngles;                    
+
+                    currentRotation = child0.transform.rotation;
+                    child0.transform.rotation = Quaternion.Euler(currentRotation.x, eulerA.y, eulerA.z);
+
                     break;
 
                 case "LaserGun":
+
+                    child0 = transform.GetChild(0);                    
+
+                    vec = new Vector3(targets[0].transform.position.x - transform.position.x, targets[0].transform.position.y - transform.position.y, targets[0].transform.position.z - transform.position.z);
+                    targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
+                    eulerA = targetRotation.eulerAngles;
+
+                    currentRotation = child0.transform.rotation;
+                    child0.transform.rotation = Quaternion.Euler(currentRotation.x, eulerA.y, currentRotation.z);
+
                     break;
 
                 default:
@@ -179,12 +209,23 @@ public class Gun : MonoBehaviour
                     break;
 
                 case "Irradiator":
+
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
                     break;
 
                 case "RocketLauncher":
-                    break;
+
+                    Transform childParent = transform.GetChild(0);
+                    child0 = childParent.transform.GetChild(0);                    
+                    child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
+                    
+                    break;                   
 
                 case "LaserGun":
+                    
+                    child0 = transform.GetChild(0);
+                    child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
+
                     break;
 
                 default:
@@ -260,13 +301,14 @@ public class Gun : MonoBehaviour
 
     private void CleanTargets()
     {
-        foreach(Health t in targets)
-        {
-            if(t == null)
-            {
-                targets.Remove(t);
-            }
-        }
+        //foreach(Health t in targets)
+        //{
+        //if(t == null)
+        //{
+        //targets.Remove(t);
+        //}
+        //}
+        targets.RemoveAll(item => item == null);
     }
 
     private void PlaceSupportBlock(bool b)

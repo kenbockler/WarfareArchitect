@@ -105,4 +105,4 @@ MonoBehaviour:
   Persistent: 0
   Poison: 0
   Slow: 1
-  ExplosionAudio: {fileID: 0}
+  ExplosionAudio: {fileID: 11400000, guid: 5eae7e5543ca653498ad65a1f16c2910, type: 2}
