@@ -30,6 +30,9 @@ public class ScenarioController : MonoBehaviour
 
     private bool Win;
 
+    public GameObject OptionsMenuPanel;
+    public GameObject MenuPanel;
+
     private void Awake()
     {
         Instance = this;
@@ -203,4 +206,25 @@ public class ScenarioController : MonoBehaviour
             SelectedText.text = data.DisplayName;
         }
     }
+
+    public void ToggleOptionsPanel()
+    {
+        bool isOptionsPanelActive = OptionsMenuPanel.activeSelf;
+
+        // Vahetab options-paneeli olekut
+        OptionsMenuPanel.SetActive(!isOptionsPanelActive);
+
+        // Kui options-paneel on aktiivne, peida menüü-paneel ja vastupidi
+        MenuPanel.SetActive(isOptionsPanelActive);
+    }
+
+    public void ReturnToMenuPanel()
+    {
+        // Deaktiveeri options-paneel
+        OptionsMenuPanel.SetActive(false);
+
+        // Aktiveeri menüü-paneel
+        MenuPanel.SetActive(true);
+    }
+
 }
