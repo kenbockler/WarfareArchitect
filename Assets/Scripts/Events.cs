@@ -51,6 +51,9 @@ public static class Events
     public static event Func<int> OnGetLives;
     public static int GetLives() => OnGetLives?.Invoke() ?? 0;
 
+    public static event Action<ScenarioData> OnStartScenario;
+    public static void StartScenario(ScenarioData data) => OnStartScenario?.Invoke(data);
+
     public static event Action<WaveData> OnStartWave;
     public static void StartWave(WaveData data) => OnStartWave?.Invoke(data);
 

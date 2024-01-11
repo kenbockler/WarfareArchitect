@@ -48,6 +48,8 @@ public class ScenarioController : MonoBehaviour
 
         Events.OnTowerComponentSelected += TowerComponentSelected;
 
+        Events.OnStartScenario += StartScenario;
+
         WaveInfoText.enabled = false;
     }
 
@@ -63,6 +65,8 @@ public class ScenarioController : MonoBehaviour
         Events.OnGetUranium -= GetUranium;
 
         Events.OnTowerComponentSelected -= TowerComponentSelected;
+
+        Events.OnStartScenario -= StartScenario;
     }
 
     // Start is called before the first frame update
@@ -103,6 +107,35 @@ public class ScenarioController : MonoBehaviour
                 NewWave(Waves[0]);
             }
         }
+    }
+
+    public void StartScenario(ScenarioData data)
+    {
+        SetLives(data.lives);
+        SetStone(data.stone);
+        SetIron(data.iron);
+        SetUranium(data.uranium);
+
+        /*
+        for(int i=0; i < CardPanel.transform.childCount; i++)
+        {
+            Destroy(CardPanel.transform.GetChild(i).gameObject);
+        }
+
+        foreach(var tower in data.Towers)
+        {
+            TowerCard card = Instantiate<TowerCard>(TowerCardPrefab, CardPanel.transform);
+            card.Data = tower;
+        }
+        */
+
+        Level = data;
+
+        Waves = data.Waves;
+
+        //Events.StartWave(data.Waves[currentWave]);
+        //StartTime = Time.time;
+        //EndTime = Time.time + data.Waves[currentWave].Count * data.Waves[currentWave].SpawnDelay;
     }
 
     void SetLives(int lives)
@@ -177,6 +210,7 @@ public class ScenarioController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Win = false;
+        StartScenario(Level);
     }
 
     public void LoadMainMenu()
