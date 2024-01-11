@@ -122,21 +122,39 @@ public class Gun : MonoBehaviour
             //transform.GetChild(0).eulerAngles = korrutatav * angle;
             //transform.GetChild(2).eulerAngles = Vector3.up * angle;
 
-            Transform child0 = transform.GetChild(0);
-            Transform child2 = transform.GetChild(2);
+            //Animeerimiseks
+            switch (name)
+            {
+                case "MachineGun":
+                    Transform child0 = transform.GetChild(0);
+                    Transform child2 = transform.GetChild(2);
 
-            Vector3 vec = new Vector3(targets[0].transform.position.x - transform.position.x, targets[0].transform.position.y - transform.position.y, targets[0].transform.position.z - transform.position.z);
+                    Vector3 vec = new Vector3(targets[0].transform.position.x - transform.position.x, targets[0].transform.position.y - transform.position.y, targets[0].transform.position.z - transform.position.z);
 
-            Quaternion targetRotation;
-            targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
+                    Quaternion targetRotation;
+                    targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
 
-            //Quaternion targetRotation = Quaternion.LookRotation(new Vector3(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y, target.transform.position.z - transform.position.z));
-            child0.transform.rotation = targetRotation;
+                    //Quaternion targetRotation = Quaternion.LookRotation(new Vector3(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y, target.transform.position.z - transform.position.z));
+                    child0.transform.rotation = targetRotation;
 
-            Vector3 eulerA = targetRotation.eulerAngles;
-            eulerA.x = 0;
-            eulerA.z = 0;
-            child2.transform.rotation = Quaternion.Euler(eulerA);
+                    Vector3 eulerA = targetRotation.eulerAngles;
+                    eulerA.x = 0;
+                    eulerA.z = 0;
+                    child2.transform.rotation = Quaternion.Euler(eulerA);
+                    break;
+
+                case "Irradiator":
+                    break;
+
+                case "RocketLauncher":
+                    break;
+
+                case "LaserGun":
+                    break;
+
+                default:
+                    break;
+            }
         }
         else
         {
@@ -145,11 +163,29 @@ public class Gun : MonoBehaviour
 
             float rotationSpeed = 3.0f;
 
-            Transform child0 = transform.GetChild(0);
-            Transform child2 = transform.GetChild(2);
+            //Animeerimiseks
+            switch (name)
+            {
+                case "MachineGun":
+                    Transform child0 = transform.GetChild(0);
+                    Transform child2 = transform.GetChild(2);
 
-            child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
-            child2.rotation = Quaternion.Lerp(child2.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
+                    child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
+                    child2.rotation = Quaternion.Lerp(child2.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
+                    break;
+
+                case "Irradiator":
+                    break;
+
+                case "RocketLauncher":
+                    break;
+
+                case "LaserGun":
+                    break;
+
+                default:
+                    break;
+            }
         }
         if(NextSpawnTime < Time.time)
         {
