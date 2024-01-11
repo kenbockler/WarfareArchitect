@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8719532634180320956}
   - component: {fileID: -6171782834978276301}
+  - component: {fileID: 104692181247236015}
   m_Layer: 0
   m_Name: LaserGun
   m_TagString: Untagged
@@ -147,6 +148,27 @@ MonoBehaviour:
   Targets: 1
   ProjectilePrefab: {fileID: -1920434537118717541, guid: a79578addd223984484faa3992c0b4ef, type: 3}
   GunAudio: {fileID: 0}
+--- !u!135 &104692181247236015
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265411057666102973}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7561778088707682630
 GameObject:
   m_ObjectHideFlags: 0
