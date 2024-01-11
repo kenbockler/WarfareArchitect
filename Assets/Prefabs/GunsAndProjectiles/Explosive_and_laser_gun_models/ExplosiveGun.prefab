@@ -262,7 +262,7 @@ MonoBehaviour:
   Slow: 1
   Targets: 1
   ProjectilePrefab: {fileID: 5508966478671492980, guid: 876b32a142d77aa4fb65d0ddf7b0aa64, type: 3}
-  GunAudio: {fileID: 0}
+  GunAudio: {fileID: 11400000, guid: 5eae7e5543ca653498ad65a1f16c2910, type: 2}
 --- !u!135 &426467720660012621
 SphereCollider:
   m_ObjectHideFlags: 0
