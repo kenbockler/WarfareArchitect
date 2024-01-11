@@ -148,6 +148,12 @@ public class Builder : MonoBehaviour
         if (data is GunBaseData && collider.CompareTag("Structure") && !Structure.BuiltOn)
             return true;
 
+        print("-----DEBUG_BEGIN-----");
+        print(data is GunData);
+        print(collider.CompareTag("GunBase"));
+        print(!GunBase.BuiltOn);
+        print("-----DEBUG_END-----");
+
         if (data is GunData && collider.CompareTag("GunBase") && !GunBase.BuiltOn)
             return true;
 
