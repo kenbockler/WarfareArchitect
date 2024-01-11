@@ -22,6 +22,7 @@ public class LevelMenuKomponendid : MonoBehaviour
 
     public void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -31,7 +32,6 @@ public class LevelMenuKomponendid : MonoBehaviour
         gameObject.SetActive(false);
 
         BackButton.onClick.AddListener(OnBackButtonClicked);
-        DontDestroyOnLoad(gameObject);
         Instance = this;
     }
 
@@ -48,7 +48,15 @@ public class LevelMenuKomponendid : MonoBehaviour
     {
         SelectedScenario = data;
         print("Scenario selected: " + data.PresentedName);
+        SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(data.SceneName);
+    }
+
+    private void OnSceneLoaded(Scene _scene, LoadSceneMode _mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        Events.StartScenario(SelectedScenario);
+       //Destroy(gameObject);
     }
 
     public void OnBackButtonClicked()

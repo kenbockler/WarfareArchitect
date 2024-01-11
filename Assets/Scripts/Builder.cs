@@ -87,6 +87,9 @@ public class Builder : MonoBehaviour
 
     bool IsFree()
     {
+        if(Events.GetStone() < data.Cost[0] || Events.GetIron() < data.Cost[1] || Events.GetUranium() < data.Cost[2])
+            return false;
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, ColliderCheckRadius);
 
         // Kontrollime kollisioone
