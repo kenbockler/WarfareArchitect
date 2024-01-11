@@ -93,6 +93,10 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        print(DamageModifier);
+        print(GunBase.DamageModifier);
+        print(GunBase.Structure.DamageModifier);
+
         Damage = (int) Mathf.Ceil(DamageModifier * GunBase.DamageModifier * GunBase.Structure.DamageModifier);
         FireRate = FirerateModifier * GunBase.FirerateModifier * GunBase.Structure.FirerateModifier;
         Range = GunBase.Structure.Range * RangeModifier;
