@@ -19,7 +19,7 @@ public class ScenarioController : MonoBehaviour
 
     public bool IsGameOver = false;
 
-    private float stone = 50;
+    private float stone = 500;
     private float iron = 0;
     private float uranium = 0;
     private int lives = 4;

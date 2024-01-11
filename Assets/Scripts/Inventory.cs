@@ -98,6 +98,13 @@ public class Inventory : MonoBehaviour
             Selected = 7;
             Events.TowerComponentSelected(inventory[Selected].Key);
         }
+        else if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            inventory[Selected].Key = null;
+            images[Selected].gameObject.SetActive(false);
+
+            GameviewInventory.instance.RemoveItem(Selected);
+        }
 
         CurrentBuilderItem = inventory[CurrentGameviewIndex].Key;
     }

@@ -132,6 +132,10 @@ public class GameviewInventory : MonoBehaviour
 
             IsNullSetBuilderFalse(inventory[Selected].Key);
         }
+        else if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            RemoveItem(Selected);
+        }
     }
 
     public void AddItem(TowerComponentData item, int index)
@@ -145,9 +149,11 @@ public class GameviewInventory : MonoBehaviour
 
     }
 
-    public void SellItem(TowerComponentData item, int amount, int index)
+    public void RemoveItem(int index)
     {
-        // TODO
+        inventory[index].Key = null;
+        images[index].gameObject.SetActive(false);
+        IsNullSetBuilderFalse(inventory[index].Key);
     }
 
     public void InventoryItemSelected(int index)
