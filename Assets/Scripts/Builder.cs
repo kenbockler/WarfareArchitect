@@ -142,19 +142,14 @@ public class Builder : MonoBehaviour
             return true;
         }
 
-        if (data is StructureData && collider.CompareTag("Foundation") && !Foundation.BuiltOn)
+        if (data is StructureData && collider.CompareTag("Foundation") && Foundation != null && !Foundation.BuiltOn)
             return true;
 
-        if (data is GunBaseData && collider.CompareTag("Structure") && !Structure.BuiltOn)
+        if (data is GunBaseData && collider.CompareTag("Structure") && Structure != null && !Structure.BuiltOn)
             return true;
 
-        print("-----DEBUG_BEGIN-----");
-        print(data is GunData);
-        print(collider.CompareTag("GunBase"));
-        print(!GunBase.BuiltOn);
-        print("-----DEBUG_END-----");
 
-        if (data is GunData && collider.CompareTag("GunBase") && !GunBase.BuiltOn)
+        if (data is GunData && collider.CompareTag("GunBase") && GunBase != null && !GunBase.BuiltOn)
             return true;
 
         if (data is SupportBlockData && collider.CompareTag("Structure"))
