@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LaserGun
   m_EditorClassIdentifier: 
   DisplayName: Laser Gun
-  Cost: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  Cost: 0a0000000000000000000000
   IconSprite: {fileID: 21300000, guid: f68120f173b50324d9f7719e88ec51a2, type: 3}
   Hotkey: 50
   GunPrefab: {fileID: -6171782834978276301, guid: c578d2b28876d5d489ceb04d093d1f7d, type: 3}
