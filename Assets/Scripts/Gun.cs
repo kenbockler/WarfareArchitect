@@ -161,16 +161,16 @@ public class Gun : MonoBehaviour
 
                 case "RocketLauncher":
 
-                    Transform childParent = transform.GetChild(0);
-                    child0 = childParent.GetChild(0);
+                    
+                    child0 = transform.GetChild(0);                    
 
                     vec = new Vector3(targets[0].transform.position.x - child0.transform.position.x, targets[0].transform.position.y - child0.transform.position.y, targets[0].transform.position.z - child0.transform.position.z);
                     targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
                     eulerA = targetRotation.eulerAngles;                    
 
                     currentRotation = child0.transform.rotation;
-                    child0.transform.rotation = Quaternion.Euler(currentRotation.x, eulerA.y, eulerA.z);
-
+                    child0.transform.rotation = Quaternion.Euler(currentRotation.x, eulerA.y, currentRotation.z);
+                    
                     break;
 
                 case "LaserGun":
@@ -181,8 +181,12 @@ public class Gun : MonoBehaviour
                     targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
                     eulerA = targetRotation.eulerAngles;
 
+                    eulerA.x -= 45;
+                    eulerA.y -= 90;
+                    eulerA.z += 90;
+
                     currentRotation = child0.transform.rotation;
-                    child0.transform.rotation = Quaternion.Euler(currentRotation.x, eulerA.y, currentRotation.z);
+                    child0.transform.rotation = Quaternion.Euler(eulerA.x, eulerA.y, eulerA.z);
 
                     break;
 
@@ -215,8 +219,7 @@ public class Gun : MonoBehaviour
 
                 case "RocketLauncher":
 
-                    Transform childParent = transform.GetChild(0);
-                    child0 = childParent.transform.GetChild(0);                    
+                    child0 = transform.GetChild(0);                    
                     child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
                     
                     break;                   
@@ -224,7 +227,7 @@ public class Gun : MonoBehaviour
                 case "LaserGun":
                     
                     child0 = transform.GetChild(0);
-                    child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
+                    child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(-45, -90, 90), Time.deltaTime * rotationSpeed);
 
                     break;
 
