@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         // Seadistage UI elemendid ja lisage kuulajad
+        LoadVolumeSetting();
         UpdateMuteToggleBasedOnVolume();
         volumeSlider.onValueChanged.AddListener(HandleVolumeChange);
         muteToggle.onValueChanged.AddListener(HandleMuteToggle);
@@ -25,7 +26,9 @@ public class AudioManager : MonoBehaviour
 
     private void HandleVolumeChange(float volume)
     {
-        SetVolume(volume); // Uuenda helitugevust AudioMixeris
+        SetVolume(volume);
+        PlayerPrefs.SetFloat("MasterVolume", volume);
+        PlayerPrefs.Save();
 
         if (volume > 0)
         {
@@ -62,6 +65,16 @@ public class AudioManager : MonoBehaviour
         else
         {
             audioMixer.SetFloat("MasterVolume", -80); // Vaigista heli
+        }
+    }
+
+    private void LoadVolumeSetting()
+    {
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            float savedVolume = PlayerPrefs.GetFloat("MasterVolume");
+            volumeSlider.value = savedVolume;
+            SetVolume(savedVolume);
         }
     }
 }
