@@ -11630,12 +11630,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1246805868}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: bbd06807b2d97574ca58e732160c2ac8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: babb3de7a919435409628aa381c1f12d, type: 2}
           m_ObjectArgumentAssemblyTypeName: TowerComponentData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -16364,12 +16364,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1246805868}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: bbd06807b2d97574ca58e732160c2ac8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 5ee6c1cbffb2c3048a04e7fa6c0b19ff, type: 2}
           m_ObjectArgumentAssemblyTypeName: TowerComponentData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -24435,7 +24435,7 @@ MonoBehaviour:
   moveSpeed: 50
   speedMultiplier: 2
   OptionsMenu: {fileID: 1398220754}
-  TerminalMenu: {fileID: 0}
+  TerminalMenu: {fileID: 1675755840}
 --- !u!1 &1136248045
 GameObject:
   m_ObjectHideFlags: 0
@@ -25360,7 +25360,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1246805868}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -26052,7 +26052,7 @@ GameObject:
   - component: {fileID: 1227775951}
   - component: {fileID: 1227775950}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: StatisticsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26370,17 +26370,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c227d8608ca9fc040a5a829b353ff59c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StoneResourceText: {fileID: 0}
-  IronResourceText: {fileID: 0}
-  UraniumResourceText: {fileID: 0}
-  ItemNameText: {fileID: 0}
-  ItemTypeText: {fileID: 0}
-  IconObject: {fileID: 0}
-  IconSprite: {fileID: 0}
-  StatisticsText: {fileID: 0}
-  StoneCostText: {fileID: 0}
-  IronCostText: {fileID: 0}
-  UraniumCostText: {fileID: 0}
+  StoneResourceText: {fileID: 35285365}
+  IronResourceText: {fileID: 1856165157}
+  UraniumResourceText: {fileID: 1609144061}
+  ItemNameText: {fileID: 398425459}
+  ItemTypeText: {fileID: 1638537737}
+  IconObject: {fileID: 396998538}
+  IconSprite: {fileID: 396998540}
+  StatisticsText: {fileID: 1227775950}
+  StoneCostText: {fileID: 1901536944}
+  IronCostText: {fileID: 2114186436}
+  UraniumCostText: {fileID: 445781331}
   SelectedItem: {fileID: 0}
   SelectedAudio: {fileID: 11400000, guid: e7079a2a9f6bd1543aa74e92031a2ff3, type: 2}
 --- !u!114 &1246805869
@@ -26396,14 +26396,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   images:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 154429376}
+  - {fileID: 948218180}
+  - {fileID: 54235580}
+  - {fileID: 391275536}
+  - {fileID: 1533004946}
+  - {fileID: 1850164590}
+  - {fileID: 1268471920}
+  - {fileID: 1522869821}
   Selected: 0
   CurrentGameviewIndex: 0
   CurrentBuilderItem: {fileID: 0}
@@ -26419,8 +26419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d0bbf4db4a0024f89efdcbf668e351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerInfoCanvas: {fileID: 1692874118}
-  TowerInfoText: {fileID: 399888160}
 --- !u!1001 &1257776873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32149,12 +32147,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1246805868}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: bbd06807b2d97574ca58e732160c2ac8, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 867ee16b84edd9d429a290b7934eecf9, type: 2}
           m_ObjectArgumentAssemblyTypeName: TowerComponentData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

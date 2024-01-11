@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 1581998802961060266}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 8.106553e-17, z: -5.1644436e-17, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: -0.040830996}
-  m_LocalScale: {x: 68.97346, y: 68.97346, z: 68.97346}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7800355280210902578}
@@ -143,8 +143,8 @@ Transform:
   m_GameObject: {fileID: 7997737962156398694}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 8.106553e-17, z: -5.1644436e-17, w: 0.7071067}
-  m_LocalPosition: {x: -0.037785053, y: 6, z: -0.029647827}
-  m_LocalScale: {x: 68.97346, y: 68.97346, z: 68.97346}
+  m_LocalPosition: {x: -0.0065, y: 0.09, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7800355280210902578}
@@ -226,7 +226,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 218, z: -193}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 70, y: 70, z: 70}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7800355280210902578}
@@ -250,7 +250,6 @@ MonoBehaviour:
   rangeApplied: {fileID: 0}
   InitialRotation: {x: 0, y: 0, z: 0}
   GunBase: {fileID: 0}
-  Name: RocketLauncher
   RangeModifier: 1
   DamageModifier: 10
   FirerateModifier: 0.2

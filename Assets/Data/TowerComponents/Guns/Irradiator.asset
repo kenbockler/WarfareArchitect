@@ -16,4 +16,4 @@ MonoBehaviour:
   Cost: 1e0000000000000000000000
   IconSprite: {fileID: 21300000, guid: 215959672025bb343a2727af7e7b2396, type: 3}
   Hotkey: 52
-  GunPrefab: {fileID: -4538359921378292933, guid: a96625520ff46224aa5d9537429807f0, type: 3}
+  GunPrefab: {fileID: 635182930695287032, guid: 8837f824bd902ee40af5674bef10b324, type: 3}
