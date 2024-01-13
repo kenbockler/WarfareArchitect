@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WaveTest3 1
   m_EditorClassIdentifier: 
   Count: 30
-  EnemyData: {fileID: 11400000, guid: 1ba3642146a0c0d4994d7c335c8c77f6, type: 2}
+  EnemyData: {fileID: 11400000, guid: f0eea84c3e17b754cb4295fb52d1d882, type: 2}
   SpawnDelay: 2

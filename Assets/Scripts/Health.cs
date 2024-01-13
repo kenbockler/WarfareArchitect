@@ -4,7 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private int HealthPoints;
+    public int HealthPoints;
 
     private Animator animator;
 
@@ -37,7 +37,7 @@ public class Health : MonoBehaviour
         if(Time.time > poisonTick)
         {
             Damage(poison);
-            poisonTick = Time.time + 1f; // Viimane siin on konstant: mürk toimib iga sekund.
+            poisonTick = Time.time + 1f; // Viimane siin on konstant: mï¿½rk toimib iga sekund.
         }
     }
 

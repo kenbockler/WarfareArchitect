@@ -81,6 +81,8 @@ public class Gun : MonoBehaviour
     private float NextSpawnTime;
     private List<Health> targets = new List<Health> { };
 
+    private Projectile projectile;
+
     public void Awake()
     {
         Events.OnPlaceSupportBlock += PlaceSupportBlock;
@@ -99,7 +101,9 @@ public class Gun : MonoBehaviour
 
         Damage = (int) Mathf.Ceil(DamageModifier * GunBase.DamageModifier * GunBase.Structure.DamageModifier);
         FireRate = FirerateModifier * GunBase.FirerateModifier * GunBase.Structure.FirerateModifier;
-        Range = GunBase.Structure.Range * RangeModifier;
+
+        float ArithmeticMeanScale = (transform.localScale.x + transform.localScale.y + transform.localScale.z) / 3;
+        Range = GunBase.Structure.Range * RangeModifier / (2*ArithmeticMeanScale);
 
         Seeking = GunBase.Structure.Seeking;
         Piercing = GunBase.Structure.Piercing;
@@ -111,12 +115,29 @@ public class Gun : MonoBehaviour
 
         rangeApplied = gameObject.GetComponent<SphereCollider>();
         rangeApplied.radius = Range;
+
+        ProjectilePrefab.InitialPosition = transform.position;
+        ProjectilePrefab.InitialForward = transform.forward;
+
+        if (Name == "LaserGun")
+        {
+            projectile = Instantiate<Projectile>(ProjectilePrefab);
+            projectile.Damage = Damage;
+            projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
+            projectile.Seeking = Seeking || GunBase.Structure.Seeking;
+            projectile.Piercing = Piercing || GunBase.Structure.Piercing;
+            projectile.Persistent = Persistent || GunBase.Structure.Persistent;
+            projectile.Poison = (int)GunBase.Structure.Poison;
+            projectile.Slow = GunBase.Structure.Slow;
+            projectile.DamageDelay = SpawnDelay;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         Health[] targets = GetTargets();
+        //print(targets.Length + " " + (targets[0] != null));
         if(targets[0] != null)
         {
             //Vector3 direction = target.transform.position - transform.position;
@@ -198,11 +219,10 @@ public class Gun : MonoBehaviour
         {
             //transform.GetChild(0).eulerAngles = Vector3.zero;
             //transform.GetChild(2).eulerAngles = Vector3.zero;
-
             float rotationSpeed = 3.0f;
 
             //Animeerimiseks
-            switch (name)
+            switch (Name)
             {
                 case "MachineGun":
                     Transform child0 = transform.GetChild(0);
@@ -242,22 +262,49 @@ public class Gun : MonoBehaviour
             {
                 foreach(Health target in targets)
                 {
+                    if (Name == "LaserGun")
+                    {
+                        if (targets[0] == null)
+                        {
+                            projectile.transform.position = transform.position;
+                            projectile.Target = target;
+                            projectile.TargetPos = transform.position;
+                        }
+                        else if (target != null && !target.IsDead)
+                        {
+                            projectile.transform.position = transform.position;
+                            projectile.Target = target;                                                        
+                            projectile.TargetPos = target.transform.position;                                                       
+                        }
+                    }
                     if(target != null && !target.IsDead)
                     {
-                        GunAudio.Play(transform.position);
-                        Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
-                        projectile.Damage = Damage;
-                        projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
-                        projectile.Seeking = Seeking || GunBase.Structure.Seeking;
-                        projectile.Piercing = Piercing || GunBase.Structure.Piercing;
-                        projectile.Persistent = Persistent || GunBase.Structure.Persistent;
-                        projectile.Poison = (int)GunBase.Structure.Poison;
-                        projectile.Slow = GunBase.Structure.Slow;
+                        if (Name != "LaserGun")
+                        {
+                            GunAudio.Play(transform.position);
+                            Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
+                            projectile.Damage = Damage;
+                            projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
+                            projectile.Seeking = Seeking || GunBase.Structure.Seeking;
+                            projectile.Piercing = Piercing || GunBase.Structure.Piercing;
+                            projectile.Persistent = Persistent || GunBase.Structure.Persistent;
+                            projectile.Poison = (int)GunBase.Structure.Poison;
+                            projectile.Slow = GunBase.Structure.Slow;
 
-                        projectile.transform.position = transform.position;
-                        projectile.Target = target;
-                        projectile.TargetPos = target.transform.position;
-                        NextSpawnTime = Time.time + SpawnDelay;
+                            projectile.transform.position = transform.position;
+                            projectile.Target = target;
+                            projectile.TargetPos = target.transform.position;
+                            NextSpawnTime = Time.time + SpawnDelay;
+                        }
+                        /*
+                        else
+                        {
+                            projectile.transform.position = transform.position;
+                            projectile.Target = target;
+                            projectile.TargetPos = target.transform.position;
+                            NextSpawnTime = Time.time + SpawnDelay;
+                        }
+                        */
                     }
                 }
             }
@@ -272,6 +319,7 @@ public class Gun : MonoBehaviour
     public Health[] GetTargets()
     {
         Health[] targetArray = new Health[Math.Max(targets.Count, Targets)];
+
         int targetNumber = Targets;
         for(int i = 0; i < targets.Count; i++)
         {
@@ -289,6 +337,7 @@ public class Gun : MonoBehaviour
         Health health = collision.GetComponent<Health>();
         if(health != null)
         {
+            //print("Uus tuli range");
             targets.Add(health);
         }
     }
@@ -297,8 +346,9 @@ public class Gun : MonoBehaviour
     {
         Health health = collision.GetComponent<Health>();
         if(health != null)
-        {
+        {            
             targets.Remove(health);
+            
         }
     }
 
