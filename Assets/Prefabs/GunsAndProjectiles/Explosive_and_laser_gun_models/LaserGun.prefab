@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 19843917272514113}
   - component: {fileID: 4469301298279922242}
   - component: {fileID: 4981230264131261595}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shocker5.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8719532634180320956}
   - component: {fileID: -6171782834978276301}
   - component: {fileID: 104692181247236015}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LaserGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   GunBase: {fileID: 0}
   Name: LaserGun
   RangeModifier: 1
-  DamageModifier: 0.05
+  DamageModifier: 0.0001
   FirerateModifier: 20
   Seeking: 0
   Piercing: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   Poison: 0
   Slow: 1
   Targets: 1
-  ProjectilePrefab: {fileID: -1920434537118717541, guid: a79578addd223984484faa3992c0b4ef, type: 3}
+  ProjectilePrefab: {fileID: 6822858319040128020, guid: a79578addd223984484faa3992c0b4ef, type: 3}
   GunAudio: {fileID: 11400000, guid: 7acd14cbb585636429f435b02c912b40, type: 2}
 --- !u!135 &104692181247236015
 SphereCollider:
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 7398921458493552170}
   - component: {fileID: 7508542833724306797}
   - component: {fileID: 8590245177705837075}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shocker5.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

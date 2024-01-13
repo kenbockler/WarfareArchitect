@@ -2752,6 +2752,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Next: {fileID: 0}
+  Slow: 1
+  SlowCooldown: 0
   Speed: 50
   animator: {fileID: 0}
 --- !u!65 &5836699264098032977
@@ -2814,5 +2816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61eb0efc19f7454a874eda432da1e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthPoints: 5
+  HealthPoints: 100
   IsDead: 0
+  poison: 0

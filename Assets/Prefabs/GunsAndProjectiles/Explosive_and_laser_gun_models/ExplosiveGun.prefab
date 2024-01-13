@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7086242324453908495}
   - component: {fileID: 5455931171774091171}
   - component: {fileID: 3243615667468388212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StartingMechanism5.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7800355280210902578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExplosiveGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 3482595884727412760}
   - component: {fileID: 7959688189837342140}
   - component: {fileID: 1420260451960424413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StartingMechanism5.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 4790361400944131290}
   - component: {fileID: -8908178435156758609}
   - component: {fileID: 426467720660012621}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExplosiveGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
