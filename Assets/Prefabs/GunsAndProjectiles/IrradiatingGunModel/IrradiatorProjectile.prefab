@@ -100,7 +100,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -128,11 +128,12 @@ MonoBehaviour:
   Persistent: 0
   Poison: 0
   Slow: 1
-  ExplosionAudio: {fileID: 0}
-  InitialPosition: {x: 0, y: 0, z: 0}
-  InitialForward: {x: 0, y: 0, z: 0}
+  ProjectileHittingEnemyAudio: {fileID: 0}
+  InitialPosition: {x: 270, y: 37.5, z: -130}
+  InitialForward: {x: -1.0000001, y: 0, z: -0.00000011920929}
   laserLine: {fileID: 0}
   DamageDelay: 0
   IsRocket: 0
   Particle_Controller: {fileID: 0}
   IsIrradiator: 1
+  IrradiatorHitsAllowed: 3

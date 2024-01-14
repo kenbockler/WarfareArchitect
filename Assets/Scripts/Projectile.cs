@@ -60,6 +60,13 @@ public class Projectile : MonoBehaviour
         if (IsIrradiator)
         {
             TargetPos.y += 25;
+            MeshRenderer mr = GetComponent<MeshRenderer>();
+
+            Material originalMat = mr.materials[0];
+
+            Material newMat = new Material(originalMat);
+
+            mr.materials[0] = newMat;
         }
     }
 
@@ -145,8 +152,12 @@ public class Projectile : MonoBehaviour
 
                     if (IsIrradiator)
                     {
-                        //siia tuleb hiljem midagi paremat kirjutada
-                        GameObject.Destroy(gameObject);
+                        //siia tuleb hiljem midagi paremat kirjutada                        
+                        if (IrradiatorHitsAllowed <= 0 && !Piercing)
+                        {
+                            print("DEBUG");
+                            GameObject.Destroy(gameObject);
+                        }                        
                     }
                     else
                     {
@@ -191,7 +202,16 @@ public class Projectile : MonoBehaviour
 
             if (IsIrradiator)
             {
-                if (IrradiatorHitsAllowed == 0) GameObject.Destroy(gameObject);
+                IrradiatorHitsAllowed--;
+
+                if (!Piercing)
+                {
+                    MeshRenderer mr = GetComponent<MeshRenderer>();
+                    Material mat = mr.materials[0];
+                    mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a / 2f);
+                }
+
+                if (IrradiatorHitsAllowed <= 0 && !Piercing) GameObject.Destroy(gameObject);
             }
             else
             {
