@@ -129,3 +129,10 @@ MonoBehaviour:
   Poison: 0
   Slow: 1
   ExplosionAudio: {fileID: 0}
+  InitialPosition: {x: 0, y: 0, z: 0}
+  InitialForward: {x: 0, y: 0, z: 0}
+  laserLine: {fileID: 0}
+  DamageDelay: 0
+  IsRocket: 0
+  Particle_Controller: {fileID: 0}
+  IsIrradiator: 1

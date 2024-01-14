@@ -1,4 +1,6 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.ProBuilder;
 
 public class Projectile : MonoBehaviour
 {
@@ -31,6 +33,8 @@ public class Projectile : MonoBehaviour
     public bool IsRocket; // only for the explosive projectile
     public ParticleController Particle_Controller; // only for the explosive projectile
 
+    public bool IsIrradiator; // only for irradiator projectile
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +54,12 @@ public class Projectile : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
         }
+
+        TargetPos = new Vector3(TargetPos.x, TargetPos.y + 20, TargetPos.z);
+        if (IsIrradiator)
+        {
+            TargetPos.y += 25;
+        }
     }
 
     // Update is called once per frame
@@ -68,7 +78,7 @@ public class Projectile : MonoBehaviour
                 if (Time.time > PrevTime + DamageDelay)
                 {
                     Target.Damage(Damage);
-                    print(Target.HealthPoints); // for debugging
+                    //print(Target.HealthPoints); // for debugging
                     PrevTime = Time.time;
                 }
                 //Target.Damage(Damage);
@@ -86,7 +96,23 @@ public class Projectile : MonoBehaviour
             {
                 if (Target != null)
                 {
-                    TargetPos = Target.transform.position;
+                    if (IsIrradiator)
+                    {
+                        Vector3 rot = Quaternion.LookRotation(TargetPos - transform.position).eulerAngles;
+                        rot.x += 50;
+                        transform.rotation = Quaternion.Euler(rot);
+
+                        float currentScale = transform.localScale.x;
+                        currentScale = Mathf.Clamp(currentScale + 100f * Time.deltaTime, 1, 80);
+                        transform.localScale = new Vector3(currentScale, 0.1f, currentScale);
+                    }
+                    if (IsRocket)
+                    {
+                        Vector3 rot = Quaternion.LookRotation(TargetPos - transform.transform.position).eulerAngles;
+                        rot.x -= 90;
+                        transform.rotation = Quaternion.Euler(rot);
+                    }
+
                     if (Vector3.Distance(transform.position, TargetPos) < 10)
                     {
                         if (IsRocket)
@@ -119,6 +145,12 @@ public class Projectile : MonoBehaviour
                 }
                 else
                 {
+                    if (IsIrradiator)
+                    {
+                        float currentScale = transform.localScale.x;
+                        currentScale = Mathf.Clamp(currentScale + 100f * Time.deltaTime, 1, 80);
+                        transform.localScale = new Vector3(currentScale, 0.1f, currentScale);
+                    }
                     transform.position = Vector3.MoveTowards(transform.position, TargetPos, Time.deltaTime * Speed);
                 }
             }
@@ -147,7 +179,7 @@ public class Projectile : MonoBehaviour
             if(enemyw.Slow > Slow) enemyw.Slow = Slow;
             enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit.
             enemy.Damage(Damage);
-            print(enemy.HealthPoints);
+            //print(enemy.HealthPoints);
         }
     }
 
@@ -160,8 +192,7 @@ public class Projectile : MonoBehaviour
         float sphereRadius = transform.GetChild(0).GetComponent<SphereCollider>().radius;
 
         // Find all colliders within the sphere
-        Collider[] colliders = Physics.OverlapSphere(transform.position, sphereRadius);
-        
+        Collider[] colliders = Physics.OverlapSphere(transform.position, sphereRadius * transform.localScale.x);
         foreach (var collider in colliders)
         {
             if (collider.GetComponent<Health>() != null)

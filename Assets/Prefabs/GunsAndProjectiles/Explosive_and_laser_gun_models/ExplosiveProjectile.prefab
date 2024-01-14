@@ -114,6 +114,7 @@ MonoBehaviour:
   DamageDelay: 0
   IsRocket: 1
   Particle_Controller: {fileID: -6786035264524861468, guid: e3aba6ba7b142704cb9c2eabec9b7332, type: 3}
+  IsIrradiator: 0
 --- !u!135 &5657033752792977400
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -186,5 +187,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}

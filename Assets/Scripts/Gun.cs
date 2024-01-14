@@ -285,15 +285,6 @@ public class Gun : MonoBehaviour
                             GunAudio.Play(transform.position);
                             Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
 
-                            if (Name == "ExplosiveGun")
-                            {
-                                projectile.IsRocket = true;
-                            }
-                            else
-                            {
-                                projectile.IsRocket = false;
-                            }
-
                             projectile.Damage = Damage;
                             projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
                             projectile.Seeking = Seeking || GunBase.Structure.Seeking;
@@ -305,6 +296,21 @@ public class Gun : MonoBehaviour
                             projectile.transform.position = transform.position;
                             projectile.Target = target;
                             projectile.TargetPos = target.transform.position;
+
+                            if (Name == "Irradiator")
+                            {
+                                Vector3 rot = Quaternion.LookRotation(target.transform.position - projectile.transform.position).eulerAngles;
+                                rot.x += 50;
+                                projectile.transform.rotation = Quaternion.Euler(rot);
+                                projectile.transform.localScale = new Vector3(10, 0.1f, 10);
+                            }
+                            if (Name == "ExplosiveGun")
+                            {
+                                Vector3 rot = Quaternion.LookRotation(target.transform.position - projectile.transform.position).eulerAngles;
+                                rot.x -= 90;
+                                projectile.transform.rotation = Quaternion.Euler(rot);
+                            }
+
                             NextSpawnTime = Time.time + SpawnDelay;
                         }
                         /*
@@ -373,6 +379,7 @@ public class Gun : MonoBehaviour
         //}
         //}
         targets.RemoveAll(item => item == null);
+        targets.RemoveAll(item => item.IsDead);
     }
 
     private void PlaceSupportBlock(bool b)
