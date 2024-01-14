@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -29,6 +27,9 @@ public class Projectile : MonoBehaviour
     [HideInInspector]
     public float DamageDelay; // only for the laser projectile (small number)
     private float PrevTime;
+   
+    public bool IsRocket; // only for the explosive projectile
+    public ParticleController Particle_Controller; // only for the explosive projectile
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,11 @@ public class Projectile : MonoBehaviour
             laserLine.SetPosition(1, InitialPosition);
 
             PrevTime = Time.time;
+        }
+
+        if (IsRocket)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
         }
     }
 
@@ -62,7 +68,7 @@ public class Projectile : MonoBehaviour
                 if (Time.time > PrevTime + DamageDelay)
                 {
                     Target.Damage(Damage);
-                    print(Target.HealthPoints);
+                    print(Target.HealthPoints); // for debugging
                     PrevTime = Time.time;
                 }
                 //Target.Damage(Damage);
@@ -83,6 +89,10 @@ public class Projectile : MonoBehaviour
                     TargetPos = Target.transform.position;
                     if (Vector3.Distance(transform.position, TargetPos) < 10)
                     {
+                        if (IsRocket)
+                        {
+                            FindAllEnemisInExplosionRadiusAndDamageThem();
+                        }
                         if (Piercing) Seeking = false; // Siin tuleks tegelikult midagi intelligentsemat teha, et ta j�rgmise vaenlase poole kihutaks.
                         else GameObject.Destroy(gameObject);
                         Target.Damage(Damage);
@@ -98,9 +108,13 @@ public class Projectile : MonoBehaviour
                 }
             }
             else
-            {
+            {                
                 if (Vector3.Distance(transform.position, TargetPos) < 0.1 && !Persistent)
                 {
+                    if (IsRocket)
+                    {                        
+                        FindAllEnemisInExplosionRadiusAndDamageThem();
+                    }
                     GameObject.Destroy(gameObject);
                 }
                 else
@@ -115,7 +129,12 @@ public class Projectile : MonoBehaviour
     {
         Health enemy = collision.GetComponent<Health>();
         if(enemy != null)
-        {
+        {                        
+            if (IsRocket)
+            {                
+                FindAllEnemisInExplosionRadiusAndDamageThem();
+            }
+
             if (ExplosionAudio != null)
             {
                 ExplosionAudio.Play(transform.position);
@@ -128,6 +147,32 @@ public class Projectile : MonoBehaviour
             if(enemyw.Slow > Slow) enemyw.Slow = Slow;
             enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit.
             enemy.Damage(Damage);
+        }
+    }
+
+    private void FindAllEnemisInExplosionRadiusAndDamageThem()
+    {
+        // Instantiate particelcontroller gameobject
+        ParticleController pc = GameObject.Instantiate<ParticleController>(Particle_Controller);
+        pc.SetPositionAndPlay(transform.position, transform.localScale);
+
+        float sphereRadius = transform.GetChild(0).GetComponent<SphereCollider>().radius;
+
+        // Find all colliders within the sphere
+        Collider[] colliders = Physics.OverlapSphere(transform.position, sphereRadius);
+        
+        foreach (var collider in colliders)
+        {
+            if (collider.GetComponent<Health>() != null)
+            {
+                Health enemy = collider.GetComponent<Health>();
+                if (enemy != null && !enemy.IsDead)
+                {
+
+                    //Let the explosion damage be half the damage of the rocket itself
+                    enemy.Damage(Mathf.CeilToInt(Damage/2));
+                }
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Gun : MonoBehaviour
 {
@@ -81,7 +82,7 @@ public class Gun : MonoBehaviour
     private float NextSpawnTime;
     private List<Health> targets = new List<Health> { };
 
-    private Projectile projectile;
+    private Projectile LaserProjectile;
 
     public void Awake()
     {
@@ -121,15 +122,15 @@ public class Gun : MonoBehaviour
 
         if (Name == "LaserGun")
         {
-            projectile = Instantiate<Projectile>(ProjectilePrefab);
-            projectile.Damage = Damage;
-            projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
-            projectile.Seeking = Seeking || GunBase.Structure.Seeking;
-            projectile.Piercing = Piercing || GunBase.Structure.Piercing;
-            projectile.Persistent = Persistent || GunBase.Structure.Persistent;
-            projectile.Poison = (int)GunBase.Structure.Poison;
-            projectile.Slow = GunBase.Structure.Slow;
-            projectile.DamageDelay = SpawnDelay;
+            LaserProjectile = Instantiate<Projectile>(ProjectilePrefab);
+            LaserProjectile.Damage = Damage;
+            LaserProjectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
+            LaserProjectile.Seeking = Seeking || GunBase.Structure.Seeking;
+            LaserProjectile.Piercing = Piercing || GunBase.Structure.Piercing;
+            LaserProjectile.Persistent = Persistent || GunBase.Structure.Persistent;
+            LaserProjectile.Poison = (int)GunBase.Structure.Poison;
+            LaserProjectile.Slow = GunBase.Structure.Slow;
+            LaserProjectile.DamageDelay = SpawnDelay;
         }
     }
 
@@ -180,17 +181,19 @@ public class Gun : MonoBehaviour
 
                     break;
 
-                case "RocketLauncher":
+                case "ExplosiveGun":
 
                     
-                    child0 = transform.GetChild(0);                    
+                    child0 = transform.GetChild(0).transform.GetChild(0);                    
 
                     vec = new Vector3(targets[0].transform.position.x - child0.transform.position.x, targets[0].transform.position.y - child0.transform.position.y, targets[0].transform.position.z - child0.transform.position.z);
                     targetRotation = vec == Vector3.zero ? Quaternion.Euler(vec) : Quaternion.LookRotation(vec);
-                    eulerA = targetRotation.eulerAngles;                    
+                    eulerA = targetRotation.eulerAngles;
+
+                    eulerA.x -= 110;    
 
                     currentRotation = child0.transform.rotation;
-                    child0.transform.rotation = Quaternion.Euler(currentRotation.x, eulerA.y, currentRotation.z);
+                    child0.transform.rotation = Quaternion.Euler(eulerA.x, eulerA.y, eulerA.z);
                     
                     break;
 
@@ -217,8 +220,6 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            //transform.GetChild(0).eulerAngles = Vector3.zero;
-            //transform.GetChild(2).eulerAngles = Vector3.zero;
             float rotationSpeed = 3.0f;
 
             //Animeerimiseks
@@ -237,10 +238,10 @@ public class Gun : MonoBehaviour
                     transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
                     break;
 
-                case "RocketLauncher":
+                case "ExplosiveGun":
 
-                    child0 = transform.GetChild(0);                    
-                    child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(InitialRotation), Time.deltaTime * rotationSpeed);
+                    child0 = transform.GetChild(0).transform.GetChild(0);                    
+                    child0.rotation = Quaternion.Lerp(child0.rotation, Quaternion.Euler(-90,0,0), Time.deltaTime * rotationSpeed);
                     
                     break;                   
 
@@ -266,15 +267,15 @@ public class Gun : MonoBehaviour
                     {
                         if (targets[0] == null)
                         {
-                            projectile.transform.position = transform.position;
-                            projectile.Target = target;
-                            projectile.TargetPos = transform.position;
+                            LaserProjectile.transform.position = transform.position;
+                            LaserProjectile.Target = target;
+                            LaserProjectile.TargetPos = transform.position;
                         }
                         else if (target != null && !target.IsDead)
                         {
-                            projectile.transform.position = transform.position;
-                            projectile.Target = target;                                                        
-                            projectile.TargetPos = target.transform.position;                                                       
+                            LaserProjectile.transform.position = transform.position;
+                            LaserProjectile.Target = target;                                                        
+                            LaserProjectile.TargetPos = target.transform.position;                                                       
                         }
                     }
                     if(target != null && !target.IsDead)
@@ -283,6 +284,16 @@ public class Gun : MonoBehaviour
                         {
                             GunAudio.Play(transform.position);
                             Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
+
+                            if (Name == "ExplosiveGun")
+                            {
+                                projectile.IsRocket = true;
+                            }
+                            else
+                            {
+                                projectile.IsRocket = false;
+                            }
+
                             projectile.Damage = Damage;
                             projectile.Speed *= GunBase.BulletSpeedModifier * GunBase.Structure.BulletSpeedModifier;
                             projectile.Seeking = Seeking || GunBase.Structure.Seeking;

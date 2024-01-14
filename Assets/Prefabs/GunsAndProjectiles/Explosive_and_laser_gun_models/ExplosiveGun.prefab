@@ -254,7 +254,7 @@ MonoBehaviour:
   Name: ExplosiveGun
   RangeModifier: 1
   DamageModifier: 10
-  FirerateModifier: 0.2
+  FirerateModifier: 0.5
   Seeking: 0
   Piercing: 0
   Persistent: 0
