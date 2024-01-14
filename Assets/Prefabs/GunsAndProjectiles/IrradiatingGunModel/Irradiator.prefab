@@ -54,7 +54,7 @@ MonoBehaviour:
   GunBase: {fileID: 0}
   Name: Irradiator
   RangeModifier: 1
-  DamageModifier: 0.5
+  DamageModifier: 5
   FirerateModifier: 1
   Seeking: 0
   Piercing: 0

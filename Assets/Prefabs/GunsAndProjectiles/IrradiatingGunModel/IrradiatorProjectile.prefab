@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196af4043c1ebd14fac49a5b27d2fec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 100
+  Speed: 150
   Target: {fileID: 0}
   TargetPos: {x: 0, y: 0, z: 0}
   Damage: 1
@@ -130,10 +130,11 @@ MonoBehaviour:
   Slow: 1
   ProjectileHittingEnemyAudio: {fileID: 0}
   InitialPosition: {x: 270, y: 37.5, z: -130}
-  InitialForward: {x: -1.0000001, y: 0, z: -0.00000011920929}
+  InitialForward: {x: 0.60385644, y: 0, z: -0.7970933}
   laserLine: {fileID: 0}
   DamageDelay: 0
   IsRocket: 0
   Particle_Controller: {fileID: 0}
   IsIrradiator: 1
   IrradiatorHitsAllowed: 3
+  IrradiatorOverShootDistance: 300

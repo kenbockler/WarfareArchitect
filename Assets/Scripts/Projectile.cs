@@ -35,6 +35,7 @@ public class Projectile : MonoBehaviour
 
     public bool IsIrradiator; // only for irradiator projectile
     public int IrradiatorHitsAllowed; // only for irradiator projectile
+    public float IrradiatorOverShootDistance; // only for irradiator projectile
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,12 @@ public class Projectile : MonoBehaviour
             Material newMat = new Material(originalMat);
 
             mr.materials[0] = newMat;
+
+            if (!Seeking && !Persistent)
+            {
+                Vector3 moveDirection = TargetPos - transform.position;                
+                TargetPos = TargetPos + moveDirection.normalized * IrradiatorOverShootDistance;
+            }
         }
     }
 
@@ -142,27 +149,14 @@ public class Projectile : MonoBehaviour
                 }
             }
             else
-            {                
+            {
                 if (Vector3.Distance(transform.position, TargetPos) < 0.1 && !Persistent)
                 {
                     if (IsRocket)
                     {                        
                         FindAllEnemisInExplosionRadiusAndDamageThem();
                     }
-
-                    if (IsIrradiator)
-                    {
-                        //siia tuleb hiljem midagi paremat kirjutada                        
-                        if (IrradiatorHitsAllowed <= 0 && !Piercing)
-                        {
-                            print("DEBUG");
-                            GameObject.Destroy(gameObject);
-                        }                        
-                    }
-                    else
-                    {
-                        GameObject.Destroy(gameObject);
-                    }                    
+                    Destroy(gameObject);                                      
                 }
                 else
                 {
@@ -197,7 +191,9 @@ public class Projectile : MonoBehaviour
 
             WaypointFollower enemyw = collision.GetComponent<WaypointFollower>();
             if(enemyw.Slow > Slow) enemyw.Slow = Slow;
-            enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit.
+            enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit.                                               
+
+            //print(Damage);
             enemy.Damage(Damage);
 
             if (IsIrradiator)
@@ -206,6 +202,7 @@ public class Projectile : MonoBehaviour
 
                 if (!Piercing)
                 {
+                    Damage = Mathf.CeilToInt(Damage / 1.5f);
                     MeshRenderer mr = GetComponent<MeshRenderer>();
                     Material mat = mr.materials[0];
                     mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a / 2f);
