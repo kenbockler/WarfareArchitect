@@ -33,6 +33,8 @@ public class ScenarioController : MonoBehaviour
     public GameObject OptionsMenuPanel;
     public GameObject MenuPanel;
 
+    public AudioClipGroup SelectedAudio;
+
     private void Awake()
     {
         Instance = this;
@@ -208,6 +210,7 @@ public class ScenarioController : MonoBehaviour
 
     public void Restart()
     {
+        SelectedAudio.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Win = false;
         StartScenario(Level);
@@ -215,11 +218,13 @@ public class ScenarioController : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        SelectedAudio.Play();
         SceneManager.LoadScene("MainMenu");
     }
 
     public void ExitGame()
     {
+        SelectedAudio.Play();
         Application.Quit();
     }
 
@@ -243,6 +248,7 @@ public class ScenarioController : MonoBehaviour
 
     public void ToggleOptionsPanel()
     {
+        SelectedAudio.Play();
         bool isOptionsPanelActive = OptionsMenuPanel.activeSelf;
 
         // Vahetab options-paneeli olekut

@@ -18,6 +18,8 @@ public class LevelMenuKomponendid : MonoBehaviour
 
     public GameObject mainMenuKomponendid;
 
+    public AudioClipGroup SelectedAudio;
+
 
 
     public void Awake()
@@ -46,6 +48,7 @@ public class LevelMenuKomponendid : MonoBehaviour
 
     public void ScenarioSelected(ScenarioData data)
     {
+        SelectedAudio.Play();
         SelectedScenario = data;
         print("Scenario selected: " + data.PresentedName);
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -61,6 +64,7 @@ public class LevelMenuKomponendid : MonoBehaviour
 
     public void OnBackButtonClicked()
     {
+        SelectedAudio.Play();
         Debug.Log("Back Button Pressed");
 
         // Peida LevelMenuKomponendid

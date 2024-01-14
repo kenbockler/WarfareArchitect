@@ -15,6 +15,8 @@ public class MainMenuKomponendid : MonoBehaviour
     public GameObject levelMenuKomponendid;
     public GameObject optionsMenuKomponendid;
 
+    public AudioClipGroup SelectedAudio;
+
     public void Awake()
     {
         PlayButton.onClick.AddListener(OnPlay);
@@ -25,6 +27,7 @@ public class MainMenuKomponendid : MonoBehaviour
     public void OnPlay()
     {
         // Peida kogu MainMenuKomponendid GameObject
+        SelectedAudio.Play();
         gameObject.SetActive(false);
 
         levelMenuKomponendid.SetActive(true);
@@ -32,12 +35,14 @@ public class MainMenuKomponendid : MonoBehaviour
 
     public void OnOptions()
     {
+        SelectedAudio.Play();
         gameObject.SetActive(false);
         optionsMenuKomponendid.SetActive(true);
     }
 
     public void OnExit()
     {
+        SelectedAudio.Play();
         Application.Quit();
     }
 }

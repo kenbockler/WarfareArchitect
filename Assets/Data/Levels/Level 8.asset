@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Level 8
   m_EditorClassIdentifier: 
   PresentedName: Level 8
-  SceneName: Level8
+  SceneName: Level 8
   stone: 200
   iron: 0
   uranium: 0
   lives: 10
-  IsLocked: 1
+  IsLocked: 0
   Waves:
   - {fileID: 11400000, guid: b56a7360a6ca37a4eb85ad8f70210a81, type: 2}
   - {fileID: 11400000, guid: 1d0afe4fbc3fa894e8dae87f52a16a7b, type: 2}

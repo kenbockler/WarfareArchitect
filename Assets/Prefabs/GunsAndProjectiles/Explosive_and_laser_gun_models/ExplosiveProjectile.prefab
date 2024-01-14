@@ -107,7 +107,7 @@ MonoBehaviour:
   Persistent: 0
   Poison: 0
   Slow: 1
-  ExplosionAudio: {fileID: 11400000, guid: 5eae7e5543ca653498ad65a1f16c2910, type: 2}
+  ProjectileHittingEnemyAudio: {fileID: 11400000, guid: 5eae7e5543ca653498ad65a1f16c2910, type: 2}
   InitialPosition: {x: 270, y: 37.5, z: -130}
   InitialForward: {x: -1.0000001, y: 0, z: -0.00000011920929}
   laserLine: {fileID: 0}
@@ -115,6 +115,7 @@ MonoBehaviour:
   IsRocket: 1
   Particle_Controller: {fileID: -6786035264524861468, guid: e3aba6ba7b142704cb9c2eabec9b7332, type: 3}
   IsIrradiator: 0
+  IrradiatorHitsAllowed: 0
 --- !u!135 &5657033752792977400
 SphereCollider:
   m_ObjectHideFlags: 0

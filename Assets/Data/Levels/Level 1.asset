@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   PresentedName: Level 1
-  SceneName: Level1
+  SceneName: Level 1
   stone: 50
   iron: 0
   uranium: 0

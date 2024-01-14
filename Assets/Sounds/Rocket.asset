@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7f36bc969beb24f8ba4c66ae3e2df6, type: 3}
+  m_Name: Rocket
+  m_EditorClassIdentifier: 
+  VolumeMin: 1
+  VolumeMax: 1.13
+  PitchMin: 0.53
+  PitchMax: 1.357
+  Cooldown: 0.1
+  AudioClips:
+  - {fileID: 8300000, guid: f395c3faa45aa2644836b514631da998, type: 3}
+  - {fileID: 8300000, guid: 389017510c3e76b47bafe992d53da008, type: 3}
+  - {fileID: 8300000, guid: 106eedc175b84f9478934b67edfb87c3, type: 3}

@@ -26308,6 +26308,9 @@ MonoBehaviour:
   ButtonText: {fileID: 827786391}
   IsGameOver: 0
   Level: {fileID: 11400000, guid: f3c56eb87a5f2e940ac69749c9f8e4e1, type: 2}
+  OptionsMenuPanel: {fileID: 0}
+  MenuPanel: {fileID: 0}
+  SelectedAudio: {fileID: 11400000, guid: e7079a2a9f6bd1543aa74e92031a2ff3, type: 2}
 --- !u!114 &1246805864
 MonoBehaviour:
   m_ObjectHideFlags: 0
