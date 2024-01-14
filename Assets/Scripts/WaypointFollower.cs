@@ -14,6 +14,8 @@ public class WaypointFollower : MonoBehaviour
 
     private Health h;
 
+    public AudioClipGroup LifelossAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,9 @@ public class WaypointFollower : MonoBehaviour
 
         // Play the death animation
         animator.SetTrigger("Death");
+
+        // Play sound of player losing life
+        LifelossAudio.Play();
 
         // Wait for the length of the death animation
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);

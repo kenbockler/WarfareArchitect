@@ -2756,6 +2756,7 @@ MonoBehaviour:
   SlowCooldown: 0
   Speed: 50
   animator: {fileID: 0}
+  LifelossAudio: {fileID: 11400000, guid: 9e6d18b9462d42040b93bee6d0acfcd0, type: 2}
 --- !u!65 &5836699264098032977
 BoxCollider:
   m_ObjectHideFlags: 0
