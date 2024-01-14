@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     public int Poison; // Vaenlastele on vaja atribuuti, mis iga tiksu j�rel neid kahjustab
     public float Slow; // Vaenlaste liikumiskiiruse muutmine; negatiivne arv m�jub hirmuefektina
 
-    public AudioClipGroup ExplosionAudio;
+    public AudioClipGroup ProjectileHittingEnemyAudio;
 
     [HideInInspector]
     public Vector3 InitialPosition; // only for the laser projectile
@@ -34,6 +34,7 @@ public class Projectile : MonoBehaviour
     public ParticleController Particle_Controller; // only for the explosive projectile
 
     public bool IsIrradiator; // only for irradiator projectile
+    public int IrradiatorHitsAllowed; // only for irradiator projectile
 
     // Start is called before the first frame update
     void Start()
@@ -141,7 +142,16 @@ public class Projectile : MonoBehaviour
                     {                        
                         FindAllEnemisInExplosionRadiusAndDamageThem();
                     }
-                    GameObject.Destroy(gameObject);
+
+                    if (IsIrradiator)
+                    {
+                        //siia tuleb hiljem midagi paremat kirjutada
+                        GameObject.Destroy(gameObject);
+                    }
+                    else
+                    {
+                        GameObject.Destroy(gameObject);
+                    }                    
                 }
                 else
                 {
@@ -167,19 +177,26 @@ public class Projectile : MonoBehaviour
                 FindAllEnemisInExplosionRadiusAndDamageThem();
             }
 
-            if (ExplosionAudio != null)
+            if (ProjectileHittingEnemyAudio != null)
             {
-                ExplosionAudio.Play(transform.position);
+                ProjectileHittingEnemyAudio.Play(transform.position);
             }            
-
-            if(!Piercing) GameObject.Destroy(gameObject);
+            
             enemy.poison += Poison;
 
             WaypointFollower enemyw = collision.GetComponent<WaypointFollower>();
             if(enemyw.Slow > Slow) enemyw.Slow = Slow;
             enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit.
             enemy.Damage(Damage);
-            //print(enemy.HealthPoints);
+
+            if (IsIrradiator)
+            {
+                if (IrradiatorHitsAllowed == 0) GameObject.Destroy(gameObject);
+            }
+            else
+            {
+                if (!Piercing) GameObject.Destroy(gameObject);
+            }
         }
     }
 
