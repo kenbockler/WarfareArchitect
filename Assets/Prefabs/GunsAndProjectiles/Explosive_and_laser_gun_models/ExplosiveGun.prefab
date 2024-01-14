@@ -253,7 +253,7 @@ MonoBehaviour:
   GunBase: {fileID: 0}
   Name: ExplosiveGun
   RangeModifier: 1
-  DamageModifier: 10
+  DamageModifier: 40
   FirerateModifier: 0.5
   Seeking: 0
   Piercing: 0

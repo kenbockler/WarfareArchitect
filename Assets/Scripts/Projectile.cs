@@ -147,6 +147,7 @@ public class Projectile : MonoBehaviour
             if(enemyw.Slow > Slow) enemyw.Slow = Slow;
             enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit.
             enemy.Damage(Damage);
+            print(enemy.HealthPoints);
         }
     }
 

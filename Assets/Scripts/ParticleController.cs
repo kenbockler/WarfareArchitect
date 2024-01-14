@@ -12,7 +12,7 @@ public class ParticleController : MonoBehaviour
     {
         ps = GetComponent<ParticleSystem>();
         transform.position = StartPos;
-        transform.localScale = new Vector3(Scale.x/2, Scale.y/2, Scale.z/2);
+        transform.localScale = new Vector3(Scale.x/1.5f, Scale.y/1.5f, Scale.z/1.5f);
         isInitialized = true;
 
         ps.Play();
