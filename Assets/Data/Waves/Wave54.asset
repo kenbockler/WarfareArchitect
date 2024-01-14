@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0902941e5457a345bfa5778d6caff45, type: 3}
-  m_Name: FastEnemy
+  m_Script: {fileID: 11500000, guid: 1f5e8d6aac00ba5438479be5b45d5a2a, type: 3}
+  m_Name: Wave54
   m_EditorClassIdentifier: 
-  Health: 1
-  Speed: 50
-  Sprite: {fileID: 0}
-  EnemyPrefab: {fileID: 6145836852543452355, guid: b7d4363cde2cb754ca430e87e9be660c, type: 3}
+  Count: 20
+  EnemyData: {fileID: 11400000, guid: f0eea84c3e17b754cb4295fb52d1d882, type: 2}
+  SpawnDelay: 2

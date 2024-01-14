@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f5e8d6aac00ba5438479be5b45d5a2a, type: 3}
-  m_Name: WaveTest1
+  m_Name: Wave510
   m_EditorClassIdentifier: 
-  Count: 10
-  EnemyData: {fileID: 11400000, guid: f0eea84c3e17b754cb4295fb52d1d882, type: 2}
-  SpawnDelay: 3
+  Count: 15
+  EnemyData: {fileID: 11400000, guid: f15a38622bf154b419de082d3087775e, type: 2}
+  SpawnDelay: 1

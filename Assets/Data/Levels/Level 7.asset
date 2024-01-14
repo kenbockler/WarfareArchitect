@@ -13,10 +13,25 @@ MonoBehaviour:
   m_Name: Level 7
   m_EditorClassIdentifier: 
   PresentedName: Level 7
-  SceneName: 
-  stone: 5
-  iron: 5
-  uranium: 5
+  SceneName: Level7
+  stone: 100
+  iron: 0
+  uranium: 0
   lives: 10
   IsLocked: 1
-  Waves: []
+  Waves:
+  - {fileID: 11400000, guid: cb4fd6a0e27f4434bafdfb0524938d7a, type: 2}
+  - {fileID: 11400000, guid: a82e06cbd53d2af40a758bd295ed0261, type: 2}
+  - {fileID: 11400000, guid: bd08bf1991e838c47bcee5f4a93d1bc8, type: 2}
+  - {fileID: 11400000, guid: 67539573ff739044f95ec9475ba33816, type: 2}
+  - {fileID: 11400000, guid: 5596344f1858e7144bcff61ae599ab71, type: 2}
+  - {fileID: 11400000, guid: d9a6311b5715d9d48995fe476315f503, type: 2}
+  - {fileID: 11400000, guid: daa4c51ee73aab046ab58e4904a310ed, type: 2}
+  - {fileID: 11400000, guid: 5425716936216af4aabda8596dc4b641, type: 2}
+  - {fileID: 11400000, guid: 8019c8e39ecb5634a8cb231a69740ee6, type: 2}
+  - {fileID: 11400000, guid: b2929fbc2b5ac3341add1497c430da0f, type: 2}
+  - {fileID: 11400000, guid: 7affd4b5192d38a409c3cb97b8870087, type: 2}
+  - {fileID: 11400000, guid: 8304dcc09aa33d846a7609e837e22cf9, type: 2}
+  - {fileID: 11400000, guid: a6812e71c8379fb4c839320b90accaa7, type: 2}
+  - {fileID: 11400000, guid: 28a0b51de82e7c24b8e39375bd39f568, type: 2}
+  - {fileID: 11400000, guid: d502681e9686e0a43821e3a018557436, type: 2}

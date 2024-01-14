@@ -13,10 +13,20 @@ MonoBehaviour:
   m_Name: Level 3
   m_EditorClassIdentifier: 
   PresentedName: Level 3
-  SceneName: 
-  stone: 5
-  iron: 5
-  uranium: 5
+  SceneName: Level3
+  stone: 50
+  iron: 0
+  uranium: 0
   lives: 10
   IsLocked: 1
-  Waves: []
+  Waves:
+  - {fileID: 11400000, guid: 242027f3c15d9134295f7f06cac16dca, type: 2}
+  - {fileID: 11400000, guid: d3ab1c89019f15e4a8468fee86e21fa7, type: 2}
+  - {fileID: 11400000, guid: 70e4a1a312c4ffb4ab9d00ef73b44622, type: 2}
+  - {fileID: 11400000, guid: 64c3bbccc45250b44b78194ccf035773, type: 2}
+  - {fileID: 11400000, guid: 1605d9f59efa9a441b9f17ca1d7be0bf, type: 2}
+  - {fileID: 11400000, guid: bc77461fdbcfaaa4cb6bf3d170529443, type: 2}
+  - {fileID: 11400000, guid: 07d9de6cd0ba68b45830203e9a9e5d9b, type: 2}
+  - {fileID: 11400000, guid: 54f915029c5250b4d80d490cb45233b1, type: 2}
+  - {fileID: 11400000, guid: 05a86b6e6ac5b6049858ccbc0c14d0a3, type: 2}
+  - {fileID: 11400000, guid: 818c625652d36424483806d8cdc238c8, type: 2}

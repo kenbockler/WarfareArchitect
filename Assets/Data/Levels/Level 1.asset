@@ -13,17 +13,15 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   PresentedName: Level 1
-  SceneName: Rauno
+  SceneName: Level1
   stone: 50
   iron: 0
   uranium: 0
   lives: 4
   IsLocked: 0
   Waves:
-  - {fileID: 11400000, guid: 5408c925933aac540a0e6d63ce662463, type: 2}
-  - {fileID: 11400000, guid: e0b6b5c0b53dfa848bf1824c96b29c1c, type: 2}
-  - {fileID: 11400000, guid: 7cb45406f03ddb2478b960fa9b579ad4, type: 2}
-  - {fileID: 11400000, guid: 4985a7b8982d57a488771d3130d3e5cd, type: 2}
-  - {fileID: 11400000, guid: a7594cc7bbd819a478a3a85bc7d29751, type: 2}
-  - {fileID: 11400000, guid: c8ea52fd431974d42aa4a7bc315bc901, type: 2}
-  - {fileID: 11400000, guid: 482f2a2ea0a7e014b9adb01546b0d208, type: 2}
+  - {fileID: 11400000, guid: 5fb889c530ee6f542aae356a92afd98a, type: 2}
+  - {fileID: 11400000, guid: 692b2a6c038775a45b9333dcf4cbe26d, type: 2}
+  - {fileID: 11400000, guid: 383fad29266d0384b806263adad3f76d, type: 2}
+  - {fileID: 11400000, guid: 18daa837ccb640a4fb4ddeda9dd39aa5, type: 2}
+  - {fileID: 11400000, guid: a3703a373805e7148b9ac264dc3c8a82, type: 2}
