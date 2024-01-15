@@ -268,8 +268,8 @@ MonoBehaviour:
   GunBase: {fileID: 0}
   Name: MachineGun
   RangeModifier: 1
-  DamageModifier: 1
-  FirerateModifier: 1.5
+  DamageModifier: 2
+  FirerateModifier: 4
   Seeking: 0
   Piercing: 0
   Persistent: 0

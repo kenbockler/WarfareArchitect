@@ -79,15 +79,15 @@ public class CameraMovement : MonoBehaviour
 
     public void UpdateInfo(Gun gun)
     {
-        TowerInfoText.text = "Tower info:\nRange: " + gun.Range +
+        TowerInfoText.text = "Range: " + gun.Range +
         "\nDamage: " + gun.Damage +
         "\nFirerate: " + gun.FireRate +
-        "\nBullet speed: " + gun.ProjectilePrefab.Speed * gun.GunBase.BulletSpeedModifier * gun.GunBase.Structure.BulletSpeedModifier +
+        "/sec\nBullet speed: " + gun.ProjectilePrefab.Speed * gun.GunBase.BulletSpeedModifier * gun.GunBase.Structure.BulletSpeedModifier +
         (gun.Seeking ? "\nSeeking bullets" : "") +
         (gun.Piercing ? "\nPiercing bullets" : "") +
         (gun.Persistent ? "\nPersistent bullets" : "") +
         "\nPoison: " + gun.Poison +
-        "\nSpeed modifier: " + gun.Slow +
+        "\nEnemy Speed modifier: " + gun.Slow +
         "\nMax targets: " + gun.Targets;
     }
 

@@ -37,6 +37,8 @@ public class Projectile : MonoBehaviour
     public int IrradiatorHitsAllowed; // only for irradiator projectile
     public float IrradiatorOverShootDistance; // only for irradiator projectile
 
+    public bool IsMachineGun; // only for the machinegun projectile
+
     // Start is called before the first frame update
     void Start()
     {
@@ -97,6 +99,11 @@ public class Projectile : MonoBehaviour
                 Vector3 moveDirection = TargetPos - transform.position;                
                 TargetPos = TargetPos + moveDirection.normalized * IrradiatorOverShootDistance;
             }
+        }
+
+        if (IsMachineGun)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 12, transform.position.z);
         }
     }
 
