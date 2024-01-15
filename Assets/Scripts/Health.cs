@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -14,9 +15,18 @@ public class Health : MonoBehaviour
     public int poison;
     private float poisonTick;
 
+    private Transform HealthbarCanvas;
+    private Image HealthBarBackground;
+    private Image HealthBarForeground;
+    private int MaxHealth;
+
     public void Damage(int value)
     {
         HealthPoints -= value;
+
+        HealthBarBackground.color = new Color(HealthBarBackground.color.r, Mathf.Clamp((float)HealthPoints / MaxHealth, 0.2f, 1), HealthBarBackground.color.b);
+        HealthBarForeground.fillAmount = 1 - (((float) HealthPoints) / MaxHealth);
+
         if(HealthPoints <= 0)
         {
             if (!IsDead)
@@ -26,6 +36,16 @@ public class Health : MonoBehaviour
             }
         }
     }
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        wpf = GetComponent<WaypointFollower>();
+
+        HealthbarCanvas = transform.GetChild(0);
+        HealthBarBackground = HealthbarCanvas.GetChild(0).GetComponent<Image>();
+        HealthBarForeground = HealthbarCanvas.GetChild(0).GetChild(0).GetComponent<Image>();
+        MaxHealth = HealthPoints;
+    }
 
     private void Start()
     {
@@ -34,17 +54,12 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
+        HealthbarCanvas.LookAt(Camera.main.transform);
         if(Time.time > poisonTick)
         {
             Damage(poison);
             poisonTick = Time.time + 1f; // Viimane siin on konstant: m�rk toimib iga sekund.
         }
-    }
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        wpf = GetComponent<WaypointFollower>();
     }
 
     IEnumerator WaitForDeathAnimation()
