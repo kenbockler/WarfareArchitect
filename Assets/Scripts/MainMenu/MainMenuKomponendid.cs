@@ -9,10 +9,14 @@ public class MainMenuKomponendid : MonoBehaviour
 {
     public TextMeshProUGUI GameName;
     public Button PlayButton;
+    public Button HelpButton;
+    public Button ControlsButton;
     public Button OptionsButton;
     public Button ExitButton;
 
     public GameObject levelMenuKomponendid;
+    public GameObject helpMenuKomponendid;
+    public GameObject controlsSheet;
     public GameObject optionsMenuKomponendid;
 
     public AudioClipGroup SelectedAudio;
@@ -20,6 +24,8 @@ public class MainMenuKomponendid : MonoBehaviour
     public void Awake()
     {
         PlayButton.onClick.AddListener(OnPlay);
+        HelpButton.onClick.AddListener(OnHelp);
+        ControlsButton.onClick.AddListener(OnControls);
         OptionsButton.onClick.AddListener(OnOptions);
         ExitButton.onClick.AddListener(OnExit);
     }
@@ -31,6 +37,20 @@ public class MainMenuKomponendid : MonoBehaviour
         gameObject.SetActive(false);
 
         levelMenuKomponendid.SetActive(true);
+    }
+
+    public void OnHelp()
+    {
+        SelectedAudio.Play();
+        gameObject.SetActive(false);
+        helpMenuKomponendid.SetActive(true);
+    }
+
+    public void OnControls()
+    {
+        SelectedAudio.Play();
+        gameObject.SetActive(false);
+        controlsSheet.SetActive(true);
     }
 
     public void OnOptions()
