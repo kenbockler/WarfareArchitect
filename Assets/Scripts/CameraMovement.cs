@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -7,12 +8,15 @@ public class CameraMovement : MonoBehaviour
     public float moveSpeed = 5.0f;
     public float speedMultiplier = 2.0f;
     public GameObject OptionsMenu;
-    public GameObject TerminalMenu;
+    public GameObject TerminalMenu;    
     private float rotationX = 0f;
     private float rotationY = 0f;
     private bool _playerMovementEnabled = true;
 
     private bool isGameFinished = false;
+
+    public GameObject TowerInfoCanvas;
+    public TextMeshProUGUI TowerInfoText;
 
     public void Awake()
     {
@@ -36,9 +40,57 @@ public class CameraMovement : MonoBehaviour
         {
             HandleMenuToggle();
             HandleCameraMovement();
+
+            if (_playerMovementEnabled)
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                LayerMask GunLayerMask = 1 << LayerMask.NameToLayer("Gun");
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, GunLayerMask))
+                {
+                    //if (hit.collider.CompareTag("GunTag"))
+                    //{
+                    Transform foundObject = hit.collider.transform;
+                    Gun foundGun = null;
+                    while (!foundObject.CompareTag("GunTag"))
+                    {
+                        foundObject = foundObject.transform.parent;
+                    }
+                    foundGun = foundObject.GetComponent<Gun>();
+                    if (foundGun != null)
+                    {
+                        //print("DEBUG");
+                        UpdateInfo(foundGun);
+                        TowerInfoCanvas.SetActive(true);
+                    }
+                    //}
+                }
+                else
+                {
+                    TowerInfoCanvas.SetActive(false);
+                }
+            }
+        }
+        else
+        {           
+            TowerInfoCanvas.SetActive(false);
         }
     }
-    
+
+    public void UpdateInfo(Gun gun)
+    {
+        TowerInfoText.text = "Tower info:\nRange: " + gun.Range +
+        "\nDamage: " + gun.Damage +
+        "\nFirerate: " + gun.FireRate +
+        "\nBullet speed: " + gun.ProjectilePrefab.Speed * gun.GunBase.BulletSpeedModifier * gun.GunBase.Structure.BulletSpeedModifier +
+        (gun.Seeking ? "\nSeeking bullets" : "") +
+        (gun.Piercing ? "\nPiercing bullets" : "") +
+        (gun.Persistent ? "\nPersistent bullets" : "") +
+        "\nPoison: " + gun.Poison +
+        "\nSpeed modifier: " + gun.Slow +
+        "\nMax targets: " + gun.Targets;
+    }
+
     private void HandleMenuToggle()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

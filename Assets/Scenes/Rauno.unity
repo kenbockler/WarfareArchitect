@@ -5157,14 +5157,6 @@ MonoBehaviour:
   Structure: {fileID: 0}
   GunBase: {fileID: 0}
   PlacementAudio: {fileID: 11400000, guid: 413e3adf4c31d5c42b88e39d777c31dc, type: 2}
-  TowerInfoCanvas: {fileID: 759528532}
-  TowerInfoText: {fileID: 1024433064}
-  GunLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  ProjectileLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!4 &233474127
 Transform:
   m_ObjectHideFlags: 0
@@ -24004,6 +23996,8 @@ MonoBehaviour:
   speedMultiplier: 2
   OptionsMenu: {fileID: 1398220754}
   TerminalMenu: {fileID: 20943591}
+  TowerInfoCanvas: {fileID: 759528532}
+  TowerInfoText: {fileID: 1024433064}
 --- !u!114 &1122439204
 MonoBehaviour:
   m_ObjectHideFlags: 0

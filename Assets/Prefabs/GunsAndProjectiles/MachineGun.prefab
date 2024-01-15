@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 1005542599187660854}
   m_Layer: 6
   m_Name: MachineGun
-  m_TagString: Untagged
+  m_TagString: GunTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

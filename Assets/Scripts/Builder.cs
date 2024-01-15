@@ -27,9 +27,6 @@ public class Builder : MonoBehaviour
 
     public AudioClipGroup PlacementAudio;
 
-    public GameObject TowerInfoCanvas;
-    public TextMeshProUGUI TowerInfoText;
-
     private LayerMask GunLayerMask;
     private LayerMask ProjectileLayerMask;
 
@@ -360,10 +357,7 @@ public class Builder : MonoBehaviour
             // Puhastame eelmised viited
             Foundation = null;
             Structure = null;
-            GunBase = null;
-
-            // Kustutame torniinfo.
-            TowerInfoCanvas.SetActive(false);
+            GunBase = null;            
 
             if (hitObject.GetComponent<Foundation>() != null)
             {
@@ -377,12 +371,7 @@ public class Builder : MonoBehaviour
             {
                 GunBase = hitObject.GetComponent<GunBase>();
             }
-            // Püssi nägemisel kuvame torniinfo.
-            else if (hitObject.transform.parent != null && hitObject.transform.parent.GetComponent<Gun>() != null)
-            {
-                UpdateInfo(hitObject.transform.parent.GetComponent<Gun>());
-                TowerInfoCanvas.SetActive(true);
-            }
+
             // Kui on veel teisi objekte, millele v�ib ehitada, siis lisa siia..
 
             if (data is SupportBlockData && Structure != null)
@@ -403,9 +392,15 @@ public class Builder : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        BuilderRange.transform.localScale = Vector3.zero;
+    }
+
     void UpdateRange()
     {
         BuilderRange.transform.position = transform.position;
+        
         if(data is StructureData)
         {
             BuilderRange.transform.localScale = new Vector3(((StructureData)data).StructurePrefab.Range, 1, ((StructureData)data).StructurePrefab.Range);
@@ -429,19 +424,5 @@ public class Builder : MonoBehaviour
         {
             BuilderRange.transform.localScale = Vector3.zero;
         }
-    }
-
-    public void UpdateInfo(Gun gun)
-    {
-        TowerInfoText.text = "Tower info:\nRange: " + gun.Range +
-        "\nDamage: " + gun.Damage +
-        "\nFirerate: " + gun.FireRate +
-        "\nBullet speed: " + gun.ProjectilePrefab.Speed * gun.GunBase.BulletSpeedModifier * gun.GunBase.Structure.BulletSpeedModifier +
-        (gun.Seeking ? "\nSeeking bullets" : "") +
-        (gun.Piercing ? "\nPiercing bullets" : "") +
-        (gun.Persistent ? "\nPersistent bullets" : "") +
-        "\nPoison: " + gun.Poison +
-        "\nSpeed modifier: " + gun.Slow +
-        "\nMax targets: " + gun.Targets;
     }
 }
