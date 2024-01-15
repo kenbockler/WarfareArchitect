@@ -50,6 +50,29 @@ public class Projectile : MonoBehaviour
             laserLine.SetPosition(1, InitialPosition);
 
             PrevTime = Time.time;
+
+            // hetkel teeme nii, et laseri seeking ja persistence puhul suurendame lihtsalt selle firerate'i (ehk relv teeb kiiremini kahju)
+            if (Seeking)
+            {
+                DamageDelay /= 2;
+            }
+
+            if (Persistent)
+            {
+                DamageDelay /= 2;
+            }
+
+            if (Seeking && Persistent)
+            {
+                DamageDelay /= 2;
+                Damage *= 2;
+            }
+
+            //piercing puhul suurendame lihtsalt hetkel kahju
+            if (Piercing)
+            {
+                Damage *= 2;
+            }
         }
 
         if (IsRocket)
@@ -135,7 +158,24 @@ public class Projectile : MonoBehaviour
                             FindAllEnemisInExplosionRadiusAndDamageThem();
                         }
                         if (Piercing) Seeking = false; // Siin tuleks tegelikult midagi intelligentsemat teha, et ta j�rgmise vaenlase poole kihutaks.
-                        else GameObject.Destroy(gameObject);
+                        else 
+                        {
+                            if (IsIrradiator)
+                            {
+                                if (IrradiatorHitsAllowed <= 0)
+                                {
+                                    Destroy(gameObject);
+                                }
+                                else
+                                {
+                                    IrradiatorHitsAllowed--;
+                                }
+                            }
+                            else
+                            {
+                                GameObject.Destroy(gameObject);
+                            }
+                        }                        
                         Target.Damage(Damage);
                     }
                     else
@@ -236,7 +276,7 @@ public class Projectile : MonoBehaviour
                 {
 
                     //Let the explosion damage be half the damage of the rocket itself
-                    enemy.Damage(Mathf.CeilToInt(Damage/2));
+                    enemy.Damage(Mathf.CeilToInt(Damage/1.5f));
                 }
             }
         }

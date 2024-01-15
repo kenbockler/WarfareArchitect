@@ -252,9 +252,9 @@ MonoBehaviour:
   InitialRotation: {x: 0, y: 0, z: 0}
   GunBase: {fileID: 0}
   Name: ExplosiveGun
-  RangeModifier: 1
-  DamageModifier: 40
-  FirerateModifier: 0.5
+  RangeModifier: 1.1
+  DamageModifier: 7
+  FirerateModifier: 0.85
   Seeking: 0
   Piercing: 0
   Persistent: 0

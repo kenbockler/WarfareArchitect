@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4059168774824621408}
   - component: {fileID: 9115954106773780716}
   - component: {fileID: -6130858175895908883}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: IrradiatorProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,8 +129,8 @@ MonoBehaviour:
   Poison: 0
   Slow: 1
   ProjectileHittingEnemyAudio: {fileID: 0}
-  InitialPosition: {x: 270, y: 37.5, z: -130}
-  InitialForward: {x: 0.60385644, y: 0, z: -0.7970933}
+  InitialPosition: {x: 430, y: 37.5, z: -40}
+  InitialForward: {x: -0.9735014, y: 0, z: 0.22868115}
   laserLine: {fileID: 0}
   DamageDelay: 0
   IsRocket: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4984376280279446040}
   - component: {fileID: 6822858319040128020}
   - component: {fileID: 6792393767412082502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LaserProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,10 +54,16 @@ MonoBehaviour:
   Persistent: 0
   Poison: 0
   Slow: 0
-  ExplosionAudio: {fileID: 11400000, guid: 7acd14cbb585636429f435b02c912b40, type: 2}
-  InitialPosition: {x: 250, y: 37.5, z: -130}
+  ProjectileHittingEnemyAudio: {fileID: 0}
+  InitialPosition: {x: 270, y: 37.5, z: -130}
   InitialForward: {x: -1.0000001, y: 0, z: -0.00000011920929}
   laserLine: {fileID: 0}
+  DamageDelay: 0
+  IsRocket: 0
+  Particle_Controller: {fileID: 0}
+  IsIrradiator: 0
+  IrradiatorHitsAllowed: 0
+  IrradiatorOverShootDistance: 0
 --- !u!120 &6792393767412082502
 LineRenderer:
   serializedVersion: 2

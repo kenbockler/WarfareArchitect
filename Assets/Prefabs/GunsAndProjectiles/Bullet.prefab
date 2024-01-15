@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3005503927983276882}
   - component: {fileID: 4196898993006476970}
   - component: {fileID: 6946478370186997899}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,4 +127,13 @@ MonoBehaviour:
   Persistent: 0
   Poison: 0
   Slow: 1
-  ExplosionAudio: {fileID: 11400000, guid: 5eae7e5543ca653498ad65a1f16c2910, type: 2}
+  ProjectileHittingEnemyAudio: {fileID: 0}
+  InitialPosition: {x: 550, y: 37.5, z: -180}
+  InitialForward: {x: -1.0000001, y: 0, z: -0.00000011920929}
+  laserLine: {fileID: 0}
+  DamageDelay: 0
+  IsRocket: 0
+  Particle_Controller: {fileID: 0}
+  IsIrradiator: 0
+  IrradiatorHitsAllowed: 0
+  IrradiatorOverShootDistance: 0

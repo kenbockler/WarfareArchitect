@@ -30,10 +30,16 @@ public class Builder : MonoBehaviour
     public GameObject TowerInfoCanvas;
     public TextMeshProUGUI TowerInfoText;
 
+    private LayerMask GunLayerMask;
+    private LayerMask ProjectileLayerMask;
+
     void Awake()
     {
         Instance = this;
         Events.OnTowerComponentSelected += SetTowerComponentData;
+
+        ProjectileLayerMask = 1 << LayerMask.NameToLayer("ProjectileLayer");
+        GunLayerMask = 1 << LayerMask.NameToLayer("Gun");
     }
 
     void OnDestroy()
@@ -339,7 +345,9 @@ public class Builder : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+
+        LayerMask combinedLayerMask = GunLayerMask | ProjectileLayerMask;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~combinedLayerMask))
         {
             GameObject hitObject = hit.collider.gameObject;
 
