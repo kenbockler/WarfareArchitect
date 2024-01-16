@@ -89,7 +89,7 @@ public class ScenarioController : MonoBehaviour
 
         Waves = Level.Waves;
 
-        enemiesInWave = Waves[0].Count;
+        enemiesInWave = Waves[0].Count * GameObject.FindGameObjectsWithTag("Spawn").Length;
         enemiesRemainingInWave = 0;
     }
 
@@ -217,8 +217,8 @@ public class ScenarioController : MonoBehaviour
         }
         else
         {
-            enemiesInWave = Waves[currentWave].Count;
-            enemiesRemainingInWave = Waves[currentWave].Count;
+            enemiesInWave = Waves[currentWave].Count * GameObject.FindGameObjectsWithTag("Spawn").Length;
+            enemiesRemainingInWave = Waves[currentWave].Count * GameObject.FindGameObjectsWithTag("Spawn").Length;
             Events.StartWave(Waves[currentWave]);
         }
         currentWave += 1;
