@@ -19,7 +19,7 @@ public class ScenarioController : MonoBehaviour
 
     public bool IsGameOver = false;
 
-    private float stone = 500;
+    private float stone = 0;
     private float iron = 0;
     private float uranium = 0;
     private int lives = 4;
@@ -75,11 +75,17 @@ public class ScenarioController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        while (Level == null)
+        {
+            continue;
+        }
         EndPanel.SetActive(false);
-        SetLives(GetLives());
-        SetStone(GetStone());
-        SetIron(GetIron());
-        SetUranium(GetUranium());
+
+        SetLives(Level.lives);
+        SetStone(Level.stone);
+        SetIron(Level.iron);        
+        SetUranium(Level.uranium);
+
         Waves = Level.Waves;
 
         enemiesInWave = Waves[0].Count;
@@ -103,21 +109,21 @@ public class ScenarioController : MonoBehaviour
         else
         {
             //WaveInfoText.enabled = false;
-            WaveInfoText.text = "Enemies in Current Wave: " + Waves[currentWave].Count + "\n Wave Count: " + Waves.Count;
+            WaveInfoText.text = "Enemies in Current Wave: " + Waves[currentWave].Count + "\nWave Count: " + Waves.Count;
         }
 
         if(!IsGameOver && Input.GetKeyDown(KeyCode.Return))
         {
             if(GameObject.FindObjectsOfType<Health>().Length == 0)
             {                
-                WaveInfoText.text = "Enemies in Current Wave: " + Waves[currentWave].Count + "\n Wave Count: " + Waves.Count;
+                WaveInfoText.text = "Enemies in Current Wave: " + Waves[currentWave].Count + "\nWave Count: " + Waves.Count;
                 NewWave();
             }
         }
     }
 
     public void StartScenario(ScenarioData data)
-    {
+    {        
         SetLives(data.lives);
         SetStone(data.stone);
         SetIron(data.iron);

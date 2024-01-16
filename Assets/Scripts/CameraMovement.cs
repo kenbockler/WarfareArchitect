@@ -79,15 +79,16 @@ public class CameraMovement : MonoBehaviour
 
     public void UpdateInfo(Gun gun)
     {
+        float speed = gun.ProjectilePrefab.Speed * gun.GunBase.BulletSpeedModifier * gun.GunBase.Structure.BulletSpeedModifier;
         TowerInfoText.text = "Range: " + gun.Range +
         "\nDamage: " + gun.Damage +
         "\nFirerate: " + gun.FireRate +
-        "/sec\nBullet speed: " + gun.ProjectilePrefab.Speed * gun.GunBase.BulletSpeedModifier * gun.GunBase.Structure.BulletSpeedModifier +
+        "/sec\nBullet speed: " + (speed <= 0 ? "Instant" : speed) +
         (gun.Seeking ? "\nSeeking bullets" : "") +
         (gun.Piercing ? "\nPiercing bullets" : "") +
         (gun.Persistent ? "\nPersistent bullets" : "") +
         "\nPoison: " + gun.Poison +
-        "\nEnemy Speed modifier: " + gun.Slow +
+        "/sec\nEnemy Speed modifier: " + gun.Slow +
         "\nMax targets: " + gun.Targets;
     }
 
@@ -196,9 +197,9 @@ public class CameraMovement : MonoBehaviour
 
     private void MoveCamera()
     {
-        float moveSpeedCurrent = moveSpeed * (Input.GetKey(KeyCode.LeftShift) ? speedMultiplier : 1);
+        float moveSpeedCurrent = moveSpeed * (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) ? speedMultiplier : 1);
         float moveX = Input.GetAxis("Horizontal") * moveSpeedCurrent * Time.deltaTime;
-        float moveY = (Input.GetKey(KeyCode.Space) ? 1 : Input.GetKey(KeyCode.LeftControl) ? -1 : 0) * moveSpeedCurrent * Time.deltaTime;
+        float moveY = (Input.GetKey(KeyCode.Space) ? 1 : Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) ? -1 : 0) * moveSpeedCurrent * Time.deltaTime;
         float moveZ = Input.GetAxis("Vertical") * moveSpeedCurrent * Time.deltaTime;
         Vector3 move = transform.TransformDirection(new Vector3(moveX, moveY, moveZ));
         transform.position += move;

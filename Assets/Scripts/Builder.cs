@@ -397,6 +397,10 @@ public class Builder : MonoBehaviour
 
     private void OnDisable()
     {
+        if (BuilderRange == null)
+        {
+            return;
+        }
         BuilderRange.transform.localScale = Vector3.zero;
     }
 
