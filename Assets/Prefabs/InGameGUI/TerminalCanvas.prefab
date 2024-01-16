@@ -198,7 +198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -961,7 +961,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnMakePressed
         m_Mode: 1
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -1738,7 +1738,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -2910,7 +2910,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -3601,7 +3601,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -4862,7 +4862,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -4996,7 +4996,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -5628,7 +5628,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -6197,7 +6197,7 @@ GameObject:
   - component: {fileID: 2509490927384621535}
   - component: {fileID: 3539312240196188091}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: StoneCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6574,7 +6574,7 @@ GameObject:
   - component: {fileID: 4905806203026914091}
   - component: {fileID: 5650581688402505825}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: StatisticsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7422,7 +7422,7 @@ GameObject:
   - component: {fileID: 4209216708686979887}
   - component: {fileID: 7490809056934224553}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: IronCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7475,7 +7475,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0 x Stone
+  m_text: '0 x Iron
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8900,7 +8902,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -9680,7 +9682,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -10341,7 +10343,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -10365,7 +10367,7 @@ GameObject:
   - component: {fileID: 797122604225078690}
   - component: {fileID: 3914670038764054173}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: UraniumCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10418,7 +10420,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0 x Stone
+  m_text: '0 x Uranium
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11601,6 +11605,8 @@ GameObject:
   - component: {fileID: 9145647030343463015}
   - component: {fileID: 5181792670499361286}
   - component: {fileID: 6949529647968144708}
+  - component: {fileID: 838769902718949522}
+  - component: {fileID: 1455178447785892136}
   m_Layer: 5
   m_Name: TerminalCanvas
   m_TagString: Untagged
@@ -11691,6 +11697,55 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &838769902718949522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7506039280403681687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c227d8608ca9fc040a5a829b353ff59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StoneResourceText: {fileID: 273279386310507007}
+  IronResourceText: {fileID: 5250944354471053250}
+  UraniumResourceText: {fileID: 2739726653430163958}
+  ItemNameText: {fileID: 6723575629264909309}
+  ItemTypeText: {fileID: 222413725157157512}
+  IconObject: {fileID: 1036241462320125099}
+  IconSprite: {fileID: 10887134683386718}
+  StatisticsText: {fileID: 5650581688402505825}
+  StoneCostText: {fileID: 3539312240196188091}
+  IronCostText: {fileID: 7490809056934224553}
+  UraniumCostText: {fileID: 3914670038764054173}
+  SelectedItem: {fileID: 0}
+  SelectedAudio: {fileID: 11400000, guid: e7079a2a9f6bd1543aa74e92031a2ff3, type: 2}
+--- !u!114 &1455178447785892136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7506039280403681687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9b5e7d4c2612f49ae3d2f6d5d564a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images:
+  - {fileID: 3548697473266576447}
+  - {fileID: 6870911211206756887}
+  - {fileID: 5793630227876308985}
+  - {fileID: 3751002695308098190}
+  - {fileID: 8407485353535318262}
+  - {fileID: 3444771283516587622}
+  - {fileID: 8338348301268939629}
+  - {fileID: 3043622918436527506}
+  Selected: 0
+  CurrentGameviewIndex: 0
+  CurrentBuilderItem: {fileID: 0}
 --- !u!1 &7813205300720464345
 GameObject:
   m_ObjectHideFlags: 0
@@ -11978,7 +12033,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
@@ -12788,7 +12843,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 838769902718949522}
         m_TargetAssemblyTypeName: Terminal, Assembly-CSharp
         m_MethodName: OnItemSelected
         m_Mode: 2
