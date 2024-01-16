@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 3020541204709607707}
   - component: {fileID: 7906168782942479068}
   m_Layer: 5
-  m_Name: WaveCallInfo
+  m_Name: WaveInfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2515,7 +2515,7 @@ GameObject:
   - component: {fileID: 3236610198842212143}
   - component: {fileID: 2091152394947919379}
   m_Layer: 5
-  m_Name: Lives
+  m_Name: LivesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2801,7 +2801,7 @@ GameObject:
   - component: {fileID: 3998035420212229068}
   - component: {fileID: 1321572782653716239}
   m_Layer: 5
-  m_Name: Resource
+  m_Name: ResourceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3163,7 +3163,7 @@ GameObject:
   - component: {fileID: 8724975824061350529}
   - component: {fileID: 8069906690006287369}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: SelectedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3377,6 +3377,14 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2112305961587036029, guid: 395f1a8e390016a4890900fd9bb7a179, type: 3}
+      propertyPath: m_Name
+      value: EndText
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163858632534344661, guid: 395f1a8e390016a4890900fd9bb7a179, type: 3}
+      propertyPath: m_Name
+      value: ExitButtonText
+      objectReference: {fileID: 0}
     - target: {fileID: 4391450903282880989, guid: 395f1a8e390016a4890900fd9bb7a179, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -3436,6 +3444,10 @@ PrefabInstance:
     - target: {fileID: 7504304896531425150, guid: 395f1a8e390016a4890900fd9bb7a179, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969246314752731621, guid: 395f1a8e390016a4890900fd9bb7a179, type: 3}
+      propertyPath: m_Name
+      value: ButtonText
       objectReference: {fileID: 0}
     - target: {fileID: 9015136312476556522, guid: 395f1a8e390016a4890900fd9bb7a179, type: 3}
       propertyPath: m_Pivot.x
