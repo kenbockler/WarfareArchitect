@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
             if (!IsDead)
             {
                 IsDead = true;
-                StartCoroutine(WaitForDeathAnimation());
+                Kill();
             }
         }
     }
@@ -66,17 +66,19 @@ public class Health : MonoBehaviour
 
     public void Kill()
     {
-        WaitForDeathAnimation();
+        StartCoroutine(WaitForDeathAnimation());
     }
 
     IEnumerator WaitForDeathAnimation()
     {
-        // Play the death animation
-        animator.SetTrigger("Death");
+        if(animator != null)
+        {
+            // Play the death animation
+            animator?.SetTrigger("Death");
 
-        // Wait for the length of the death animation
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
+            // Wait for the length of the death animation
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        }
         // Destroy the GameObject after the animation has finished
         Destroy(gameObject);
 

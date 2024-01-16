@@ -37,9 +37,9 @@ public class WaypointFollower : MonoBehaviour
                     //After playing the death animation, we should destroy the gameobject
                     //animator.SetTrigger("Death");
                     //Destroy(gameObject);
-                    //Events.SetLives(Events.GetLives() - 1);
                     h.IsDead = true;
-                    //StartCoroutine(WaitForDeathAnimation());
+                    LifelossAudio.Play();
+                    Events.SetLives(Events.GetLives() - 1);
                     h.Kill();
                 }
             }
@@ -65,11 +65,11 @@ public class WaypointFollower : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(0,90,0);
 
-        // Play the death animation
-        animator.SetTrigger("Death");
-
         // Play sound of player losing life
         LifelossAudio.Play();
+
+        // Play the death animation
+        animator.SetTrigger("Death");
 
         // Wait for the length of the death animation
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
