@@ -64,6 +64,11 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void Kill()
+    {
+        WaitForDeathAnimation();
+    }
+
     IEnumerator WaitForDeathAnimation()
     {
         // Play the death animation

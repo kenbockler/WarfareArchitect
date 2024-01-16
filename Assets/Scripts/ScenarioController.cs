@@ -26,7 +26,8 @@ public class ScenarioController : MonoBehaviour
 
     public ScenarioData Level;
     private List<WaveData> Waves;
-    private int currentWave = 0;
+    private int currentWave = 0;  
+    private int enemiesInWave = 0;
 
     private bool Win;
 
@@ -80,6 +81,8 @@ public class ScenarioController : MonoBehaviour
         SetIron(GetIron());
         SetUranium(GetUranium());
         Waves = Level.Waves;
+
+        enemiesInWave = Waves[0].Count;
     }
 
     // Update is called once per frame
@@ -94,19 +97,21 @@ public class ScenarioController : MonoBehaviour
             else
             {
                 WaveInfoText.enabled = true;
+                WaveInfoText.text = "Press ENTER to Spawn Next Wave";
             }
         }
         else
         {
-            WaveInfoText.enabled = false;
+            //WaveInfoText.enabled = false;
+            WaveInfoText.text = "Enemies in Current Wave: " + Waves[currentWave].Count + "\n Wave Count: " + Waves.Count;
         }
 
         if(!IsGameOver && Input.GetKeyDown(KeyCode.Return))
         {
             if(GameObject.FindObjectsOfType<Health>().Length == 0)
-            {
-                WaveInfoText.enabled=false;
-                NewWave(Waves[0]);
+            {                
+                WaveInfoText.text = "Enemies in Current Wave: " + Waves[currentWave].Count + "\n Wave Count: " + Waves.Count;
+                NewWave();
             }
         }
     }
@@ -194,7 +199,7 @@ public class ScenarioController : MonoBehaviour
         EndPanel.SetActive(true);
     }
 
-    public void NewWave(WaveData data)
+    public void NewWave()
     {
         if(currentWave >= Waves.Count)
         {
@@ -203,6 +208,7 @@ public class ScenarioController : MonoBehaviour
         }
         else
         {
+            enemiesInWave = Waves[currentWave].Count;
             Events.StartWave(Waves[currentWave]);
         }
         currentWave += 1;
@@ -254,7 +260,7 @@ public class ScenarioController : MonoBehaviour
         // Vahetab options-paneeli olekut
         OptionsMenuPanel.SetActive(!isOptionsPanelActive);
 
-        // Kui options-paneel on aktiivne, peida menüü-paneel ja vastupidi
+        // Kui options-paneel on aktiivne, peida menï¿½ï¿½-paneel ja vastupidi
         MenuPanel.SetActive(isOptionsPanelActive);
     }
 
@@ -263,7 +269,7 @@ public class ScenarioController : MonoBehaviour
         // Deaktiveeri options-paneel
         OptionsMenuPanel.SetActive(false);
 
-        // Aktiveeri menüü-paneel
+        // Aktiveeri menï¿½ï¿½-paneel
         MenuPanel.SetActive(true);
     }
 

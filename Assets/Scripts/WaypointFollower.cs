@@ -25,11 +25,7 @@ public class WaypointFollower : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Slow < 1)
-        {
-            print("SLOWED!");
-        }
+    {        
 
         if(Next != null && !h.IsDead)
         {
@@ -43,7 +39,8 @@ public class WaypointFollower : MonoBehaviour
                     //Destroy(gameObject);
                     //Events.SetLives(Events.GetLives() - 1);
                     h.IsDead = true;
-                    StartCoroutine(WaitForDeathAnimation());
+                    //StartCoroutine(WaitForDeathAnimation());
+                    h.Kill();
                 }
             }
             if (Next != null && !h.IsDead) { 
