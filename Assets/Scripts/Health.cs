@@ -66,6 +66,7 @@ public class Health : MonoBehaviour
 
     public void Kill()
     {
+        ScenarioController.Instance.enemiesRemainingInWave--;
         StartCoroutine(WaitForDeathAnimation());
     }
 

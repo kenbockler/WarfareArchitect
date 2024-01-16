@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public WaypointFollower FollowerPrefab;
+    [HideInInspector]
+    public WaypointFollower FollowerPrefab = null;
     public float SpawnDelay = 5f;
 
     private float NextSpawnTime;

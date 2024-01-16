@@ -28,6 +28,7 @@ public class ScenarioController : MonoBehaviour
     private List<WaveData> Waves;
     private int currentWave = 0;  
     private int enemiesInWave = 0;
+    public int enemiesRemainingInWave = 0;
 
     private bool Win;
 
@@ -89,12 +90,14 @@ public class ScenarioController : MonoBehaviour
         Waves = Level.Waves;
 
         enemiesInWave = Waves[0].Count;
+        enemiesRemainingInWave = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindObjectsOfType<Health>().Length == 0)
+        //print(enemiesInWave + " ; " + enemiesRemainingInWave);
+        if (GameObject.FindObjectsOfType<Health>().Length == 0 && enemiesRemainingInWave <= 0)
         {            
             if (IsGameOver)
             {
@@ -109,14 +112,14 @@ public class ScenarioController : MonoBehaviour
         else
         {
             //WaveInfoText.enabled = false;
-            WaveInfoText.text = "Enemies in Current Wave: " + Waves[currentWave].Count + "\nWave Count: " + Waves.Count;
+            WaveInfoText.text = "Enemies Remaining: " + enemiesRemainingInWave + "/" + enemiesInWave + "\nWave Count: " + Waves.Count;
         }
 
         if(!IsGameOver && Input.GetKeyDown(KeyCode.Return))
         {
-            if(GameObject.FindObjectsOfType<Health>().Length == 0)
-            {                
-                WaveInfoText.text = "Enemies in Current Wave: " + Waves[currentWave].Count + "\nWave Count: " + Waves.Count;
+            if(GameObject.FindObjectsOfType<Health>().Length == 0 && enemiesRemainingInWave <= 0)
+            {
+                WaveInfoText.text = "Enemies Remaining: " + enemiesRemainingInWave + "/" + enemiesInWave + "\nWave Count: " + Waves.Count;
                 NewWave();
             }
         }
@@ -209,12 +212,13 @@ public class ScenarioController : MonoBehaviour
     {
         if(currentWave >= Waves.Count)
         {
-            if(GameObject.FindObjectsOfType<Health>().Length == 0)
+            if(GameObject.FindObjectsOfType<Health>().Length == 0 && enemiesRemainingInWave <= 0)
                 EndGame(true, 0);
         }
         else
         {
             enemiesInWave = Waves[currentWave].Count;
+            enemiesRemainingInWave = Waves[currentWave].Count;
             Events.StartWave(Waves[currentWave]);
         }
         currentWave += 1;
