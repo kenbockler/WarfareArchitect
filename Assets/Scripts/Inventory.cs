@@ -165,9 +165,4 @@ public class Inventory : MonoBehaviour
             //Events.SetUranium(Events.GetUranium() - item.Cost[2]);   
         //}
     }
-
-    public void DecrementBuymenuItemQuantity(int index)
-    {
-        //TODO
-    }
 }

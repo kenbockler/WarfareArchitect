@@ -154,6 +154,7 @@ public class GameviewInventory : MonoBehaviour
         inventory[index].Key = null;
         images[index].gameObject.SetActive(false);
         IsNullSetBuilderFalse(inventory[index].Key);
+        ScenarioController.Instance.SetSelectedText(null);
     }
 
     public void InventoryItemSelected(int index)
