@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7f36bc969beb24f8ba4c66ae3e2df6, type: 3}
   m_Name: Turret
   m_EditorClassIdentifier: 
-  VolumeMin: 0.1
-  VolumeMax: 0.15
+  VolumeMin: 0.01
+  VolumeMax: 0.01
   PitchMin: 0.95
   PitchMax: 1.05
   Cooldown: 0
