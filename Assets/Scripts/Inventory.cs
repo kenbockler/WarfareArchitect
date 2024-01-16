@@ -100,13 +100,16 @@ public class Inventory : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Delete))
         {
-            inventory[Selected].Key = null;
-            images[Selected].gameObject.SetActive(false);
-
             GameviewInventory.instance.RemoveItem(Selected);
         }
 
         CurrentBuilderItem = inventory[CurrentGameviewIndex].Key;
+    }
+
+    public void RemoveItem(int index)
+    {
+        inventory[index].Key = null;
+        images[index].gameObject.SetActive(false);
     }
 
 

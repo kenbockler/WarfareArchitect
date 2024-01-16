@@ -155,6 +155,7 @@ public class GameviewInventory : MonoBehaviour
         images[index].gameObject.SetActive(false);
         IsNullSetBuilderFalse(inventory[index].Key);
         ScenarioController.Instance.SetSelectedText(null);
+        Inventory.instance.RemoveItem(index);
     }
 
     public void InventoryItemSelected(int index)
