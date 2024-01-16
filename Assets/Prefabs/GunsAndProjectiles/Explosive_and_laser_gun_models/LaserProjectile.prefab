@@ -54,8 +54,8 @@ MonoBehaviour:
   Persistent: 0
   Poison: 0
   Slow: 0
-  ProjectileHittingEnemyAudio: {fileID: 0}
-  InitialPosition: {x: 270, y: 37.5, z: -130}
+  ProjectileHittingEnemyAudio: {fileID: 11400000, guid: 7acd14cbb585636429f435b02c912b40, type: 2}
+  InitialPosition: {x: 430, y: 37.5, z: -50}
   InitialForward: {x: -1.0000001, y: 0, z: -0.00000011920929}
   laserLine: {fileID: 0}
   DamageDelay: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   IsIrradiator: 0
   IrradiatorHitsAllowed: 0
   IrradiatorOverShootDistance: 0
+  IsMachineGun: 0
 --- !u!120 &6792393767412082502
 LineRenderer:
   serializedVersion: 2

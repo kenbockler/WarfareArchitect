@@ -127,7 +127,12 @@ public class Projectile : MonoBehaviour
                     //print(Target.HealthPoints); // for debugging
                     PrevTime = Time.time;
                 }
-                //Target.Damage(Damage);
+                
+                //print(ProjectileHittingEnemyAudio);
+                if (ProjectileHittingEnemyAudio != null)
+                {
+                    ProjectileHittingEnemyAudio.Play(transform.position);
+                }
             }
             else
             {

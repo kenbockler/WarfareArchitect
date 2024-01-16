@@ -14571,7 +14571,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 1600
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -16170,7 +16170,7 @@ MonoBehaviour:
   FinalScoreText: {fileID: 1220908165}
   ButtonText: {fileID: 1220908166}
   IsGameOver: 0
-  Level: {fileID: 11400000, guid: f3c56eb87a5f2e940ac69749c9f8e4e1, type: 2}
+  Level: {fileID: 11400000, guid: 46b8f0fb6f7c12a4aa346bd86bc31883, type: 2}
   enemiesRemainingInWave: 0
   OptionsMenuPanel: {fileID: 160839766}
   MenuPanel: {fileID: 160839767}

@@ -269,7 +269,7 @@ MonoBehaviour:
   Name: MachineGun
   RangeModifier: 1
   DamageModifier: 2
-  FirerateModifier: 4
+  FirerateModifier: 5
   Seeking: 0
   Piercing: 0
   Persistent: 0
