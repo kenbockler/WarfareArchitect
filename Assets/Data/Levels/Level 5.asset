@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PresentedName: Level 5
   SceneName: Level 5
-  stone: 50
+  stone: 500
   iron: 0
   uranium: 0
   lives: 10

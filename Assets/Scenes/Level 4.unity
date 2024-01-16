@@ -12169,6 +12169,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4246945648270304770, guid: f5cad94559606dc48b4f39fcf502993c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1246805863}
+    - target: {fileID: 4246945648270304770, guid: f5cad94559606dc48b4f39fcf502993c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4313054990947754697, guid: f5cad94559606dc48b4f39fcf502993c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -12236,6 +12244,14 @@ PrefabInstance:
     - target: {fileID: 5890775237448029609, guid: f5cad94559606dc48b4f39fcf502993c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945146447256837444, guid: f5cad94559606dc48b4f39fcf502993c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1246805863}
+    - target: {fileID: 5945146447256837444, guid: f5cad94559606dc48b4f39fcf502993c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
       objectReference: {fileID: 0}
     - target: {fileID: 6402411403504038373, guid: f5cad94559606dc48b4f39fcf502993c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -17227,6 +17243,7 @@ MonoBehaviour:
   ButtonText: {fileID: 924542447}
   IsGameOver: 0
   Level: {fileID: 11400000, guid: f3c56eb87a5f2e940ac69749c9f8e4e1, type: 2}
+  enemiesRemainingInWave: 0
   OptionsMenuPanel: {fileID: 1582632735}
   MenuPanel: {fileID: 1582632736}
   SelectedAudio: {fileID: 11400000, guid: e7079a2a9f6bd1543aa74e92031a2ff3, type: 2}
