@@ -208,9 +208,20 @@ public class CameraMovement : MonoBehaviour
     {
         OptionsMenu.SetActive(active && isOptionsMenu);
         TerminalMenu.SetActive(active && !isOptionsMenu);
+
+        if (active)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+
         _playerMovementEnabled = !active;
         SetCursorState(active);
     }
+
 
     private void SetCursorState(bool visible)
     {
