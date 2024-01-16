@@ -28,7 +28,7 @@ public class ScenarioController : MonoBehaviour
     private List<WaveData> Waves;
     private int currentWave = 0;  
     private int enemiesInWave = 0;
-    public int enemiesRemainingInWave = 0;
+    public int enemiesRemainingInWave = 0;    
 
     private bool Win;
 
@@ -112,14 +112,14 @@ public class ScenarioController : MonoBehaviour
         else
         {
             //WaveInfoText.enabled = false;
-            WaveInfoText.text = "Enemies Remaining: " + enemiesRemainingInWave + "/" + enemiesInWave + "\nWave Count: " + Waves.Count;
+            WaveInfoText.text = "Enemies Remaining: " + enemiesRemainingInWave + "/" + enemiesInWave + "\nCurrent Wave: " + currentWave + "/" + Waves.Count;
         }
 
         if(!IsGameOver && Input.GetKeyDown(KeyCode.Return))
         {
             if(GameObject.FindObjectsOfType<Health>().Length == 0 && enemiesRemainingInWave <= 0)
             {
-                WaveInfoText.text = "Enemies Remaining: " + enemiesRemainingInWave + "/" + enemiesInWave + "\nWave Count: " + Waves.Count;
+                WaveInfoText.text = "Enemies Remaining: " + enemiesRemainingInWave + "/" + enemiesInWave + "\nCurrent Wave: " + currentWave + "/" + Waves.Count;
                 NewWave();
             }
         }
