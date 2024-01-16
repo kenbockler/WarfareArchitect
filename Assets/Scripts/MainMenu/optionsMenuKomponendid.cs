@@ -8,7 +8,6 @@ public class optionsMenuKomponendid : MonoBehaviour
 
     public GameObject mainMenuKomponendid;
     public Slider masterVolumeSlider;
-    public TMP_Dropdown resolutionDropdown;
     public Toggle muteToggle;
     public Button backButton;
 
@@ -31,7 +30,7 @@ public class optionsMenuKomponendid : MonoBehaviour
         // Seo nuppude s�ndmused
         backButton.onClick.AddListener(OnBackButtonClicked);
         masterVolumeSlider.onValueChanged.AddListener(delegate { OnMasterVolumeChanged(masterVolumeSlider.value); });
-        resolutionDropdown.onValueChanged.AddListener(delegate { OnResolutionChange(resolutionDropdown.value); });
+
         muteToggle.onValueChanged.AddListener(delegate { OnMuteChanged(muteToggle.isOn); });
     }
 
@@ -41,11 +40,7 @@ public class optionsMenuKomponendid : MonoBehaviour
         Debug.Log("Muudetud helitugevus: " + volume);
     }
 
-    public void OnResolutionChange(int resolutionIndex)
-    {
-        // Muuda eraldusv�imet
-        Debug.Log("Valitud eraldusv�ime: " + resolutionDropdown.options[resolutionIndex].text);
-    }
+
 
     public void OnMuteChanged(bool isMuted)
     {
