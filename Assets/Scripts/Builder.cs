@@ -35,6 +35,9 @@ public class Builder : MonoBehaviour
         Instance = this;
         Events.OnTowerComponentSelected += SetTowerComponentData;
 
+        MeshRenderer = GetComponent<MeshRenderer>();
+        MeshFilter = GetComponent<MeshFilter>();
+
         ProjectileLayerMask = 1 << LayerMask.NameToLayer("ProjectileLayer");
         GunLayerMask = 1 << LayerMask.NameToLayer("Gun");
     }
@@ -48,8 +51,8 @@ public class Builder : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        MeshRenderer = GetComponent<MeshRenderer>();
-        MeshFilter = GetComponent<MeshFilter>();
+        //MeshRenderer = GetComponent<MeshRenderer>();
+        //MeshFilter = GetComponent<MeshFilter>();
     }
 
     // Update is called once per frame
@@ -303,7 +306,7 @@ public class Builder : MonoBehaviour
             transform.localScale = ((DrillData)data).DrillPrefab.GetComponentsInChildren<Transform>()[1].transform.localScale;
         }
         if (data is FoundationData)
-        {
+        {            
             MeshRenderer.materials[0].CopyPropertiesFromMaterial(((FoundationData)data).FoundationPrefab.GetComponent<MeshRenderer>().sharedMaterials[0]);
             MeshFilter.mesh = ((FoundationData)data).FoundationPrefab.GetComponent<MeshFilter>().sharedMesh;
             transform.localScale = ((FoundationData)data).FoundationPrefab.transform.localScale;
