@@ -275,7 +275,7 @@ public class Gun : MonoBehaviour
                         {
                             LaserProjectile.transform.position = transform.position;
                             LaserProjectile.Target = target;                                                        
-                            LaserProjectile.TargetPos = target.transform.position;                                                       
+                            LaserProjectile.TargetPos = target.transform.position;                            
                         }
                     }
                     if(target != null && !target.IsDead)
@@ -290,8 +290,8 @@ public class Gun : MonoBehaviour
                             projectile.Seeking = Seeking || GunBase.Structure.Seeking;
                             projectile.Piercing = Piercing || GunBase.Structure.Piercing;
                             projectile.Persistent = Persistent || GunBase.Structure.Persistent;
-                            projectile.Poison = (int)GunBase.Structure.Poison;
-                            projectile.Slow = GunBase.Structure.Slow;
+                            projectile.Poison = (int)GunBase.Structure.Poison + (int) Poison;
+                            projectile.Slow = Mathf.Min(GunBase.Structure.Slow, Slow);
 
                             projectile.transform.position = transform.position;
                             projectile.Target = target;

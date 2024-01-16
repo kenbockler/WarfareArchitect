@@ -103,7 +103,7 @@ public class Terminal : MonoBehaviour
         {
             ItemTypeText.text = "Gun";
             GunData data = (GunData)item;            
-            StatisticsText.text = "Damage: " + Mathf.Clamp(data.GunPrefab.DamageModifier, 0.01f, 100f) + "\nFirerate: " + data.GunPrefab.FirerateModifier + "/sec\nRange modifier: " + data.GunPrefab.RangeModifier + (data.GunPrefab.Seeking ? "\nSeeking bullets" : "");
+            StatisticsText.text = "Damage: " + Mathf.Clamp(data.GunPrefab.DamageModifier, 0.01f, 100f) + "\nFirerate: " + data.GunPrefab.FirerateModifier + "/sec\nRange modifier: " + data.GunPrefab.RangeModifier + (data.GunPrefab.Seeking ? "\nSeeking bullets" : "") + (data.GunPrefab.Poison > 0 ? ("\nPoison: " + data.GunPrefab.Poison + "/sec") : "");
         }
 
         if (item is SupportBlockData)

@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     private WaypointFollower wpf;
     public bool IsDead = false;
 
+    [HideInInspector]
     public int poison;
     private float poisonTick;
 
@@ -49,6 +50,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        poison = 0;
         poisonTick = Time.time;
     }
 

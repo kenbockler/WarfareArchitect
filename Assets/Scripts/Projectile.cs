@@ -122,6 +122,7 @@ public class Projectile : MonoBehaviour
                 laserLine.SetPosition(1, changedPos);
                 if (Time.time > PrevTime + DamageDelay)
                 {
+                    
                     Target.Damage(Damage);
                     //print(Target.HealthPoints); // for debugging
                     PrevTime = Time.time;
@@ -234,11 +235,11 @@ public class Projectile : MonoBehaviour
                 ProjectileHittingEnemyAudio.Play(transform.position);
             }            
             
-            enemy.poison += Poison;
+            enemy.poison = Poison;
 
             WaypointFollower enemyw = collision.GetComponent<WaypointFollower>();
-            if(enemyw.Slow > Slow) enemyw.Slow = Slow;
-            enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit.                                               
+            enemyw.SlowCooldown = Time.time + 5f; // See on konstant: aeglustus kestab 5 sekundit. 
+            if (enemyw.Slow > Slow) enemyw.Slow = Slow;                                                          
 
             //print(Damage);
             enemy.Damage(Damage);

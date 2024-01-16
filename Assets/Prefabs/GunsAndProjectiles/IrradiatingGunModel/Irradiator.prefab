@@ -59,7 +59,7 @@ MonoBehaviour:
   Seeking: 0
   Piercing: 0
   Persistent: 0
-  Poison: 1
+  Poison: 2
   Slow: 1
   Targets: 1
   ProjectilePrefab: {fileID: -6130858175895908883, guid: 31465ce67ead6d4468460f9a06ffaa41, type: 3}

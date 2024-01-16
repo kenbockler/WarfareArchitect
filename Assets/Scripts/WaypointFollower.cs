@@ -20,12 +20,17 @@ public class WaypointFollower : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        h = GetComponent<Health>();
+        h = GetComponent<Health>();        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Slow < 1)
+        {
+            print("SLOWED!");
+        }
+
         if(Next != null && !h.IsDead)
         {
             if(Vector3.Distance(transform.position, Next.transform.position) < 0.1)
