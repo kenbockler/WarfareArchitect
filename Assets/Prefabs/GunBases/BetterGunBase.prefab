@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageModifier: 0.5
-  FirerateModifier: 3
-  BulletSpeedModifier: 0.4
+  FirerateModifier: 4
+  BulletSpeedModifier: 0.5
   Structure: {fileID: 8618769767025871181, guid: 7ce6178ced277dd408106d8e243a5e8a, type: 3}
   BuiltOn: 0

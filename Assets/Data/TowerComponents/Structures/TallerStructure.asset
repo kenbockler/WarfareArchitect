@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: TallerStructure
   m_EditorClassIdentifier: 
   DisplayName: Tall Structure
-  Cost: 0a0000000000000000000000
+  Cost: 0f0000000000000000000000
   IconSprite: {fileID: 21300000, guid: 6c19a797756869a489e0975272ba3501, type: 3}
   Hotkey: 51
-  Range: 0
   StructurePrefab: {fileID: 8618769767025871181, guid: 7ce6178ced277dd408106d8e243a5e8a, type: 3}
